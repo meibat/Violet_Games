@@ -1,0 +1,83 @@
+﻿@model List<ConsoleModel>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Violet_Games";
+}
+
+@if (TempData["MessagemSucess"] != null)
+{
+    <div class="alert alert-success text-center justify-content-center" role="alert">
+        @TempData["MessagemSucess"]
+        <button type="button" class="btn-close alert-success" data-bs-dismiss="alert" aria-label="Close">X</button>
+    </div>
+}
+
+@if(TempData["MessagemError"] != null)
+{
+    <div class="text-center alert alert-danger justify-content-center" role="alert">
+        @TempData["MessagemError"]
+        <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
+    </div>
+}
+
+<div class="text-center"><br />
+    <!--Colocar campo de pesquisa-->
+    <form class="form-inline justify-content-center">
+        <input class="mr-sm-4 search" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+        <button class="btn btn-outline-success my-2 mr-sm-4" type="submit">Pesquisar</button>
+        <a role="button" class="btn btn-success" asp-controller="Console" asp-action="Create">Adicionar</a>
+    </form><br />
+    <table class="table table-content">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Valor (H)</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Listar contatos SE existir-->
+            @if (Model != null && Model.Any())
+            {
+                <!--Erro nesse Any-->
+                foreach (ConsoleModel Console in Model)
+                {
+                            <tr>
+                                <th scope="row">@Console.Id</th>
+                                <td>@Console.Name</td>
+                                <td>@Console.Marking</td>
+                                <td>@Console.PriceHour</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <a role="button" class="btn btn-warning" asp-route-id="@Console.Id" asp-controller="Console" asp-action="Edit">Edite</a>
+                                        <a role="button" class="btn btn-danger" asp-route-id="@Console.Id" asp-controller="Console" asp-action="DeleteConfirm">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <nav aria-label="Navegação de página exemplo">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Anterior">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Próximo">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Próximo</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+

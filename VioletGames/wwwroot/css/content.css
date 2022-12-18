@@ -1,0 +1,98 @@
+﻿/*Conteudo*/
+.content-back {
+    background-color: #2e193b;
+    width: 1269px;
+    height: 660px;
+    margin-left: 130px;
+    opacity:90%;
+    margin-top: -10px;
+}
+
+.content {
+    width: 1269px;
+    height: 660px;
+    color: white;
+    font-family: 'Consolas';
+    margin-top: -10px;
+}
+
+.btn{
+    padding: 0.15rem 0.5rem;
+}
+
+.singin{
+    padding-left:25%;
+}
+
+/*Tabela*/
+.table-content {
+    color: white;
+}
+
+.dataTables_wrapper {
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    background: #fff;
+    opacity: 75%;
+}
+
+.dataTables_wrapper div.dataTables_filter input {
+    background: #fff;
+    opacity: 75%;
+}
+
+table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td{
+    text-align: center;
+    background-color: aliceblue;
+    opacity: 75%;
+    color: black;
+    font-size: 20px;
+}
+
+table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
+    text-align: center;
+    background-color: #e0c0fa;
+    opacity: 80%;
+    color: black;
+    font-size: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #e0c0fa;
+    color: black;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover a{
+    background-color: #e0c0fa;
+    color: black;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{
+    color: white !important;
+}
+
+/*Alerta*/
+.alert {
+    /*position: absolute;*/
+    width: 600px;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.btn-close {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.field-validation-error {
+    color: #b94a48;
+
+    background-image: url(../lib/bottons/error.png);
+    background-repeat: no-repeat;
+    padding-left: 22px;
+    background-size: contain;
+}

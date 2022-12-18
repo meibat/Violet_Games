@@ -1,0 +1,40 @@
+﻿@model ClienteModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Violet_Games";
+}
+
+<div class="text-center">
+    <h1>Cadastrar Cliente</h1><br />
+</div>
+<form asp-controller="Cliente" asp-action="Create" method="post" class="singin">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Nome</label>
+        <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div class="mb-3">
+        <label for="Date" class="form-label">Data de Nascimento</label>
+        <input type="date" asp-for="DateBirthday" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        @Html.ValidationMessageFor(x => x.DateBirthday)
+    </div>
+    <div class="mb-3">
+        <label for="CPF" class="form-label">CPF</label>
+        <input type="text" asp-for="CPF" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
+        @Html.ValidationMessageFor(x => x.CPF)
+    </div>
+    <div class="mb-3">
+        <label for="Phone" class="form-label">Telefone</label>
+        <input type="text" asp-for="Contato.Phone" class="form-control" style="width: 260px; display: inline;" placeholder="(11) 00000-0000">
+        @Html.ValidationMessageFor(x => x.Contato.Phone)
+    </div>
+    <div class="mb-3">
+        <label for="Address" class="form-label">Endereço</label>
+        <input type="text" asp-for="Contato.Address" class="form-control" style="width: 260px; display: inline;" placeholder="Rua exemplo">
+        @Html.ValidationMessageFor(x => x.Contato.Address)
+    </div>
+    <div class="singin">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a role="button" class="btn btn-info" asp-controller="Cliente" asp-action="Index">Voltar</a>
+    </div>
+</form>

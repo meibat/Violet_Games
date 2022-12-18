@@ -1,0 +1,32 @@
+﻿body {
+    background-image: url('/lib/img/back.jpg');
+    background-size: 100%;
+    position: center;
+    background-size: cover;
+}
+
+/*Menu responsive*/
+.nav-menu {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden; /*esconde o objeto caso passe do tamanho da nav*/
+    /*transition: width 0.3s; /*animação do menu*/
+}
+
+.nav-menu a {
+    color: White;
+    background-color: black;
+    opacity: 65%;
+    font-family: 'Consolas';
+    font-size: 22px;
+}
+
+/*Efeito mouse*/
+.nav-menu a:hover {
+    color: black;
+    background-color: #C17EF5;
+}

@@ -1,0 +1,39 @@
+﻿@model LoginModel
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Violet_Games";
+}
+<nav style="margin-left: 30%">
+    @if (TempData["MessagemError"] != null)
+    {
+        <div class="text-center alert alert-danger justify-content-center" role="alert">
+            @TempData["MessagemError"]
+            <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
+        </div>
+    }
+</nav>
+
+<nav class="nav-login">
+    <div class="logo text-center">
+        <br><br>
+        <img src="/lib/img/icon.png"><br>
+        <a>Violet_Games</a>
+    </div>
+    <div class="login">
+        <p>Seja bem-vindo!</p>
+        <a>ACESSE AGORA</a><br /><br /><br />
+        <form asp-controller="Login" asp-action="Enter" method="post">
+            <div class="mb-3">
+                <img src="./lib/bottons/user.png">
+                <input type="text" asp-for="Login" class="form-control" id="Login-Usr" placeholder="Login"><br />
+                @Html.ValidationMessageFor(x => x.Login)
+            </div>
+            <div class="mb-3">
+                <img src="./lib/bottons/passwd.png">
+                <input type="password" asp-for="Passwd" class="form-control" id="Login-passwd" placeholder="Senha"><br />
+                @Html.ValidationMessageFor(x => x.Passwd)
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+</nav>

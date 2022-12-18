@@ -1,0 +1,59 @@
+﻿@model List<ClienteModel>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Violet_Games";
+}
+
+@if (TempData["MessagemSucess"] != null)
+{
+    <div class="alert alert-success text-center justify-content-center" role="alert">
+        @TempData["MessagemSucess"]
+        <button type="button" class="btn-close alert-success" data-bs-dismiss="alert" aria-label="Close">X</button>
+    </div>
+}
+
+@if (TempData["MessagemError"] != null)
+{
+    <div class="text-center alert alert-danger justify-content-center" role="alert">
+        @TempData["MessagemError"]
+        <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
+    </div>
+}
+
+<div class="text-center"><br />
+    <table class="table table-content" id="table-clientes">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Data Nasc.</th>
+                <th scope="col">CPF</th>
+                <th scope="col">
+                    <a role="button" class="btn btn-success" asp-controller="Cliente" asp-action="Create">Adicionar</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Listar contatos SE existir-->
+            @if (Model != null && Model.Any())
+            {
+                foreach (ClienteModel cliente in Model)
+                {
+                    <tr>
+                        <th scope="row">@cliente.Id</th>
+                        <td>@cliente.Name</td>
+                        <td>@cliente.DateBirthday</td>
+                        <td>@cliente.CPF</td>
+                        <!--Mostrar contatos tambem-->
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <a role="button" class="btn btn-warning" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Edit">Edite</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="DeleteConfirm">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

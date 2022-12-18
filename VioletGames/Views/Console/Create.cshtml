@@ -1,0 +1,29 @@
+﻿@model ConsoleModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Violet_Games";
+}
+
+<div class="text-center">
+    <h1>Cadastrar Consoles</h1><br />
+</div>
+<form asp-controller="Console" asp-action="Create" method="post" class="singin">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Nome</label>
+        <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div class="mb-3">
+        <label for="Marking" class="form-label">Marca</label>
+        <input type="text" asp-for="Marking" class="form-control" style="width: 160px; display: inline;" placeholder="Xbox">
+    </div>
+    <div class="mb-3">
+        <label for="Price" class="form-label">Valor (Hora)</label>
+        <input type="text" asp-for="PriceHour" class="form-control" style="width: 360px; display: inline;" placeholder="00,00">
+        @Html.ValidationMessageFor(x => x.PriceHour)
+    </div><br />
+    <div class="singin">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a role="button" class="btn btn-info" asp-controller="Console" asp-action="Index">Voltar</a>
+    </div>
+</form>

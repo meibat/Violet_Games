@@ -1,0 +1,37 @@
+﻿@model UsuarioModel
+
+<header class="bar">
+    <!--usar bar pro login-->
+    <nav class="navbar navbar-dark bg-dark opacity-75" id="Top">
+        <div class="container">
+            <button class="navbar-toggler" onclick="openMenu()" id="btnMenu">
+                <!--tentar tirar btn ao abri o menu-->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--Colocar img com mudança pra cada tela-->
+            <a class="invisible">//</a><a id="tittleMenu" class="navbar-brand mr-auto" style="color:white;">Violet Games</a>
+            <a class="navbar-brand" style="color:white;">Olá, @Model.Name </a>
+            <img src="~/lib/users/user1.png" width="50" height="50" class="user" />
+        </div>
+    </nav>
+</header>
+<!--id determina o objeto-->
+<nav class="nav-menu" id="Menu">
+    <div style="margin-left:40px" onclick="closeMenu()">
+        <img src="~/lib/img/icon.png" width="150" height="150">
+    </div>
+    <ul class="nav flex-column">
+        <li><a class="invisible">//</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Dashboard" asp-action="Index"><img src="~/lib/bottons/monitor.png" width="40" height="40"> Dashboard</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Caixa" asp-action="Index"><img src="~/lib/bottons/car.png" width="40" height="40"> Caixa</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Produto" asp-action="Index"><img src="~/lib/bottons/stockg.png" width="40" height="40"> Produtos</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Console" asp-action="Index"><img src="~/lib/bottons/console.png" width="40" height="40"> Consoles</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Cliente" asp-action="Index"><img src="~/lib/bottons/vip.png" width="40" height="40"> Clientes</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Funcionario" asp-action="Index"><img src="~/lib/bottons/user.png" width="40" height="40"> Funcionários</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Usuario" asp-action="Index"><img src="~/lib/bottons/userMenu.png" width="40" height="40"> Usuários</a></li>
+        <li><a role="button" class="nav-link" asp-controller="Login" asp-action="Exit"><img src="~/lib/bottons/exit.png" width="35" height="35"> Sair</a></li>
+    </ul>
+    <div class="container footer">
+        <span style="font-size: 16px; color: white;">&copy; Develop by </span><a href="https://github.com/melissa-mfs" style="font-size: 16px;">Melissa-MFS</a>
+    </div>
+</nav>
