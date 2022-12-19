@@ -33,6 +33,6 @@
 
 .navbar-dark {
     color: White;
-    background-color: black;
+    background-color: black !important;
     opacity: 70%;
 }
