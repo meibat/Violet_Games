@@ -5,6 +5,14 @@
     ViewData["Title"] = "Violet_Games";
 }
 
+@if (TempData["MessagemError"] != null)
+{
+    <div class="text-center alert alert-danger justify-content-center" role="alert">
+        @TempData["MessagemError"]
+        <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
+    </div>
+}
+
 <div class="text-center">
     <h1>Cadastrar Funcionário</h1><br />
 </div>
@@ -13,30 +21,16 @@
         <label for="Name" class="form-label">Nome</label>
         <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
         @Html.ValidationMessageFor(x => x.Name)
-<<<<<<< HEAD
-=======
     </div>
     <div class="mb-3">
         <label for="Date" class="form-label">Data de Nascimento</label>
         <input type="date" asp-for="DateBirthday" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateBirthday)
->>>>>>> 9e7504584b6c6cdbe5a31136b95375f759de4775
     </div>
     <div class="mb-3">
         <label for="Email" class="form-label">Email</label>
         <input type="text" asp-for="Email" class="form-control" style="width: 360px; display: inline;" placeholder="nome@exemplo.com">
         @Html.ValidationMessageFor(x => x.Email)
-    </div>
-    <div class="mb-3">
-<<<<<<< HEAD
-        <label for="Date" class="form-label">Data de Nascimento</label>
-        <input type="date" asp-for="DateBirthday" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
-        @Html.ValidationMessageFor(x => x.DateBirthday)
-=======
-        <label for="CPF" class="form-label">CPF</label>
-        <input type="text" asp-for="CPF" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
-        @Html.ValidationMessageFor(x => x.CPF)
->>>>>>> 9e7504584b6c6cdbe5a31136b95375f759de4775
     </div>
     <div class="mb-3">
         <label for="CPF" class="form-label">CPF</label>
@@ -61,7 +55,6 @@
         @Html.ValidationMessageFor(x => x.Office)
     </div>
     <div class="mb-3">
-<<<<<<< HEAD
         <label for="Phone" class="form-label">Telefone</label>
         <input type="text" asp-for="Contato.Phone" class="form-control" style="width: 260px; display: inline;" placeholder="(11) 00000-0000">
         @Html.ValidationMessageFor(x => x.Contato.Phone)
@@ -70,13 +63,7 @@
         <label for="Address" class="form-label">Endereço</label>
         <input type="text" asp-for="Contato.Address" class="form-control" style="width: 260px; display: inline;" placeholder="Rua exemplo">
         @Html.ValidationMessageFor(x => x.Contato.Address)
-    </div>
-=======
-        <label for="Office" class="form-label">Cargo</label>
-        <input type="text" asp-for="Office" class="form-control" style="width: 360px; display: inline;" placeholder="Atendente">
-        @Html.ValidationMessageFor(x => x.Office)
     </div><br />
->>>>>>> 9e7504584b6c6cdbe5a31136b95375f759de4775
     <div class="singin">
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         <a role="button" class="btn btn-info" asp-controller="Funcionario" asp-action="Index">Voltar</a>

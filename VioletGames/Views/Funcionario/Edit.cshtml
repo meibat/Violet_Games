@@ -5,51 +5,51 @@
     ViewData["Title"] = "Violet_Games";
 }
 
-<form asp-controller="Funcionario" asp-action="Edit" method="post" class="singin">
-    <input type="hidden" asp-for="Id" />
-    <input type="hidden" asp-for="Contato.Id" />
+@if (TempData["MessagemError"] != null)
+{
+    <div class="text-center alert alert-danger justify-content-center" role="alert">
+        @TempData["MessagemError"]
+        <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
+    </div>
+}
+
+<form asp-controller="Funcionario" asp-action="Create" method="post" class="singin">
     <div class="mb-3">
         <label for="Name" class="form-label">Nome</label>
         <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
         @Html.ValidationMessageFor(x => x.Name)
     </div>
     <div class="mb-3">
-        <label for="DateBirthday" class="form-label">Data de Nascimento</label>
+        <label for="Date" class="form-label">Data de Nascimento</label>
         <input type="date" asp-for="DateBirthday" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateBirthday)
     </div>
     <div class="mb-3">
-        <label for="Email" class="form-label">E-mail</label>
-        <input type="text" asp-for="Email" class="form-control" style="width: 260px; display: inline;" placeholder="exemplo@teste.com">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" style="width: 360px; display: inline;" placeholder="nome@exemplo.com">
         @Html.ValidationMessageFor(x => x.Email)
     </div>
     <div class="mb-3">
         <label for="CPF" class="form-label">CPF</label>
         <input type="text" asp-for="CPF" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
         @Html.ValidationMessageFor(x => x.CPF)
-    </div>
-    <div class="mb-3">
         <label for="RG" class="form-label">RG</label>
         <input type="text" asp-for="RG" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
     </div>
     <div class="mb-3">
-        <label for="DateAdmission" class="form-label">Admissão</label>
+        <label for="Date" class="form-label">Data de Admissão</label>
         <input type="date" asp-for="DateAdmission" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
-        <label for="Office" class="form-label">Cargo</label>
-<<<<<<< HEAD
-        <select asp-for="Office" class="form-control" style="width: 160px; display: inline;">
-            <option value="">Selecione</option>
-                <option value="@Office.Boss">Gerente</option>
-                <option value="@Office.Employee">Atendente</option>
-            </select>
-=======
-        <input type="text" asp-for="Office" class="form-control" style="width: 160px; display: inline;" placeholder="Atendente">
->>>>>>> 9e7504584b6c6cdbe5a31136b95375f759de4775
-        @Html.ValidationMessageFor(x => x.Office)
     </div>
     <div class="mb-3">
         <label for="Pay" class="form-label">Salário</label>
         <input type="text" asp-for="Pay" class="form-control" style="width: 160px; display: inline;" placeholder="0,00">
+        <label for="Office" class="form-label">Cargo</label>
+        <select asp-for="Office" class="form-control" style="width: 160px; display: inline;">
+            <option value="">Selecione</option>
+            <option value="@Office.Boss">Gerente</option>
+            <option value="@Office.Employee">Atendente</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Office)
     </div>
     <div class="mb-3">
         <label for="Phone" class="form-label">Telefone</label>
@@ -60,9 +60,9 @@
         <label for="Address" class="form-label">Endereço</label>
         <input type="text" asp-for="Contato.Address" class="form-control" style="width: 260px; display: inline;" placeholder="Rua exemplo">
         @Html.ValidationMessageFor(x => x.Contato.Address)
-    </div>
+    </div><br />
     <div class="singin">
-        <button type="submit" class="btn btn-primary">Editar</button>
-        <a role="button" class="btn btn-info" asp-controller="Console" asp-action="Index">Voltar</a>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a role="button" class="btn btn-info" asp-controller="Funcionario" asp-action="Index">Voltar</a>
     </div>
 </form>

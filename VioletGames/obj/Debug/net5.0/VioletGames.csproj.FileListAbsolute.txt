@@ -5,7 +5,6 @@ C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\VioletGames.runtimeconfig.json
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\VioletGames.runtimeconfig.dev.json
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\VioletGames.dll
-C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\ref\VioletGames.dll
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\VioletGames.pdb
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Antiforgery.dll
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
@@ -365,7 +364,6 @@ C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.RazorAssemblyInfo.cache
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.RazorAssemblyInfo.cs
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\staticwebassets\VioletGames.StaticWebAssets.Manifest.cache
-C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\staticwebassets\VioletGames.StaticWebAssets.xml
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\scopedcss\bundle\VioletGames.styles.css
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.TagHelpers.input.cache
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.TagHelpers.output.cache
@@ -816,3 +814,4 @@ C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debu
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\ref\VioletGames.dll
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.pdb
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.genruntimeconfig.cache
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\refint\VioletGames.dll

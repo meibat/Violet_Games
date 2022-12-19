@@ -1,19 +1,19 @@
 ﻿/*Conteudo*/
 .content-back {
     background-color: #2e193b;
-    width: 1269px;
+    width: 1265px;
     height: 660px;
     margin-left: 130px;
     opacity:90%;
-    margin-top: -10px;
+    margin-top: -5px;
 }
 
 .content {
-    width: 1269px;
+    width: 1260px;
     height: 660px;
     color: white;
     font-family: 'Consolas';
-    margin-top: -10px;
+    margin-top: -5px;
 }
 
 .btn{

@@ -20,7 +20,7 @@
 .nav-menu a {
     color: White;
     background-color: black;
-    opacity: 65%;
+    opacity: 70%;
     font-family: 'Consolas';
     font-size: 22px;
 }
@@ -29,4 +29,10 @@
 .nav-menu a:hover {
     color: black;
     background-color: #C17EF5;
+}
+
+.navbar-dark {
+    color: White;
+    background-color: black;
+    opacity: 70%;
 }

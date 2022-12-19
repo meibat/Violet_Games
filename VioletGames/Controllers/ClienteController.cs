@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
+using VioletGames.Util.Validator;
 
 namespace VioletGames.Controllers
 {
@@ -74,6 +75,11 @@ namespace VioletGames.Controllers
             try{
                 if (ModelState.IsValid)
                 {
+                    if (!ValidatorCPF.IsCPF(cliente.CPF))
+                    {
+                        TempData["MessagemError"] = "CPF informado Inválido!";
+                        return View(cliente);
+                    }
                     _clienteRepositorio.Create(cliente);
                     TempData["MessagemSucess"] = "Cliente cadastrado com sucesso!";
                     return RedirectToAction("Index");
