@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace VioletGames.Util.Validator
 {
-    public class ValidatorCPF
+    public class Validator
     {
         public static bool IsCPF(String cpf)
         {
@@ -42,6 +43,15 @@ namespace VioletGames.Util.Validator
             cpfTemp += digito;
 
             return cpf.EndsWith(digito);
+        }
+
+        public static bool IsPhone(string phone)
+        {
+            Regex Rgx = new Regex("([(][0-9]{2}[)])?[0-9]{4,5}-?[0-9]{4}");// formato(XX)XXXXX - XXXX
+
+            if (!Rgx.IsMatch(phone)) return false;
+
+            else return true;
         }
     }
 }

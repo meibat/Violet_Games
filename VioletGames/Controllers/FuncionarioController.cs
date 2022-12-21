@@ -75,13 +75,17 @@ namespace VioletGames.Controllers
         [HttpPost]
         public IActionResult Create(FuncionarioModel funcionario) 
         {
-
             try{
                 if (ModelState.IsValid)
                 {
-                    if (!ValidatorCPF.IsCPF(funcionario.CPF))
-                    {
+                    if (!Validator.IsCPF(funcionario.CPF))
+                    { 
                         TempData["MessagemError"] = "CPF informado Inválido!";
+                        return View(funcionario);
+                    }
+                    if(!Validator.IsPhone(funcionario.Contato.Phone))
+                    {
+                        TempData["MessagemError"] = "Telefone informado Inválido!";
                         return View(funcionario);
                     }
 
@@ -104,11 +108,17 @@ namespace VioletGames.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (!ValidatorCPF.IsCPF(funcionario.CPF))
+                    if (!Validator.IsCPF(funcionario.CPF))
                     {
                         TempData["MessagemError"] = "CPF informado Inválido!";
                         return View(funcionario);
                     }
+                    if (!Validator.IsPhone(funcionario.Contato.Phone))
+                    {
+                        TempData["MessagemError"] = "Telefone informado Inválido!";
+                        return View(funcionario);
+                    }
+
                     _funcionarioRepositorio.Update(funcionario, contato);
                     TempData["MessagemSucess"] = "Cadastro editado com sucesso!";
                     return RedirectToAction("Index");

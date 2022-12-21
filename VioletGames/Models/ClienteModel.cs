@@ -12,10 +12,14 @@ namespace VioletGames.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "Nome!")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "Data de Nascimento!")]
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime DateBirthday { get; set; }
+
         [Required(ErrorMessage = "CPF!")]
         public string CPF { get; set; }
+
         [Required(ErrorMessage = "Contato!")]
         public ContatoModel Contato { get; set; }
     }

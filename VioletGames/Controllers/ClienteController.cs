@@ -75,11 +75,17 @@ namespace VioletGames.Controllers
             try{
                 if (ModelState.IsValid)
                 {
-                    if (!ValidatorCPF.IsCPF(cliente.CPF))
+                    if (!Validator.IsCPF(cliente.CPF))
                     {
                         TempData["MessagemError"] = "CPF informado Inválido!";
                         return View(cliente);
                     }
+                    if (!Validator.IsPhone(cliente.Contato.Phone))
+                    {
+                        TempData["MessagemError"] = "Telefone informado Inválido!";
+                        return View(cliente);
+                    }
+
                     _clienteRepositorio.Create(cliente);
                     TempData["MessagemSucess"] = "Cliente cadastrado com sucesso!";
                     return RedirectToAction("Index");
@@ -100,6 +106,11 @@ namespace VioletGames.Controllers
             try{
                 if (ModelState.IsValid)
                 {
+                    if (!Validator.IsPhone(cliente.Contato.Phone))
+                    {
+                        TempData["MessagemError"] = "Telefone informado Inválido!";
+                        return View(cliente);
+                    }
                     _clienteRepositorio.Update(cliente,contato);
                     TempData["MessagemSucess"] = "Cadastro editado com sucesso!";
                     return RedirectToAction("Index");
