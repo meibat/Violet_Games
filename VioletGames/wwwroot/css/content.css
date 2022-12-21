@@ -76,7 +76,7 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, ta
 /*Alerta*/
 .alert {
     /*position: absolute;*/
-    width: 50%;
+    width: 80%;
     height: 50px;
     border-radius: 15px;
 }

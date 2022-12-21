@@ -19,7 +19,23 @@
     <!--https://www.youtube.com/watch?v=w56Qsjz37ZE&t=45s-->
     <nav class="content-back" id="Content">
         <nav class="content justify-content-center" id="Content">
-            <br />
+            <nav style="margin-left: 30%">
+                @if (TempData["MessagemSucess"] != null)
+                {
+                    <div class="alert alert-success text-center justify-content-center" role="alert">
+                        @TempData["MessagemSucess"]
+                        <button type="button" class="btn-close alert-success" data-bs-dismiss="alert" aria-label="Close">X</button>
+                    </div>
+                }
+
+                @if (TempData["MessagemError"] != null)
+                {
+                    <div class="text-center alert alert-danger justify-content-center" role="alert">
+                        @TempData["MessagemError"]
+                        <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
+                    </div>
+                }
+            </nav><br />
             <!--Corpo/View-->
             @RenderBody()
         </nav>

@@ -3,21 +3,5 @@
     ViewData["Title"] = "Violet_Games";
 }
 
-@if (TempData["MessagemSucess"] != null)
-{
-    <div class="alert alert-success text-center justify-content-center" role="alert">
-        @TempData["MessagemSucess"]
-        <button type="button" class="btn-close alert-success" data-bs-dismiss="alert" aria-label="Close">X</button>
-    </div>
-}
-
-@if(TempData["MessagemError"] != null)
-{
-    <div class="text-center alert alert-danger justify-content-center" role="alert">
-        @TempData["MessagemError"]
-        <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
-    </div>
-}
-
 <h1>Caixa</h1>
 
