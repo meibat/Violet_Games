@@ -814,5 +814,5 @@ C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debu
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\ref\VioletGames.dll
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.pdb
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.genruntimeconfig.cache
-C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\VioletGames.StaticWebAssets.xml
-C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\refint\VioletGames.dll
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\ref\VioletGames.dll
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\staticwebassets\VioletGames.StaticWebAssets.xml

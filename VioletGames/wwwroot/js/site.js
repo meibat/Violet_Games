@@ -6,18 +6,20 @@
 
 function openMenu() {
     document.getElementById('btnMenu').className = 'invisible';
-    document.getElementById('tittleMenu').style.marginLeft = '-90px';
-    document.getElementById('Menu').style.width = '250px';
-    document.getElementById('Top').style.marginLeft = '250px';
-    document.getElementById('Content').style.marginLeft = '250px';
+    document.getElementById('tittleMenu').style.marginLeft = '-10%';
+    document.getElementById('Content').style.width = '83.5%';
+    document.getElementById('Menu').style.width = '16.5%';
+    document.getElementById('Top').style.marginLeft = '16.5%';
+    document.getElementById('Content').style.marginLeft = '16.5%';
 }
 
 function closeMenu() {
     document.getElementById('btnMenu').className = 'navbar-toggler';
     document.getElementById('tittleMenu').style.marginLeft = '0px';
+    document.getElementById('Content').style.width = '100%';
     document.getElementById('Menu').style.width = '0px';
     document.getElementById('Top').style.marginLeft = '0px';
-    document.getElementById('Content').style.marginLeft = '130px';
+    document.getElementById('Content').style.marginLeft = '0px';
 }
 
 $(document).ready(function () {

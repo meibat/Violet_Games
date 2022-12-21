@@ -29,7 +29,7 @@
                 <th scope="col">Data Nasc.</th>
                 <th scope="col">CPF</th>
                 <th scope="col">
-                    <a role="button" class="btn btn-success" asp-controller="Cliente" asp-action="Create">Adicionar</a>
+                    <a role="button" class="btn btn-success" asp-controller="Cliente" asp-action="Create"><img src="~/lib/bottons/add.png" width="30" height="30"></a>
                 </th>
             </tr>
         </thead>
@@ -47,8 +47,8 @@
                         <!--Mostrar contatos tambem-->
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a role="button" class="btn btn-warning" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Edit">Edite</a>
-                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="DeleteConfirm">Delete</a>
+                                <a role="button" class="btn btn-warning" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
                             </div>
                         </td>
                     </tr>

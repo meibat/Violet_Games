@@ -1,19 +1,18 @@
 ﻿/*Conteudo*/
 .content-back {
+    position: fixed;
     background-color: #2e193b;
-    width: 1265px;
-    height: 660px;
-    margin-left: 130px;
-    opacity:90%;
-    margin-top: -5px;
+    width: 100%;
+    height: 100%;
+    opacity: 90%;
 }
 
 .content {
-    width: 1260px;
-    height: 660px;
+    width: 1600px;
+    width: 100%;
+    height: 100%;
     color: white;
     font-family: 'Consolas';
-    margin-top: -5px;
 }
 
 .btn{
@@ -30,8 +29,8 @@
 }
 
 .dataTables_wrapper {
-    margin-right: 25px;
-    margin-left: 25px;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .dataTables_wrapper .dataTables_length select {
@@ -77,7 +76,7 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, ta
 /*Alerta*/
 .alert {
     /*position: absolute;*/
-    width: 600px;
+    width: 50%;
     height: 50px;
     border-radius: 15px;
 }
