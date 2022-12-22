@@ -27,22 +27,26 @@ namespace VioletGames.Controllers
         public IActionResult Index()
         {
             //lista a busca feita no banco
+            ViewData["Title"] = "Clientes";
             List<ClienteModel> cliente = _clienteRepositorio.SearchAll();
             return View(cliente);
         }
         public IActionResult Create()
         {
+            ViewData["Title"] = "Clientes";
             return View();
         }
 
         public IActionResult Edit(int id)
         {
+            ViewData["Title"] = "Clientes";
             ClienteModel cliente = _clienteRepositorio.ListForIDClient(id);
             return View(cliente);
         }
 
         public IActionResult DeleteConfirm(int id)
         {
+            ViewData["Title"] = "Clientes";
             ClienteModel cliente = _clienteRepositorio.ListForIDClient(id);
 
             return View(cliente);

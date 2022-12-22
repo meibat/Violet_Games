@@ -23,6 +23,7 @@ namespace VioletGames.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Title"] = "Produtos";
             List<ProdutoModel> produtos = _produtoRepositorio.SearchAll();
 
             return View(produtos);
@@ -30,17 +31,21 @@ namespace VioletGames.Controllers
 
         public IActionResult Create()
         {
+            ViewData["Title"] = "Produtos";
             return View();
         }
 
         public IActionResult Edit(int id)
         {
+            ViewData["Title"] = "Produtos";
             ProdutoModel produto = _produtoRepositorio.ListForID(id);
+            
             return View(produto);
         }
 
         public IActionResult DeleteConfirm(int id)
         {
+            ViewData["Title"] = "Produtos";
             ProdutoModel produto = _produtoRepositorio.ListForID(id);
 
             return View(produto);

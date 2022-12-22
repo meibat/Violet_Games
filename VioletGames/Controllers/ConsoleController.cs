@@ -23,6 +23,7 @@ namespace VioletGames.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Title"] = "Consoles";
             List<ConsoleModel> consoles = _consoleRepositorio.SearchAll();
 
             return View(consoles);
@@ -30,17 +31,21 @@ namespace VioletGames.Controllers
 
         public IActionResult Create()
         {
+            ViewData["Title"] = "Consoles";
             return View();
         }
 
         public IActionResult Edit(int id)
         {
+            ViewData["Title"] = "Consoles";
             ConsoleModel console = _consoleRepositorio.ListForID(id);
+            
             return View();
         }
 
         public IActionResult DeleteConfirm(int id)
         {
+            ViewData["Title"] = "Consoles";
             ConsoleModel console = _consoleRepositorio.ListForID(id);
 
             return View();

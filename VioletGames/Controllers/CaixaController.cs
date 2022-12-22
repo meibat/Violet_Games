@@ -15,6 +15,7 @@ namespace VioletGames.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Caixa";
             return View();
         }
     }

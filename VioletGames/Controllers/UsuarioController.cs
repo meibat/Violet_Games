@@ -22,6 +22,7 @@ namespace VioletGames.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Title"] = "Usuários";
             List<UsuarioModel> usuarios = _usuarioRepositorio.SearchAll();
 
             return View(usuarios);
@@ -29,17 +30,20 @@ namespace VioletGames.Controllers
 
         public IActionResult Create()
         {
+            ViewData["Title"] = "Usuários";
             return View();
         }
 
         public IActionResult Edit(int id)
         {
+            ViewData["Title"] = "Usuários";
             UsuarioModel usuario = _usuarioRepositorio.ListForID(id);
             return View(usuario);
         }
 
         public IActionResult DeleteConfirm(int id)
         {
+            ViewData["Title"] = "Usuários";
             UsuarioModel usuario = _usuarioRepositorio.ListForID(id);
 
             return View(usuario);

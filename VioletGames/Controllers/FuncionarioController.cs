@@ -29,6 +29,7 @@ namespace VioletGames.Controllers
         public IActionResult Index()
         {
             //lista a busca feita no banco
+            ViewData["Title"] = "Funcionários";
             List<FuncionarioModel> funcionarios = _funcionarioRepositorio.SearchAll();
 
             return View(funcionarios);
@@ -36,17 +37,20 @@ namespace VioletGames.Controllers
 
         public IActionResult Create()
         {
+            ViewData["Title"] = "Funcionários";
             return View();
         }
 
         public IActionResult Edit(int id)
         {
+            ViewData["Title"] = "Funcionários";
             FuncionarioModel funcionario = _funcionarioRepositorio.ListForIDEmployee(id);
             return View(funcionario);
         }
 
         public IActionResult DeleteConfirm(int id)
         {
+            ViewData["Title"] = "Funcionários";
             FuncionarioModel funcionario = _funcionarioRepositorio.ListForIDEmployee(id);
 
             return View(funcionario);

@@ -9,7 +9,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!--Colocar img com mudança pra cada tela-->
-            <a class="invisible">//</a><a id="tittleMenu" class="navbar-brand mr-auto" style="color:white;">Violet Games</a>
+            <a class="invisible">//</a><a id="tittleMenu" class="navbar-brand mr-auto">@ViewData["Title"]</a>
             <a class="navbar-brand" style="color:white;">Olá, @Model.Name </a>
             <img src="~/lib/users/user1.png" width="50" height="50" class="user" />
         </div>
@@ -17,12 +17,11 @@
 </header>
 <!--id determina o objeto-->
 <nav class="nav-menu" id="Menu">
-    <div style="margin-left:40px" onclick="closeMenu()">
+    <div style="margin-left:16.5%" onclick="closeMenu()">
         <img src="~/lib/img/icon.png" width="150" height="150">
-        <a> </a>
+        <a class="nav-link" style="font-family: 'Agency FB'; color: white; background-color: transparent !important; font-size: 30px; ">Violet_Games</a>
     </div>
     <ul class="nav flex-column">
-        <li><a class="invisible">//</a></li>
         <li><a role="button" class="nav-link" asp-controller="Dashboard" asp-action="Index"><img src="~/lib/bottons/monitor.png" width="40" height="40"> Dashboard</a></li>
         <li><a role="button" class="nav-link" asp-controller="Caixa" asp-action="Index"><img src="~/lib/bottons/car.png" width="40" height="40"> Caixa</a></li>
         <li><a role="button" class="nav-link" asp-controller="Produto" asp-action="Index"><img src="~/lib/bottons/stockg.png" width="40" height="40"> Produtos</a></li>
@@ -37,7 +36,7 @@
 
         <li><a role="button" class="nav-link" asp-controller="Login" asp-action="Exit"><img src="~/lib/bottons/exit.png" width="35" height="35"> Sair</a></li>
     </ul>
-    <div class="container footer">
-        <span style="font-size: 16px; color: white;">&copy; Develop by </span><a href="https://github.com/melissa-mfs" style="font-size: 16px;">Melissa-MFS</a>
+    <div class="container footer" style="font-size: 16px; color: white; background-color: transparent !important;">
+        <span>&copy; Develop by </span><a href="https://github.com/melissa-mfs" style="font-size: 16px; color: white; background-color: transparent !important;">Melissa-MFS</a>
     </div>
 </nav>
