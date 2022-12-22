@@ -10,7 +10,7 @@ namespace VioletGames.Controllers
     {
         public IActionResult Index()
         {
-            TempData["MessagemError"] = "Ops, seu usuário não tem permissão para acessar essa página.";
+            TempData["MessagemError"] = "Ops, seu usuário não tem permissão para acessar essa funcionalidade.";
             return RedirectToAction("Index", "Dashboard");
         }
     }

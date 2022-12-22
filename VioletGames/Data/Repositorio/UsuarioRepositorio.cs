@@ -35,6 +35,8 @@ namespace VioletGames.Repositorio
         public UsuarioModel Create(UsuarioModel usuario)
         {
             usuario.DateSingIn = DateTime.Now;
+            usuario.SetPasswdHash();
+
             _bancoContent.Usuarios.Add(usuario);
             _bancoContent.SaveChanges();
 

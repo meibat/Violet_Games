@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using VioletGames.Enums;
+using VioletGames.Util.Cripto;
 
 namespace VioletGames.Models
 {
@@ -27,7 +28,12 @@ namespace VioletGames.Models
 
         public bool PasswdValid(String passwd)
         {
-            return Passwd == passwd;
+            return Passwd == passwd.getHash();
+        }
+
+        public void SetPasswdHash()
+        {
+            Passwd = Passwd.getHash();
         }
     }
 }
