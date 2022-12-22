@@ -2,15 +2,6 @@
 @{
     Layout = "_LoginLayout";
 }
-<nav style="margin-left: 30%">
-    @if (TempData["MessagemError"] != null)
-    {
-        <div class="text-center alert alert-danger justify-content-center" role="alert">
-            @TempData["MessagemError"]
-            <button type="button" class="btn-close alert-danger" data-bs-dismiss="alert" aria-label="Close">X</button>
-        </div>
-    }
-</nav>
 
 <nav class="nav-login">
     <div class="logo text-center">
@@ -20,7 +11,7 @@
     </div>
     <div class="login">
         <p>Seja bem-vindo!</p>
-        <a>ACESSE AGORA</a><br /><br /><br />
+        <a>ACESSE AGORA</a><br /><br />
         <form asp-controller="Login" asp-action="Enter" method="post">
             <div class="mb-3">
                 <img src="./lib/bottons/user.png">
@@ -32,6 +23,10 @@
                 <input type="password" asp-for="Passwd" class="form-control" id="Login-passwd" placeholder="Senha"><br />
                 @Html.ValidationMessageFor(x => x.Passwd)
             </div>
+            <p class="mb-4" style="font-size: 14px; color: white; text-transform: none; margin-left: 50px;">
+                Esqueceu sua senha?
+                <a asp-action="ResetPasswd" asp-controller="Login" style="font-size: 16px; text-transform: none; color: #C17EF5;">Redefinir.</a><br />
+            </p>
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
     </div>

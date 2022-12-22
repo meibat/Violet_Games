@@ -12,6 +12,8 @@ namespace VioletGames.Data.Repositorio
 
         UsuarioModel SeachForLogin(string login);
 
+        UsuarioModel SeachForLoginAndEmail(string login, string email);
+
         UsuarioModel ListForID(int id);
 
         List<UsuarioModel> SearchAll();

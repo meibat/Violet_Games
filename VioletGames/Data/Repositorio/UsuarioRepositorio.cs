@@ -78,5 +78,11 @@ namespace VioletGames.Repositorio
         {
             return _bancoContent.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
+
+        //Reset 
+        public UsuarioModel SeachForLoginAndEmail(string login, string email)
+        {
+            return _bancoContent.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper() && x.Email.ToUpper() == email.ToUpper());
+        }
     }
 }

@@ -30,6 +30,11 @@ namespace VioletGames.Controllers
             return View();
         }
 
+        public IActionResult ResetPasswd()
+        {
+            return View();
+        }
+
         public IActionResult Exit()
         {
             _session.RemoveSessionUser();
@@ -61,6 +66,31 @@ namespace VioletGames.Controllers
             catch(Exception)
             {
                 TempData["MessagemError"] = $"Não foi possível realizar seu Login! Tente novamente.";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ResetPasswdForEmail(ResetPasswdModel resetPasswdModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UsuarioModel usuario = _usuarioRepositorio.SeachForLoginAndEmail(resetPasswdModel.Login, resetPasswdModel.Email);
+
+                    if (usuario != null)
+                    {
+                        TempData["MessagemSucess"] = "Foi enviado para seu e-mail cadastrado uma nova Senha!";
+                        return RedirectToAction("Index", "Login");
+                    }
+                    TempData["MessagemError"] = "Não foi possível redefinir sua senha! Tente novamente.";
+                }
+                return View("ResetPasswd");
+            }
+            catch (Exception erro)
+            {
+                TempData["MessagemError"] = $"Não foi possível redefinir sua senha! Tente novamente. error: {erro}";
                 return RedirectToAction("Index");
             }
         }

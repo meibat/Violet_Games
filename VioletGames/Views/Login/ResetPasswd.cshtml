@@ -1,0 +1,29 @@
+﻿@model ResetPasswdModel
+@{
+    Layout = "_LoginLayout";
+}
+
+<nav class="nav-login">
+    <div class="logo text-center">
+        <br><br>
+        <img src="/lib/img/icon.png"><br>
+        <a>Violet_Games</a>
+    </div>
+    <div class="login"><br />
+        <p>Redefina sua Senha!</p><br />
+        <form asp-controller="Login" asp-action="ResetPasswdForEmail" method="post">
+            <div class="mb-3">
+                <img src="./lib/bottons/user.png">
+                <input type="text" asp-for="Login" class="form-control" id="Login-Usr" placeholder="Login"><br />
+                @Html.ValidationMessageFor(x => x.Login)
+            </div>
+            <div class="mb-3">
+                <img src="./lib/bottons/user.png">
+                <input type="email" asp-for="Email" class="form-control" id="Login-passwd" placeholder="E-mail"><br />
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+            <button type="submit" class="btn btn-primary" style="display:inline; margin-left:7%;">Confirmar</button>
+            <button class="btn btn-primary" style="display:inline; margin-left:0;" asp-controller="Login" asp-action="Index">Voltar</button>
+        </form>
+    </div>
+</nav>
