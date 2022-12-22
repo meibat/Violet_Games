@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 using VioletGames.Models;
 using VioletGames.Data.Repositorio;
 using VioletGames.Util.Validator;
+using VioletGames.Data.Filters;
 
 namespace VioletGames.Controllers
 {
+    [PageUserLogin]
+    [PageUserAdmin]
     public class FuncionarioController : Controller
     {
         //Extrai variavel FuncionarioRepositorio

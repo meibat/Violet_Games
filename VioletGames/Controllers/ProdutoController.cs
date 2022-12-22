@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using VioletGames.Data.Filters;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 
 namespace VioletGames.Controllers
 {
+    [PageUserLogin]
     public class ProdutoController : Controller
     {
         private readonly IProdutoRepositorio _produtoRepositorio;

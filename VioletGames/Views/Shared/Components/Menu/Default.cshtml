@@ -28,8 +28,13 @@
         <li><a role="button" class="nav-link" asp-controller="Produto" asp-action="Index"><img src="~/lib/bottons/stockg.png" width="40" height="40"> Produtos</a></li>
         <li><a role="button" class="nav-link" asp-controller="Console" asp-action="Index"><img src="~/lib/bottons/console.png" width="40" height="40"> Consoles</a></li>
         <li><a role="button" class="nav-link" asp-controller="Cliente" asp-action="Index"><img src="~/lib/bottons/vip.png" width="40" height="40"> Clientes</a></li>
-        <li><a role="button" class="nav-link" asp-controller="Funcionario" asp-action="Index"><img src="~/lib/bottons/user.png" width="40" height="40"> Funcionários</a></li>
-        <li><a role="button" class="nav-link" asp-controller="Usuario" asp-action="Index"><img src="~/lib/bottons/userMenu.png" width="40" height="40"> Usuários</a></li>
+
+        @if (Model.Perfil == VioletGames.Enums.PerfilEnum.Admin)
+        {
+            <li><a role="button" class="nav-link" asp-controller="Funcionario" asp-action="Index"><img src="~/lib/bottons/user.png" width="40" height="40"> Funcionários</a></li>
+            <li><a role="button" class="nav-link" asp-controller="Usuario" asp-action="Index"><img src="~/lib/bottons/userMenu.png" width="40" height="40"> Usuários</a></li>
+        }
+
         <li><a role="button" class="nav-link" asp-controller="Login" asp-action="Exit"><img src="~/lib/bottons/exit.png" width="35" height="35"> Sair</a></li>
     </ul>
     <div class="container footer">

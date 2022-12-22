@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VioletGames.Data.Filters;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 
 namespace VioletGames.Controllers
 {
+    [PageUserLogin]
+    [PageUserAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;

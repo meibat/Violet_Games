@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using VioletGames.Data.Filters;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 using VioletGames.Util.Validator;
 
 namespace VioletGames.Controllers
 {
+    [PageUserLogin]
     public class ClienteController : Controller
     {
         //Extrai variavel ClienteRepositorio
@@ -106,6 +108,11 @@ namespace VioletGames.Controllers
             try{
                 if (ModelState.IsValid)
                 {
+                    if (!Validator.IsCPF(cliente.CPF))
+                    {
+                        TempData["MessagemError"] = "CPF informado Inválido!";
+                        return View(cliente);
+                    }
                     if (!Validator.IsPhone(cliente.Contato.Phone))
                     {
                         TempData["MessagemError"] = "Telefone informado Inválido!";

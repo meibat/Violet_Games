@@ -1,21 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using VioletGames.Data.Filters;
-using VioletGames.Models;
 
 namespace VioletGames.Controllers
 {
-    [PageUserLogin]
-    public class CaixaController : Controller
+    public class RestritoController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            TempData["MessagemError"] = "Ops, seu usuário não tem permissão para acessar essa página.";
+            return RedirectToAction("Index", "Dashboard");
         }
     }
 }

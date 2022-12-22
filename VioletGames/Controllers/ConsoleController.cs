@@ -7,9 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using VioletGames.Models;
 using VioletGames.Data.Repositorio;
+using VioletGames.Data.Filters;
 
 namespace VioletGames.Controllers
 {
+    [PageUserLogin]
     public class ConsoleController : Controller
     {
         private readonly IConsoleRepositorio _consoleRepositorio;
