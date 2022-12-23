@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using VioletGames.Models;
 using VioletGames.Data.Repositorio;
 using VioletGames.Data.Helper;
+using VioletGames.Util.SendEmail;
 
 namespace VioletGames.Controllers
 {
@@ -15,11 +16,13 @@ namespace VioletGames.Controllers
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly ISessionUser _session;
-        
-        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessionUser session)
+        private readonly IEmail _email;
+
+        public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessionUser session, IEmail email)
         {
             _usuarioRepositorio = usuarioRepositorio;
             _session = session;
+            _email = email;
         }
         
         public IActionResult Index()
@@ -81,7 +84,20 @@ namespace VioletGames.Controllers
 
                     if (usuario != null)
                     {
-                        TempData["MessagemSucess"] = "Foi enviado para seu e-mail cadastrado uma nova Senha!";
+                        string newPasswd = usuario.CreateNewPasswd();
+                        string message = $"Olá, {usuario.Name}! Sua nova Senha é: {newPasswd}";
+
+                        bool emailSent = _email.Send(usuario.Email, "Violet_Games - Nova Senha", message);
+
+                        if (emailSent)
+                        {
+                            _usuarioRepositorio.Update(usuario);
+                            TempData["MessagemSucess"] = "Foi enviado para seu e-mail cadastrado uma nova Senha!";
+                        }
+                        else
+                        {
+                            TempData["MessagemError"] = "Não foi possível enviar o e-mail! Tente novamente.";
+                        }
                         return RedirectToAction("Index", "Login");
                     }
                     TempData["MessagemError"] = "Não foi possível redefinir sua senha! Tente novamente.";

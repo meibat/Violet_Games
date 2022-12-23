@@ -35,5 +35,12 @@ namespace VioletGames.Models
         {
             Passwd = Passwd.getHash();
         }
+
+        public string CreateNewPasswd()
+        {
+            string newPasswd = Guid.NewGuid().ToString().Substring(0, 8);
+            Passwd = newPasswd.getHash();
+            return newPasswd;
+        }
     }
 }

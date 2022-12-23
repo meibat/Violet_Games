@@ -14,6 +14,7 @@ using VioletGames.Data;
 using VioletGames.Data.Helper;
 using VioletGames.Data.Repositorio;
 using VioletGames.Repositorio;
+using VioletGames.Util.SendEmail;
 
 namespace VioletGames
 {
@@ -43,6 +44,7 @@ namespace VioletGames
             services.AddScoped<IConsoleRepositorio, ConsoleRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<ISessionUser, SessionUser>();
+            services.AddScoped<IEmail, Email>();
 
             services.AddSession(o => 
             {
