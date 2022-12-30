@@ -1,0 +1,34 @@
+﻿@model ResetPasswdUserModel
+@{
+    Layout = "_LoginLayout";
+}
+
+<nav class="nav-login">
+    <div class="logo text-center">
+        <br><br>
+        <img src="/lib/img/icon.png"><br>
+        <a>Violet_Games</a>
+    </div>
+    <div class="login">
+        <p>Redefina sua Senha!</p><br />
+        <form asp-controller="ResetPasswdUser" asp-action="ResetPasswdToUser" method="post">
+            <div class="mb-3">
+                <img src="./lib/bottons/user.png">
+                <input type="password" asp-for="Passwd" class="form-control" id="Login-Usr" placeholder="Senha Atual"><br />
+                @Html.ValidationMessageFor(x => x.Passwd)
+            </div>
+            <div class="mb-3">
+                <img src="./lib/bottons/passwd.png">
+                <input type="password" asp-for="NewPasswd" class="form-control" id="Login-passwd" placeholder="Nova Senha"><br />
+                @Html.ValidationMessageFor(x => x.NewPasswd)
+            </div>
+            <div class="mb-3">
+                <img src="./lib/bottons/passwd.png">
+                <input type="password" asp-for="ConfirmNewPasswd" class="form-control" id="Login-passwd" placeholder="Confirme a nova Senha"><br />
+                @Html.ValidationMessageFor(x => x.ConfirmNewPasswd)
+            </div>
+            <button type="submit" class="btn btn-primary" style="display:inline; margin-left:7%;">Confirmar</button>
+            <button class="btn btn-primary" style="display:inline; margin-left:0;" asp-controller="Dashboard" asp-action="Index">Voltar</button>
+        </form>
+    </div>
+</nav>

@@ -1,18 +1,13 @@
 ﻿/*Conteudo*/
-.content-back {
+.content {
     position: fixed;
     background-color: #2e193b;
-    width: 100%;
-    height: 100%;
     opacity: 90%;
-}
-
-.content {
-    width: 1600px;
     width: 100%;
     height: 100%;
     color: white;
     font-family: 'Consolas';
+    z-index: -1;
 }
 
 .btn{

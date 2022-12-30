@@ -42,5 +42,9 @@ namespace VioletGames.Models
             Passwd = newPasswd.getHash();
             return newPasswd;
         }
+
+        public void SetNewPasswd(String NewPasswd){
+            Passwd = NewPasswd.getHash();
+        }
     }
 }

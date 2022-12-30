@@ -5,13 +5,19 @@
     <nav class="navbar navbar-dark" id="Top">
         <div class="container">
             <button class="navbar-toggler" onclick="openMenu()" id="btnMenu">
-                <!--tentar tirar btn ao abri o menu-->
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!--Colocar img com mudança pra cada tela-->
             <a class="invisible">//</a><a id="tittleMenu" class="navbar-brand mr-auto">@ViewData["Title"]</a>
-            <a class="navbar-brand" style="color:white;">Olá, @Model.Name </a>
-            <img src="~/lib/users/user1.png" width="50" height="50" class="user" />
+            <a class="navbar-brand" style="color:white;">Olá, @Model.Login </a>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/lib/users/user1.png" width="50" height="50" class="user" />
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a role="button" class="dropdown-item btn-primary">Editar Perfil</a></li>
+                    <li><a role="button" class="dropdown-item btn-primary" asp-controller="ResetPasswdUser" asp-action="Index">Alterar Senha</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>

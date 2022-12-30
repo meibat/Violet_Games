@@ -9,9 +9,7 @@ namespace VioletGames.Data.Repositorio
     public interface IUsuarioRepositorio
     {
         //metodos
-
         UsuarioModel SeachForLogin(string login);
-
         UsuarioModel SeachForLoginAndEmail(string login, string email);
 
         UsuarioModel ListForID(int id);
@@ -21,6 +19,8 @@ namespace VioletGames.Data.Repositorio
         UsuarioModel Create(UsuarioModel usuario);
 
         UsuarioModel Update(UsuarioModel usuario);
+
+        UsuarioModel UpdatePass(ResetPasswdUserModel resetPasswdUser);
 
         bool Delete(int id);
     }

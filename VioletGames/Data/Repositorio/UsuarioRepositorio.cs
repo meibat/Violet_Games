@@ -73,8 +73,7 @@ namespace VioletGames.Repositorio
             return true;
         }
 
-        //Login
-        public UsuarioModel SeachForLogin(string login)
+        UsuarioModel IUsuarioRepositorio.SeachForLogin(string login)
         {
             return _bancoContent.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
@@ -83,6 +82,24 @@ namespace VioletGames.Repositorio
         public UsuarioModel SeachForLoginAndEmail(string login, string email)
         {
             return _bancoContent.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper() && x.Email.ToUpper() == email.ToUpper());
+        }
+
+        public UsuarioModel UpdatePass(ResetPasswdUserModel resetPasswdUser)
+        {
+            UsuarioModel usuarioDB = ListForID(resetPasswdUser.Id);
+            if(usuarioDB == null) throw new Exception("Erro: o usuário não foi encontrado.");
+
+            if(!usuarioDB.PasswdValid(resetPasswdUser.Passwd)) throw new Exception("Erro: Senha atual não confere.");
+
+            if(usuarioDB.PasswdValid(resetPasswdUser.NewPasswd)) throw new Exception("Erro: Senha nova não pode ser a mesma que a atual.");
+
+            usuarioDB.SetNewPasswd(resetPasswdUser.NewPasswd);
+            usuarioDB.DateRefresh = DateTime.Now;
+
+            _bancoContent.Usuarios.Update(usuarioDB);
+            _bancoContent.SaveChanges();
+
+            return usuarioDB;
         }
     }
 }

@@ -14,4 +14,16 @@ namespace VioletGames.Models
         [EmailAddress(ErrorMessage = "E-mail Inválido!")]
         public String Email { get; set; }
     }
+
+    public class ResetPasswdUserModel
+    {
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Digite a senha atual!")]
+        public String Passwd { get; set; }
+        [Required(ErrorMessage = "Digita a nova senha!")]
+        public String NewPasswd { get; set; }
+        [Required(ErrorMessage = "Digite confirme a nova senha!")]
+        [Compare("NewPasswd", ErrorMessage="Senha não Confere!")]
+        public String ConfirmNewPasswd { get; set; }
+    }
 }
