@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using VioletGames.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VioletGames.Models
 {
@@ -11,6 +12,7 @@ namespace VioletGames.Models
     public class FuncionarioModel
 
     {
+        [Key()]
         public int Id { get; set; }
 
         [Required(ErrorMessage="Nome!")]
@@ -30,16 +32,22 @@ namespace VioletGames.Models
         [Required(ErrorMessage = "Cargo!")]
         public Office Office { get; set; }
 
-        [Required(ErrorMessage = "Contato!")]
-        public ContatoModel Contato { get; set; }
+        [Required(ErrorMessage = "Telefone!")]
+        public string Phone { get; set; }
 
-#nullable enable
+        #nullable enable
         public string? RG { get; set; }
 
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime? DateAdmission { get; set; }
 
         public float? Pay { get; set; }
+
+        public string? State { get; set; }
+        public string? City { get; set; }
+        public string? Address { get; set; }
+        public int? Number { get; set; }
+        public string? CEP { get; set; }
         #nullable disable
     }
 }

@@ -14,24 +14,35 @@
         @Html.ValidationMessageFor(x => x.Name)
     </div>
     <div class="mb-3">
-        <label for="Date" class="form-label">Data de Nascimento</label>
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" asp-for="Email" class="form-control" style="width: 260px; display: inline;" placeholder="teste@teste.com">
+        @Html.ValidationMessageFor(x => x.Email)
+        <label for="Date" class="form-label">Data de Nasc.</label>
         <input type="date" asp-for="DateBirthday" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateBirthday)
     </div>
     <div class="mb-3">
         <label for="CPF" class="form-label">CPF</label>
-        <input type="text" asp-for="CPF" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
+        <input type="text" asp-for="CPF" class="form-control" style="width: 200px; display: inline;" placeholder="000000000-00">
         @Html.ValidationMessageFor(x => x.CPF)
-    </div>
-    <div class="mb-3">
         <label for="Phone" class="form-label">Telefone</label>
-        <input type="text" asp-for="Contato.Phone" class="form-control" style="width: 260px; display: inline;" placeholder="(11) 00000-0000">
-        @Html.ValidationMessageFor(x => x.Contato.Phone)
+        <input type="text" asp-for="Phone" class="form-control" style="width: 200px; display: inline;" placeholder="(11) 00000-0000">
+        @Html.ValidationMessageFor(x => x.Phone)
     </div>
     <div class="mb-3">
-        <label for="Address" class="form-label">Endereço</label>
-        <input type="text" asp-for="Contato.Address" class="form-control" style="width: 260px; display: inline;" placeholder="Rua exemplo">
-        @Html.ValidationMessageFor(x => x.Contato.Address)
+        <label for="Address" class="form-label">CEP</label>
+        <input type="text" asp-for="CEP" class="form-control" style="width: 200px; display: inline;" placeholder="000000000-000">
+        <input type="text" asp-for="State" class="form-control" style="width: 120px; display: inline;" placeholder="Estado">
+    </div>
+    <div class="mb-3">
+        <label for="Address" class="form-label">Cidade</label>
+        <input type="text" asp-for="City" class="form-control" style="width: 400px; display: inline;" placeholder="Mauá">
+    </div>
+    <div class="mb-3">
+        <label for="Address" class="form-label">Rua</label>
+        <input type="text" asp-for="Address" class="form-control" style="width: 360px; display: inline;" placeholder="Rua exemplo">
+        <label for="Address" class="form-label">Número</label>
+        <input type="text" asp-for="Number" class="form-control" style="width: 130px; display: inline;" placeholder="0000">
     </div>
     <div class="singin">
         <button type="submit" class="btn btn-primary">Cadastrar</button>

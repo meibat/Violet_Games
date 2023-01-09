@@ -18,10 +18,10 @@ namespace VioletGames.Data
         public DbSet<UsuarioModel> Usuarios { get; set; }
         public DbSet<ProdutoModel> Produtos { get; set; }
         public DbSet<ConsoleModel> Consoles { get; set; }
-        public DbSet<ContatoModel> Contatos { get; set; }
     }
 }
 //Após criar a conexão(String+Service), as colunas, a config da tabela e a tabela:
 //No console do Nuget digite os dois comandos:
-//Add-Migration CriandoTabelaContato -context BancoContent
+//Add-Migration CriandoTabela -context BancoContent
 //Update-Database -context BancoContent
+//SET IDENTITY_INSERT Usuarios ON;

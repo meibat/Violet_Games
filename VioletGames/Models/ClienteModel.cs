@@ -20,7 +20,17 @@ namespace VioletGames.Models
         [Required(ErrorMessage = "CPF!")]
         public string CPF { get; set; }
 
-        [Required(ErrorMessage = "Contato!")]
-        public ContatoModel Contato { get; set; }
+        [Required(ErrorMessage = "Telefone!")]
+        public string Phone { get; set; }
+
+        #nullable enable
+        public string? State { get; set; }
+        public string? City { get; set; }
+        public string? Address { get; set; }
+        public int? Number { get; set; }
+        public string? CEP { get; set; }
+        [EmailAddress(ErrorMessage = "E-mail Inválido!")]
+        public string? Email { get; set; }
+        #nullable disable
     }
 }

@@ -23,11 +23,6 @@ namespace VioletGames.Data.Repositorio
             return _bancoContent.Clientes.FirstOrDefault(x => x.Id == id);
         }
 
-        public ContatoModel ListForIDContact(int id)
-        {
-            return _bancoContent.Contatos.FirstOrDefault(x => x.Id == id);
-        }
-
         //busca todos no banco
         public List<ClienteModel> SearchAll()
         {
@@ -43,10 +38,9 @@ namespace VioletGames.Data.Repositorio
             return cliente;
         }
 
-        public ClienteModel Update(ClienteModel cliente, ContatoModel contato)
+        public ClienteModel Update(ClienteModel cliente)
         {
             ClienteModel ClienteDB = ListForIDClient(cliente.Id);
-            int numID =  Convert.ToInt16(cliente.Contato);
 
             if (ClienteDB == null) throw new System.Exception("Erro na atualização do Cliente");
 
@@ -54,15 +48,17 @@ namespace VioletGames.Data.Repositorio
             ClienteDB.CPF = cliente.CPF;
             ClienteDB.DateBirthday = cliente.DateBirthday;
 
-            ContatoModel ContatoDB = ListForIDContact(numID);
+            //contato
+            ClienteDB.State = cliente.State;
+            ClienteDB.City = cliente.City;
+            ClienteDB.Address = cliente.Address;
+            ClienteDB.Number = cliente.Number;
+            ClienteDB.CEP = cliente.CEP;
+            ClienteDB.Email = cliente.Email;
+            ClienteDB.Phone = cliente.Phone;
 
-            if (ContatoDB == null) throw new System.Exception("Erro na atualização do Contato");
-
-            ContatoDB.Phone = contato.Phone;
-            ContatoDB.Address = contato.Address;
 
             _bancoContent.Clientes.Update(ClienteDB);
-            _bancoContent.Contatos.Update(ContatoDB);
             _bancoContent.SaveChanges();
 
             return ClienteDB;

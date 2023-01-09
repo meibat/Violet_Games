@@ -26,23 +26,40 @@ namespace VioletGames.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CEP")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContatoId")
-                        .HasColumnType("int");
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateBirthday")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<int?>("Number")
+                        .HasColumnType("int");
 
-                    b.HasIndex("ContatoId");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Clientes");
                 });
@@ -69,7 +86,7 @@ namespace VioletGames.Migrations
                     b.ToTable("Consoles");
                 });
 
-            modelBuilder.Entity("VioletGames.Models.ContatoModel", b =>
+            modelBuilder.Entity("VioletGames.Models.FuncionarioModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,28 +96,15 @@ namespace VioletGames.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
+                    b.Property<string>("CEP")
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contatos");
-                });
-
-            modelBuilder.Entity("VioletGames.Models.FuncionarioModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContatoId")
-                        .HasColumnType("int");
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DateAdmission")
                         .HasColumnType("datetime2");
@@ -116,18 +120,26 @@ namespace VioletGames.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Number")
+                        .HasColumnType("int");
+
                     b.Property<int>("Office")
                         .HasColumnType("int");
 
                     b.Property<float?>("Pay")
                         .HasColumnType("real");
 
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RG")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ContatoId");
+                    b.HasKey("Id");
 
                     b.ToTable("Funcionarios");
                 });
@@ -192,24 +204,6 @@ namespace VioletGames.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("VioletGames.Models.ClienteModel", b =>
-                {
-                    b.HasOne("VioletGames.Models.ContatoModel", "Contato")
-                        .WithMany()
-                        .HasForeignKey("ContatoId");
-
-                    b.Navigation("Contato");
-                });
-
-            modelBuilder.Entity("VioletGames.Models.FuncionarioModel", b =>
-                {
-                    b.HasOne("VioletGames.Models.ContatoModel", "Contato")
-                        .WithMany()
-                        .HasForeignKey("ContatoId");
-
-                    b.Navigation("Contato");
                 });
 #pragma warning restore 612, 618
         }

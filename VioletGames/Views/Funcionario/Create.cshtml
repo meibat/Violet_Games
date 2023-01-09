@@ -25,20 +25,18 @@
     </div>
     <div class="mb-3">
         <label for="CPF" class="form-label">CPF</label>
-        <input type="text" asp-for="CPF" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
+        <input type="text" asp-for="CPF" class="form-control" style="width: 150px; display: inline;" placeholder="000000000-00">
         @Html.ValidationMessageFor(x => x.CPF)
         <label for="RG" class="form-label">RG</label>
-        <input type="text" asp-for="RG" class="form-control" style="width: 260px; display: inline;" placeholder="000000000-00">
+        <input type="text" asp-for="RG" class="form-control" style="width: 150px; display: inline; " placeholder="000000000-00">
     </div>
     <div class="mb-3">
-        <label for="Date" class="form-label">Data de Admissão</label>
-        <input type="date" asp-for="DateAdmission" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
-    </div>
-    <div class="mb-3">
+        <label for="Date" class="form-label">Admissão</label>
+        <input type="date" asp-for="DateAdmission" class="form-control" style="width: 150px; display: inline;" placeholder="00/00/00">
         <label for="Pay" class="form-label">Salário</label>
-        <input type="text" asp-for="Pay" class="form-control" style="width: 160px; display: inline;" placeholder="0,00">
+        <input type="text" asp-for="Pay" class="form-control" style="width: 100px; display: inline;" placeholder="0,00">
         <label for="Office" class="form-label">Cargo</label>
-        <select asp-for="Office" class="form-control" style="width: 160px; display: inline;">
+        <select asp-for="Office" class="form-control" style="width: 150px; display: inline;">
             <option value="">Selecione</option>
             <option value="@Office.Boss">Gerente</option>
             <option value="@Office.Employee">Atendente</option>
@@ -47,14 +45,24 @@
     </div>
     <div class="mb-3">
         <label for="Phone" class="form-label">Telefone</label>
-        <input type="text" asp-for="Contato.Phone" class="form-control" style="width: 260px; display: inline;" placeholder="(11) 00000-0000">
-        @Html.ValidationMessageFor(x => x.Contato.Phone)
+        <input type="text" asp-for="Phone" class="form-control" style="width: 260px; display: inline;" placeholder="(11) 00000-0000">
+        @Html.ValidationMessageFor(x => x.Phone)
     </div>
     <div class="mb-3">
-        <label for="Address" class="form-label">Endereço</label>
-        <input type="text" asp-for="Contato.Address" class="form-control" style="width: 260px; display: inline;" placeholder="Rua exemplo">
-        @Html.ValidationMessageFor(x => x.Contato.Address)
-    </div><br />
+        <label for="Address" class="form-label">CEP</label>
+        <input type="text" asp-for="City" class="form-control" style="width: 200px; display: inline;" placeholder="000000000-000">
+        <input type="text" asp-for="State" class="form-control" style="width: 120px; display: inline;" placeholder="Estado">
+    </div>
+    <div class="mb-3">
+        <label for="Address" class="form-label">Cidade</label>
+        <input type="text" asp-for="City" class="form-control" style="width: 400px; display: inline;" placeholder="Mauá">
+    </div>
+    <div class="mb-3">
+        <label for="Address" class="form-label">Rua</label>
+        <input type="text" asp-for="Address" class="form-control" style="width: 360px; display: inline;" placeholder="Rua exemplo">
+        <label for="Address" class="form-label">Número</label>
+        <input type="text" asp-for="Number" class="form-control" style="width: 130px; display: inline;" placeholder="0000">
+    </div>
     <div class="singin">
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         <a role="button" class="btn btn-info" asp-controller="Funcionario" asp-action="Index">Voltar</a>

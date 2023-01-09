@@ -11,13 +11,11 @@ namespace VioletGames.Data.Repositorio
         //metodos
         FuncionarioModel ListForIDEmployee(int id);
 
-        ContatoModel ListForIDContact(int id);
-
         List<FuncionarioModel> SearchAll();
 
         FuncionarioModel Create(FuncionarioModel funcionario);
 
-        FuncionarioModel Update(FuncionarioModel funcionario, ContatoModel contato);
+        FuncionarioModel Update(FuncionarioModel funcionario);
 
         bool Delete(int id);
     }

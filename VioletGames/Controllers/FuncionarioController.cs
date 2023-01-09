@@ -90,7 +90,7 @@ namespace VioletGames.Controllers
                         TempData["MessagemError"] = "CPF informado Inválido!";
                         return View(funcionario);
                     }
-                    if(!Validator.IsPhone(funcionario.Contato.Phone))
+                    if(!Validator.IsPhone(funcionario.Phone))
                     {
                         TempData["MessagemError"] = "Telefone informado Inválido!";
                         return View(funcionario);
@@ -109,7 +109,7 @@ namespace VioletGames.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(FuncionarioModel funcionario, ContatoModel contato)
+        public IActionResult Edit(FuncionarioModel funcionario)
         {
             try
             {
@@ -120,13 +120,13 @@ namespace VioletGames.Controllers
                         TempData["MessagemError"] = "CPF informado Inválido!";
                         return View(funcionario);
                     }
-                    if (!Validator.IsPhone(funcionario.Contato.Phone))
+                    if (!Validator.IsPhone(funcionario.Phone))
                     {
                         TempData["MessagemError"] = "Telefone informado Inválido!";
                         return View(funcionario);
                     }
 
-                    _funcionarioRepositorio.Update(funcionario, contato);
+                    _funcionarioRepositorio.Update(funcionario);
                     TempData["MessagemSucess"] = "Cadastro editado com sucesso!";
                     return RedirectToAction("Index");
                 }

@@ -11,13 +11,11 @@ namespace VioletGames.Data.Repositorio
         //metodos
         ClienteModel ListForIDClient(int id);
 
-        ContatoModel ListForIDContact(int id);
-
         List<ClienteModel> SearchAll();
 
         ClienteModel Create(ClienteModel cliente);
 
-        ClienteModel Update(ClienteModel cliente, ContatoModel contato);
+        ClienteModel Update(ClienteModel cliente);
 
         bool Delete(int id);
     }
