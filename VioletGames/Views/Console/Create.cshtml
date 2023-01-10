@@ -1,4 +1,5 @@
-﻿@model ConsoleModel
+﻿@using VioletGames.Data.Enums
+@model ConsoleModel
 @{
     Layout = "_Layout";
 }
@@ -13,8 +14,27 @@
         @Html.ValidationMessageFor(x => x.Name)
     </div>
     <div class="mb-3">
-        <label for="Marking" class="form-label">Marca</label>
-        <input type="text" asp-for="Marking" class="form-control" style="width: 160px; display: inline;" placeholder="Xbox">
+        <select asp-for="CategoryConsole" class="form-control" style="width: 150px; display: inline;">
+            <option value="">Console</option>
+            <option value="@CategoryConsole.Ps1">PS1</option>
+            <option value="@CategoryConsole.Ps2">PS2</option>
+            <option value="@CategoryConsole.Ps3">PS3</option>
+            <option value="@CategoryConsole.Ps4">PS4</option>
+            <option value="@CategoryConsole.Ps5">PS5</option>
+            <option value="@CategoryConsole.Wii">Wii</option>
+            <option value="@CategoryConsole.Pc">PC</option>
+            <option value="@CategoryConsole.Nitendo64">Nitendo64</option>
+            <option value="@CategoryConsole.Xbox360">Xbox360</option>
+            <option value="@CategoryConsole.XboxOne">XboxOne</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.CategoryConsole)
+        <select asp-for="StatusConsole" class="form-control" style="width: 150px; display: inline;">
+            <option value="">Status</option>
+            <option value="@StatusConsole.Active">Ativo</option>
+            <option value="@StatusConsole.Pending">Pendente</option>
+            <option value="@StatusConsole.Disable">Desativado</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.StatusConsole)
     </div>
     <div class="mb-3">
         <label for="Price" class="form-label">Valor (Hora)</label>

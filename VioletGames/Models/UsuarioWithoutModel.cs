@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using VioletGames.Enums;
+using VioletGames.Data.Enums;
 
 namespace VioletGames.Models
 {

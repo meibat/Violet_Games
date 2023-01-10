@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using VioletGames.Data.Enums;
 
 namespace VioletGames.Models
 {
@@ -16,9 +17,7 @@ namespace VioletGames.Models
         public int QtdAvailable { get; set; }
         [Required(ErrorMessage = "Preço!")]
         public float PriceUnity { get; set; }
-        
-        #nullable enable
-        public string? Category { get; set; }
-        #nullable disable
+        [Required(ErrorMessage = "Categoria!")]
+        public CategoryProduct CategoryProduct { get; set; }
     }
 }

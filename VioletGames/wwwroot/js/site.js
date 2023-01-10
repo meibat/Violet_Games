@@ -27,6 +27,7 @@ $(document).ready(function () {
     getDatatable('#table-clientes');
     getDatatable('#table-produtos');
     getDatatable('#table-usuarios');
+    getDatatable('#table-consoles');
 });
 
 function getDatatable(id) {

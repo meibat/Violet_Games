@@ -54,10 +54,10 @@ namespace VioletGames.Data.Repositorio
             if (ConsoleDB == null) throw new System.Exception("Erro na atualização do Cliente");
 
             ConsoleDB.Name = console.Name;
-            ConsoleDB.Marking = console.Marking;
+            ConsoleDB.CategoryConsole = console.CategoryConsole;
             ConsoleDB.PriceHour = console.PriceHour;
 
-            //_bancoContent.Clientes.Update(ConsoleDB);
+            _bancoContent.Consoles.Update(ConsoleDB);
             _bancoContent.SaveChanges();
 
             return ConsoleDB;

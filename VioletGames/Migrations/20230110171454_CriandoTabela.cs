@@ -37,7 +37,8 @@ namespace VioletGames.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PriceHour = table.Column<float>(type: "real", nullable: false),
-                    Marking = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CategoryConsole = table.Column<int>(type: "int", nullable: false),
+                    StatusConsole = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,7 +80,7 @@ namespace VioletGames.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QtdAvailable = table.Column<int>(type: "int", nullable: false),
                     PriceUnity = table.Column<float>(type: "real", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CategoryProduct = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

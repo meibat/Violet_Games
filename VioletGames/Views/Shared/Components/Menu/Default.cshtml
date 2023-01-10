@@ -34,7 +34,7 @@
         <li><a role="button" class="nav-link" asp-controller="Console" asp-action="Index"><img src="~/lib/bottons/console.png" width="40" height="40"> Consoles</a></li>
         <li><a role="button" class="nav-link" asp-controller="Cliente" asp-action="Index"><img src="~/lib/bottons/vip.png" width="40" height="40"> Clientes</a></li>
 
-        @if (Model.Perfil == VioletGames.Enums.PerfilEnum.Admin)
+        @if (Model.Perfil == VioletGames.Data.Enums.PerfilEnum.Admin)
         {
             <li><a role="button" class="nav-link" asp-controller="Funcionario" asp-action="Index"><img src="~/lib/bottons/user.png" width="40" height="40"> Funcionários</a></li>
             <li><a role="button" class="nav-link" asp-controller="Usuario" asp-action="Index"><img src="~/lib/bottons/userMenu.png" width="40" height="40"> Usuários</a></li>

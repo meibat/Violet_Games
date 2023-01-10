@@ -1,4 +1,5 @@
-﻿@model ProdutoModel
+﻿@using VioletGames.Data.Enums
+@model ProdutoModel
 @{
     Layout = "_Layout";
 }
@@ -13,13 +14,16 @@
         @Html.ValidationMessageFor(x => x.Name)
     </div>
     <div class="mb-3">
-        <label for="Category" class="form-label">Categoria</label>
-        <input type="text" asp-for="Category" class="form-control" style="width: 160px; display: inline;" placeholder="Jogo">
-    </div>
-    <div class="mb-3">
         <label for="Qtde" class="form-label">Quantidade Disp.</label>
-        <input type="text" asp-for="QtdAvailable" class="form-control" style="width: 360px; display: inline;" placeholder="0">
+        <input type="text" asp-for="QtdAvailable" class="form-control" style="width: 100px; display: inline;" placeholder="0">
         @Html.ValidationMessageFor(x => x.QtdAvailable)
+        <select asp-for="CategoryProduct" class="form-control" style="width: 150px; display: inline;">
+            <option value="">Categoria</option>
+            <option value="@CategoryProduct.Game">Jogo</option>
+            <option value="@CategoryProduct.Console">Console</option>
+            <option value="@CategoryProduct.Diversos">Diversos</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.CategoryProduct)
     </div>
     <div class="mb-3">
         <label for="Price" class="form-label">Preço Uni.</label>

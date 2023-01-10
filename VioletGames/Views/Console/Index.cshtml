@@ -9,13 +9,14 @@
         <button class="btn btn-outline-success my-2 mr-sm-4" type="submit">Pesquisar</button>
         <a role="button" class="btn btn-success" asp-controller="Console" asp-action="Create"><img src="~/lib/bottons/add.png" width="30" height="30"></a>
     </form><br />
-    <table class="table table-content">
+    <table class="table table-content" id="table-consoles">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Valor (H)</th>
+                <th scope="col">Status</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -29,8 +30,9 @@
                             <tr>
                                 <th scope="row">@Console.Id</th>
                                 <td>@Console.Name</td>
-                                <td>@Console.Marking</td>
+                                <td>@Console.CategoryConsole</td>
                                 <td>@Console.PriceHour</td>
+                                <td>@Console.StatusConsole</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <a role="button" class="btn btn-warning" asp-route-id="@Console.Id" asp-controller="Console" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>

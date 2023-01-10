@@ -10,7 +10,7 @@ using VioletGames.Data;
 namespace VioletGames.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    [Migration("20230109142048_CriandoTabela")]
+    [Migration("20230110171454_CriandoTabela")]
     partial class CriandoTabela
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,8 +73,8 @@ namespace VioletGames.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Marking")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryConsole")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -82,6 +82,9 @@ namespace VioletGames.Migrations
 
                     b.Property<float>("PriceHour")
                         .HasColumnType("real");
+
+                    b.Property<int>("StatusConsole")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -153,8 +156,8 @@ namespace VioletGames.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryProduct")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -71,8 +71,8 @@ namespace VioletGames.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Marking")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryConsole")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -80,6 +80,9 @@ namespace VioletGames.Migrations
 
                     b.Property<float>("PriceHour")
                         .HasColumnType("real");
+
+                    b.Property<int>("StatusConsole")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -151,8 +154,8 @@ namespace VioletGames.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryProduct")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
