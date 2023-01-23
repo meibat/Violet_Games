@@ -30,9 +30,9 @@
         @Html.ValidationMessageFor(x => x.CategoryConsole)
         <select asp-for="StatusConsole" class="form-control" style="width: 150px; display: inline;">
             <option value="">Status</option>
-            <option value="@StatusConsole.Active">Ativo</option>
-            <option value="@StatusConsole.Pending">Pendente</option>
-            <option value="@StatusConsole.Disable">Desativado</option>
+            <option value="@StatusLocation.Active">Ativo</option>
+            <option value="@StatusLocation.Pending">Pendente</option>
+            <option value="@StatusLocation.Disable">Desativado</option>
         </select>
         @Html.ValidationMessageFor(x => x.StatusConsole)
     </div>

@@ -1,0 +1,52 @@
+﻿@using VioletGames.Data.Enums
+@model AgendamentoModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    <h1>Cadastrar Agendamento</h1><br />
+</div>
+<form asp-controller="Agendamento" asp-action="Create" method="post" class="singin">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Nome </label>
+        <input type="text" asp-for="NameGameOrConsole" class="form-control" style="width: 560px; display: inline;" placeholder="Nome">
+    </div>
+    <div class="mb-3">
+        <label for="LoginUser" class="form-label">Usuário </label>
+        <input type="text" asp-for="LoginUser" class="form-control" style="width: 560px; display: inline;" placeholder="Usuário">
+    </div>
+    <div class="mb-3">
+        <label for="Category" class="form-label">Categoria </label>
+        <select asp-for="Category" class="form-control" style="width: 150px; display: inline;">
+            <option value="">Selecione</option>
+            <option value="@CategoryProduct.Game">Jogo</option>
+            <option value="@CategoryProduct.Console">Console</option>
+        </select>
+        <label for="Date" class="form-label">Agendamento</label>
+        <input type="date" asp-for="DateSchedule" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        @Html.ValidationMessageFor(x => x.DateSchedule)
+    </div>
+    <div class="mb-3">
+        <label for="Date" class="form-label">Entrada</label>
+        <input type="date" asp-for="DateEnter" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        @Html.ValidationMessageFor(x => x.DateEnter)
+        <label for="Date" class="form-label">Saída</label>
+        <input type="date" asp-for="DateClose" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        @Html.ValidationMessageFor(x => x.DateClose)
+    </div>
+    <div class="mb-3">
+        <label for="CPF" class="form-label">CPF</label>
+        <input type="text" asp-for="CPFClient" class="form-control" style="width: 560px; display: inline;" placeholder="CPF do Cliente">
+        @Html.ValidationMessageFor(x => x.CPFClient)
+    </div>
+    <div class="mb-3">
+        <label for="Price" class="form-label">Valor Total</label>
+        <input type="text" asp-for="TotalValue" class="form-control" style="width: 360px; display: inline;" placeholder="00,00">
+        @Html.ValidationMessageFor(x => x.TotalValue)
+    </div><br />
+    <div class="singin">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a role="button" class="btn btn-info" asp-controller="Agendamento" asp-action="Index">Voltar</a>
+    </div>
+</form>

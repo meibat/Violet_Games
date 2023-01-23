@@ -42,6 +42,8 @@ namespace VioletGames
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IConsoleRepositorio, ConsoleRepositorio>();
+            services.AddScoped<IJogoRepositorio, JogoRepositorio>();
+            services.AddScoped<IAgendamentoRepositorio, AgendamentoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<ISessionUser, SessionUser>();
             services.AddScoped<IEmail, Email>();

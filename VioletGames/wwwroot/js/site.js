@@ -28,6 +28,8 @@ $(document).ready(function () {
     getDatatable('#table-produtos');
     getDatatable('#table-usuarios');
     getDatatable('#table-consoles');
+    getDatatable('#table-jogos');
+    getDatatable('#table-agendamentos');
 });
 
 function getDatatable(id) {

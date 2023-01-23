@@ -19,6 +19,48 @@ namespace VioletGames.Migrations
                 .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("VioletGames.Models.AgendamentoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CPFClient")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DateClose")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateEnter")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateSchedule")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LoginUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameGameOrConsole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Payment")
+                        .HasColumnType("int");
+
+                    b.Property<float>("TotalValue")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agendamentos");
+                });
+
             modelBuilder.Entity("VioletGames.Models.ClienteModel", b =>
                 {
                     b.Property<int>("Id")
@@ -145,6 +187,31 @@ namespace VioletGames.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Funcionarios");
+                });
+
+            modelBuilder.Entity("VioletGames.Models.JogoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryConsole")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("PriceHour")
+                        .HasColumnType("real");
+
+                    b.Property<int>("StatusJogo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Jogos");
                 });
 
             modelBuilder.Entity("VioletGames.Models.ProdutoModel", b =>

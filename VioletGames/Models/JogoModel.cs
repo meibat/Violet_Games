@@ -7,7 +7,7 @@ using VioletGames.Data.Enums;
 
 namespace VioletGames.Models
 {
-    public class ConsoleModel
+    public class JogoModel
     {
         //Colunas da tabela
         public int Id { get; set; }
@@ -17,6 +17,6 @@ namespace VioletGames.Models
         public float PriceHour { get; set; }
         [Required(ErrorMessage = "Categoria!")]
         public CategoryConsole CategoryConsole { get; set; }
-        public StatusLocation StatusConsole { get; set; }
+        public StatusLocation StatusJogo { get; set; }
     }
 }

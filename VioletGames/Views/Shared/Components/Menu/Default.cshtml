@@ -14,8 +14,8 @@
                     <img src="~/lib/users/user1.png" width="50" height="50" class="user" />
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a role="button" class="dropdown-item btn-primary">Editar Perfil</a></li>
                     <li><a role="button" class="dropdown-item btn-primary" asp-controller="ResetPasswdUser" asp-action="Index">Alterar Senha</a></li>
+                    <li><a role="button" class="dropdown-item btn-primary">Ajuda</a></li>
                 </ul>
             </div>
         </div>
@@ -31,7 +31,13 @@
         <li><a role="button" class="nav-link" asp-controller="Dashboard" asp-action="Index"><img src="~/lib/bottons/monitor.png" width="40" height="40"> Dashboard</a></li>
         <li><a role="button" class="nav-link" asp-controller="Caixa" asp-action="Index"><img src="~/lib/bottons/car.png" width="40" height="40"> Caixa</a></li>
         <li><a role="button" class="nav-link" asp-controller="Produto" asp-action="Index"><img src="~/lib/bottons/stockg.png" width="40" height="40"> Produtos</a></li>
-        <li><a role="button" class="nav-link" asp-controller="Console" asp-action="Index"><img src="~/lib/bottons/console.png" width="40" height="40"> Consoles</a></li>
+        <li><a role="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="font-family: Consolas; color: white;">
+            <img src="~/lib/bottons/stockg.png" width="40" height="40"> Locação</a>
+            <ul class="dropdown-menu">
+                <li><a role="button" class="nav-link" asp-controller="Agendamento" asp-action="Index"><img src="~/lib/bottons/console.png" width="40" height="40"> Agendamentos</a></li>
+                <li><a role="button" class="nav-link" asp-controller="Console" asp-action="Index"><img src="~/lib/bottons/console.png" width="40" height="40"> Consoles</a></li>
+                <li><a role="button" class="nav-link" asp-controller="Jogo" asp-action="Index"><img src="~/lib/bottons/vip.png" width="40" height="40"> Jogos</a></li>
+            </ul></li>
         <li><a role="button" class="nav-link" asp-controller="Cliente" asp-action="Index"><img src="~/lib/bottons/vip.png" width="40" height="40"> Clientes</a></li>
 
         @if (Model.Perfil == VioletGames.Data.Enums.PerfilEnum.Admin)

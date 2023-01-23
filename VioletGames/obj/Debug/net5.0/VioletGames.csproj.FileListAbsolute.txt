@@ -816,5 +816,13 @@ C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debu
 C:\Users\melis\OneDrive\Área de Trabalho\REPO\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.genruntimeconfig.cache
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Login\ResetPasswd.cshtml.g.cs
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\ResetPasswdUser\Index.cshtml.g.cs
-C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\staticwebassets\VioletGames.StaticWebAssets.xml
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Jogo\Create.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Jogo\DeleteConfirm.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Jogo\Edit.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Jogo\Index.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Agendamento\Create.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Agendamento\DeleteConfirm.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Agendamento\Edit.cshtml.g.cs
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Agendamento\Index.cshtml.g.cs
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\ref\VioletGames.dll
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\staticwebassets\VioletGames.StaticWebAssets.xml

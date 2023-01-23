@@ -1,0 +1,50 @@
+﻿@model List<AgendamentoModel>
+@{
+    Layout = "_Layout";
+}
+
+<div class="text-center"><br />
+    <table class="table table-content" id="table-agendamentos">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Usuário</th>
+                <th scope="col">Agendamento</th>
+                <th scope="col">Agendada</th>
+                <th scope="col">Finalizado</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Listar contatos SE existir-->
+            @if (Model != null && Model.Any())
+            {
+                <!--Erro nesse Any-->
+                foreach (AgendamentoModel Agendamento in Model)
+                {
+            <tr>
+                <th scope="row">@Agendamento.Id</th>
+                <td>@Agendamento.NameGameOrConsole</td>
+                <td>@Agendamento.Category</td>
+                <td>@Agendamento.CPFClient</td>
+                <td>@Agendamento.LoginUser</td>
+                <td>@Agendamento.DateSchedule</td>
+                <td>@Agendamento.DateEnter</td>
+                <td>@Agendamento.DateClose</td>
+                <td>@Agendamento.TotalValue</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <a role="button" class="btn btn-warning" asp-route-id="@Agendamento.Id" asp-controller="Agendamento" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>
+                        <a role="button" class="btn btn-danger" asp-route-id="@Agendamento.Id" asp-controller="Agendamento" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
+                    </div>
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

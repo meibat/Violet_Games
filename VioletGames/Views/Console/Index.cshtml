@@ -4,11 +4,6 @@
 }
 
 <div class="text-center"><br />
-    <form class="form-inline justify-content-center">
-        <input class="mr-sm-4 search" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-        <button class="btn btn-outline-success my-2 mr-sm-4" type="submit">Pesquisar</button>
-        <a role="button" class="btn btn-success" asp-controller="Console" asp-action="Create"><img src="~/lib/bottons/add.png" width="30" height="30"></a>
-    </form><br />
     <table class="table table-content" id="table-consoles">
         <thead>
             <tr>
@@ -17,7 +12,7 @@
                 <th scope="col">Marca</th>
                 <th scope="col">Valor (H)</th>
                 <th scope="col">Status</th>
-                <th scope="col"></th>
+                <th scope="col"><a role="button" class="btn btn-success" asp-controller="Console" asp-action="Create"><img src="~/lib/bottons/add.png" width="30" height="30"></a></th>
             </tr>
         </thead>
         <tbody>
@@ -44,24 +39,5 @@
             }
         </tbody>
     </table>
-    <nav aria-label="Navegação de página exemplo">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Anterior">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Anterior</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Próximo">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Próximo</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
 </div>
 

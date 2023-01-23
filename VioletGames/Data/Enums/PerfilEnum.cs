@@ -16,7 +16,7 @@ namespace VioletGames.Data.Enums
         Employee = 2
     }
 
-    public enum StatusConsole
+    public enum StatusLocation
     {
         Active = 1,
         Pending = 2,
