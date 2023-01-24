@@ -10,7 +10,7 @@ using VioletGames.Data;
 namespace VioletGames.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    [Migration("20230120232337_CriandoTabela")]
+    [Migration("20230124012406_CriandoTabela")]
     partial class CriandoTabela
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

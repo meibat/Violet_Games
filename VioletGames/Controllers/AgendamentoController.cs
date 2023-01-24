@@ -9,6 +9,7 @@ using VioletGames.Models;
 using VioletGames.Data.Repositorio;
 using VioletGames.Data.Filters;
 using VioletGames.Data.Enums;
+using VioletGames.Data.Helper;
 
 namespace VioletGames.Controllers
 {
@@ -17,11 +18,16 @@ namespace VioletGames.Controllers
     {
         private readonly IAgendamentoRepositorio _agendamentoRepositorio;
         private readonly IJogoRepositorio _jogoRepositorio;
+        private readonly IConsoleRepositorio _consoleRepositorio;
+        private readonly ISessionUser _session;
 
-        public AgendamentoController(IAgendamentoRepositorio agendamentoRepositorio, IJogoRepositorio jogoRepositorio)
+        public AgendamentoController(IAgendamentoRepositorio agendamentoRepositorio, IJogoRepositorio jogoRepositorio, 
+                                        IConsoleRepositorio consoleRepositorio ,ISessionUser sessionUser)
         {
             _agendamentoRepositorio = agendamentoRepositorio;
             _jogoRepositorio = jogoRepositorio;
+            _consoleRepositorio = consoleRepositorio;
+            _session = sessionUser;
         }
 
         public IActionResult Index()
@@ -32,23 +38,55 @@ namespace VioletGames.Controllers
             return View(agendamentos);
         }
 
-        public IActionResult Create(int id)
+        public IActionResult CreateConsole(int id)
         {
             ViewData["Title"] = "Agendamentos";
             AgendamentoModel agendamento = new AgendamentoModel();
             try
             {
-                JogoModel jogo = _jogoRepositorio.ListForID(id);
-                if(jogo != null)
+                UsuarioModel usuarioLogin = _session.SeachSessionUser();
+                ConsoleModel console = _consoleRepositorio.ListForID(id);
+
+                agendamento.LoginUser = usuarioLogin.Login;
+                agendamento.DateEnter = DateTime.Now;
+                agendamento.Payment = StatusPayment.Pending;
+
+                if (console != null)
                 {
-                    agendamento.NameGameOrConsole = jogo.Name;
-                    agendamento.LoginUser = "Mei";
-                    agendamento.Category = CategoryProduct.Game;
+                    agendamento.NameGameOrConsole = console.Name;
+                    agendamento.Category = CategoryProduct.Console;
                 }
-                Console.WriteLine(agendamento.NameGameOrConsole);
                 return View(agendamento);
             }
             catch (System.Exception erro) {
+                TempData["MessagemError"] = $"Tente novamente, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+        public IActionResult CreateGame(int id)
+        {
+            ViewData["Title"] = "Agendamentos";
+            AgendamentoModel agendamento = new AgendamentoModel();
+            try
+            {
+                UsuarioModel usuarioLogin = _session.SeachSessionUser();
+                JogoModel jogo = _jogoRepositorio.ListForID(id);
+
+                agendamento.LoginUser = usuarioLogin.Login;
+                agendamento.DateEnter = DateTime.Now;
+                agendamento.Payment = StatusPayment.Pending;
+
+                if (jogo != null)
+                {
+                    agendamento.Category = CategoryProduct.Game;
+                    agendamento.NameGameOrConsole = jogo.Name;
+                }
+
+                return View(agendamento);
+            }
+            catch (System.Exception erro)
+            {
                 TempData["MessagemError"] = $"Tente novamente, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
@@ -95,12 +133,30 @@ namespace VioletGames.Controllers
 
         //Métodos Post
         [HttpPost]
-        public IActionResult Create(AgendamentoModel agendamento)
+        public IActionResult CreateGame(AgendamentoModel agendamento)
         {
             try{
-                agendamento.Payment = StatusPayment.Pending;
-
                 if (ModelState.IsValid) 
+                {
+                    _agendamentoRepositorio.Create(agendamento);
+                    TempData["MessagemSucess"] = "Agendamento cadastrado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View(agendamento);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MessagemError"] = $"Não foi possível efetuar o cadastrado! Tente novamente, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CreateConsole(AgendamentoModel agendamento)
+        {
+            try
+            {
+                if (ModelState.IsValid)
                 {
                     _agendamentoRepositorio.Create(agendamento);
                     TempData["MessagemSucess"] = "Agendamento cadastrado com sucesso!";
