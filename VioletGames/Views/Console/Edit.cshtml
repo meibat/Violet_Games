@@ -7,7 +7,7 @@
 <div class="text-center">
     <h1>Editar Console</h1><br />
 </div>
-<form asp-controller="Console" asp-action="Create" method="post" class="singin">
+<form asp-controller="Console" asp-action="Edit" method="post" class="singin">
     <div class="mb-3">
         <label for="Name" class="form-label">Nome</label>
         <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
@@ -43,6 +43,6 @@
     </div><br />
     <div class="singin">
         <button type="submit" class="btn btn-primary">Editar</button>
-        <a role="button" class="btn btn-info" asp-controller="Funcionario" asp-action="Index">Voltar</a>
+        <a role="button" class="btn btn-info" asp-controller="Console" asp-action="Index">Voltar</a>
     </div>
 </form>

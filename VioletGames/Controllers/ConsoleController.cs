@@ -40,7 +40,7 @@ namespace VioletGames.Controllers
             ViewData["Title"] = "Consoles";
             ConsoleModel console = _consoleRepositorio.ListForID(id);
             
-            return View();
+            return View(console);
         }
 
         public IActionResult DeleteConfirm(int id)
@@ -48,7 +48,7 @@ namespace VioletGames.Controllers
             ViewData["Title"] = "Consoles";
             ConsoleModel console = _consoleRepositorio.ListForID(id);
 
-            return View();
+            return View(console);
         }
 
         public IActionResult Delete(int id)
