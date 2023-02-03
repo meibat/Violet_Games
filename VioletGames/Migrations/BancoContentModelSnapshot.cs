@@ -46,6 +46,9 @@ namespace VioletGames.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NameClient")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameGameOrConsole")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

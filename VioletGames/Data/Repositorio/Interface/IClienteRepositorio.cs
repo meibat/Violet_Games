@@ -10,8 +10,12 @@ namespace VioletGames.Data.Repositorio
     {
         //metodos
         ClienteModel ListForIDClient(int id);
+        
+        ClienteModel ListForCPF(string cpf);
 
         List<ClienteModel> SearchAll();
+
+        bool isClient(string cpf);
 
         ClienteModel Create(ClienteModel cliente);
 

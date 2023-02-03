@@ -12,11 +12,12 @@ namespace VioletGames.Models
     {
         //Colunas da tabela
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; } //ok
+        public int Id { get; set; }
         [Required(ErrorMessage = "Usuário!")]
         public string LoginUser { get; set; }
-        [Required(ErrorMessage = "Cliente!")]//ok
+        [Required(ErrorMessage = "Cliente!")]
         public string CPFClient { get; set; }
+        public string NameClient { get; set; }
         [Required(ErrorMessage = "Nome!")]
         public string NameGameOrConsole { get; set; }
         [Required(ErrorMessage = "Categoria!")]

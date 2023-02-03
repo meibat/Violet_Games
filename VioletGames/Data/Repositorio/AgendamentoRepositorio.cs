@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VioletGames.Models;
+using VioletGames.Util.Validator;
 
 namespace VioletGames.Data.Repositorio
 {
@@ -21,20 +22,22 @@ namespace VioletGames.Data.Repositorio
         {
             AgendamentoModel agenda = new AgendamentoModel();
 
-            agenda.DateSchedule = Agendamento.DateSchedule;
-            agenda.DateEnter = Agendamento.DateEnter;
-            agenda.DateClose = Agendamento.DateClose;
-            agenda.Payment = Agendamento.Payment;
-            agenda.LoginUser = Agendamento.LoginUser;
-            agenda.TotalValue = Agendamento.TotalValue;
-            agenda.NameGameOrConsole = Agendamento.NameGameOrConsole;
-            agenda.CPFClient = Agendamento.CPFClient;
-            agenda.Category = Agendamento.Category;
 
-            _bancoContent.Agendamentos.Add(agenda);
-            _bancoContent.SaveChanges();
+                    agenda.DateSchedule = Agendamento.DateSchedule;
+                    agenda.DateEnter = Agendamento.DateEnter;
+                    agenda.DateClose = Agendamento.DateClose;
+                    agenda.Payment = Agendamento.Payment;
+                    agenda.LoginUser = Agendamento.LoginUser;
+                    agenda.TotalValue = Agendamento.TotalValue;
+                    agenda.NameGameOrConsole = Agendamento.NameGameOrConsole;
+                    agenda.CPFClient = Agendamento.CPFClient;
+                    agenda.Category = Agendamento.Category;
+            agenda.NameClient = Agendamento.NameClient;
 
-            return Agendamento;
+                    _bancoContent.Agendamentos.Add(agenda);
+                    _bancoContent.SaveChanges();
+
+                    return Agendamento;
         }
 
         public bool Delete(int id)
@@ -74,6 +77,7 @@ namespace VioletGames.Data.Repositorio
             agendaDB.DateClose = Agendamento.DateClose;
             agendaDB.TotalValue = Agendamento.TotalValue;
             agendaDB.Payment = Agendamento.Payment;
+            agendaDB.NameClient = Agendamento.NameClient;
 
             _bancoContent.Agendamentos.Update(agendaDB);
             _bancoContent.SaveChanges();

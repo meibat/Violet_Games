@@ -15,6 +15,7 @@ namespace VioletGames.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LoginUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CPFClient = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameClient = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NameGameOrConsole = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false),
                     DateSchedule = table.Column<DateTime>(type: "datetime2", nullable: false),

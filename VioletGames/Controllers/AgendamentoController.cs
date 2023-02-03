@@ -10,6 +10,7 @@ using VioletGames.Data.Repositorio;
 using VioletGames.Data.Filters;
 using VioletGames.Data.Enums;
 using VioletGames.Data.Helper;
+using VioletGames.Util.Validator;
 
 namespace VioletGames.Controllers
 {
@@ -20,13 +21,16 @@ namespace VioletGames.Controllers
         private readonly IJogoRepositorio _jogoRepositorio;
         private readonly IConsoleRepositorio _consoleRepositorio;
         private readonly ISessionUser _session;
+        private readonly IClienteRepositorio _clienteRepositorio;
 
         public AgendamentoController(IAgendamentoRepositorio agendamentoRepositorio, IJogoRepositorio jogoRepositorio, 
-                                        IConsoleRepositorio consoleRepositorio ,ISessionUser sessionUser)
+                                        IConsoleRepositorio consoleRepositorio ,ISessionUser sessionUser,
+                                        IClienteRepositorio clienteRepositorio)
         {
             _agendamentoRepositorio = agendamentoRepositorio;
             _jogoRepositorio = jogoRepositorio;
             _consoleRepositorio = consoleRepositorio;
+            _clienteRepositorio = clienteRepositorio;
             _session = sessionUser;
         }
 
@@ -138,6 +142,20 @@ namespace VioletGames.Controllers
             try{
                 if (ModelState.IsValid) 
                 {
+                    if (!Validator.IsCPF(agendamento.CPFClient))
+                    {
+                        TempData["MessagemError"] = "CPF inválido!";
+                        return View(agendamento);
+                    }
+
+                    if (!_clienteRepositorio.isClient(agendamento.CPFClient))
+                    {
+                        TempData["MessagemError"] = "Cliente não encontrado!";
+                        return View(agendamento);
+                    }
+                    ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
+                    agendamento.NameClient = cliente.Name;
+
                     _agendamentoRepositorio.Create(agendamento);
                     TempData["MessagemSucess"] = "Agendamento cadastrado com sucesso!";
                     return RedirectToAction("Index");
@@ -158,6 +176,21 @@ namespace VioletGames.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (!Validator.IsCPF(agendamento.CPFClient))
+                    {
+                        TempData["MessagemError"] = "CPF inválido!";
+                        return View(agendamento);
+                    }
+
+                    if (!_clienteRepositorio.isClient(agendamento.CPFClient))
+                    {
+                        //Criar msgbox: deseja cadastrar o cliente novo?
+                        TempData["MessagemError"] = "Cliente não encontrado!";
+                        return View(agendamento);
+                    }
+                    ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
+                    agendamento.NameClient = cliente.Name;
+
                     _agendamentoRepositorio.Create(agendamento);
                     TempData["MessagemSucess"] = "Agendamento cadastrado com sucesso!";
                     return RedirectToAction("Index");
@@ -177,6 +210,20 @@ namespace VioletGames.Controllers
             try{
                 if (ModelState.IsValid)
                 {
+                    if (!Validator.IsCPF(agendamento.CPFClient))
+                    {
+                        TempData["MessagemError"] = "CPF inválido!";
+                        return View(agendamento);
+                    }
+
+                    if (!_clienteRepositorio.isClient(agendamento.CPFClient))
+                    {
+                        TempData["MessagemError"] = "Cliente não encontrado!";
+                        return View(agendamento);
+                    }
+                    ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
+                    agendamento.NameClient = cliente.Name;
+
                     _agendamentoRepositorio.Update(agendamento);
                     TempData["MessagemSucess"] = "Cadastro editado com sucesso!";
                     return RedirectToAction("Index");

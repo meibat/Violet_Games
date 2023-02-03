@@ -64,7 +64,6 @@ namespace VioletGames.Data.Repositorio
             return ClienteDB;
         }
 
-
         public bool Delete(int id)
         {
             ClienteModel ClienteDB = ListForIDClient(id);
@@ -75,6 +74,16 @@ namespace VioletGames.Data.Repositorio
             _bancoContent.SaveChanges();
 
             return true;
+        }
+
+        public bool isClient(string cpf)
+        {
+                return _bancoContent.Clientes.Any(x => x.CPF == cpf);
+        }
+
+        ClienteModel IClienteRepositorio.ListForCPF(string cpf)
+        {
+            return _bancoContent.Clientes.FirstOrDefault(x => x.CPF == cpf);
         }
     }
 }
