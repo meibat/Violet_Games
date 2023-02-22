@@ -24,15 +24,15 @@
             <option value="@CategoryProduct.Console">Console</option>
         </select>
         <label for="Date" class="form-label">Agendamento</label>
-        <input type="date" asp-for="DateSchedule" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        <input type="datetime-local" asp-for="DateSchedule" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateSchedule)
     </div>
     <div class="mb-3">
         <label for="Date" class="form-label">Entrada</label>
-        <input type="date" asp-for="DateEnter" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        <input type="datetime-local" asp-for="DateEnter" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateEnter)
         <label for="Date" class="form-label">Saída</label>
-        <input type="date" asp-for="DateClose" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
+        <input type="datetime-local" asp-for="DateClose" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateClose)
     </div>
     <div class="mb-3">
@@ -47,8 +47,16 @@
     </div>
     <div class="mb-3">
         <label for="Price" class="form-label">Valor Total</label>
-        <input type="text" asp-for="TotalValue" class="form-control" style="width: 360px; display: inline;" placeholder="00,00">
+        <input type="text" asp-for="TotalValue" class="form-control" style="width: 160px; display: inline;" placeholder="00,00">
         @Html.ValidationMessageFor(x => x.TotalValue)
+        <label for="text" class="form-label">Pagamento</label>
+        <select asp-for="Payment" class="form-control" style="width: 150px; display: inline;">
+            <option value="">Selecione</option>
+            <option value="@StatusPayment.Pago">Pago</option>
+            <option value="@StatusPayment.Pendente">Pendente</option>
+            <option value="@StatusPayment.Nao_Pago">Não Pago</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.Payment)
     </div><br />
     <div class="singin">
         <button type="submit" class="btn btn-primary">Cadastrar</button>

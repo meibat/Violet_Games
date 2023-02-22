@@ -42,6 +42,11 @@ namespace VioletGames.Data.Repositorio
             return _bancoContent.Consoles.FirstOrDefault(x => x.Id == id);
         }
 
+        public ConsoleModel ListForName(string name)
+        {
+            return _bancoContent.Consoles.FirstOrDefault(x => x.Name == name);
+        }
+
         public List<ConsoleModel> SearchAll()
         {
             return _bancoContent.Consoles.ToList();
@@ -62,6 +67,7 @@ namespace VioletGames.Data.Repositorio
 
             return ConsoleDB;
         }
+
     }
 }
 

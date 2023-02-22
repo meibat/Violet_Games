@@ -23,21 +23,28 @@ namespace VioletGames.Data.Repositorio
             AgendamentoModel agenda = new AgendamentoModel();
 
 
-                    agenda.DateSchedule = Agendamento.DateSchedule;
-                    agenda.DateEnter = Agendamento.DateEnter;
-                    agenda.DateClose = Agendamento.DateClose;
-                    agenda.Payment = Agendamento.Payment;
-                    agenda.LoginUser = Agendamento.LoginUser;
-                    agenda.TotalValue = Agendamento.TotalValue;
-                    agenda.NameGameOrConsole = Agendamento.NameGameOrConsole;
-                    agenda.CPFClient = Agendamento.CPFClient;
-                    agenda.Category = Agendamento.Category;
+            agenda.DateSchedule = Agendamento.DateSchedule;
+            agenda.DateEnter = Agendamento.DateEnter;
+            agenda.DateClose = Agendamento.DateClose;
+            agenda.Payment = Agendamento.Payment;
+            agenda.LoginUser = Agendamento.LoginUser;
+            agenda.NameGameOrConsole = Agendamento.NameGameOrConsole;
+            agenda.CPFClient = Agendamento.CPFClient;
+            agenda.Category = Agendamento.Category;
             agenda.NameClient = Agendamento.NameClient;
+            
+            if (Agendamento.DateClose != null)
+            {
+                //Calcula as horas de uso e o valor a pagar
+                var Hours = Agendamento.DateClose.Value.Subtract(Agendamento.DateEnter);
+                agenda.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalHours, 2);
+                agenda.HourtoUse =  $"{Hours.Days} Dias {Hours.Hours}h {Hours.Minutes}min";
+            }
 
-                    _bancoContent.Agendamentos.Add(agenda);
-                    _bancoContent.SaveChanges();
+            _bancoContent.Agendamentos.Add(agenda);
+            _bancoContent.SaveChanges();
 
-                    return Agendamento;
+            return Agendamento;
         }
 
         public bool Delete(int id)
@@ -75,9 +82,16 @@ namespace VioletGames.Data.Repositorio
             agendaDB.DateSchedule = Agendamento.DateSchedule;
             agendaDB.DateEnter = Agendamento.DateEnter;
             agendaDB.DateClose = Agendamento.DateClose;
-            agendaDB.TotalValue = Agendamento.TotalValue;
             agendaDB.Payment = Agendamento.Payment;
             agendaDB.NameClient = Agendamento.NameClient;
+
+            if (Agendamento.DateClose != null)
+            {
+                //Calcula as horas de uso e o valor a pagar
+                var Hours = Agendamento.DateClose.Value.Subtract(Agendamento.DateEnter);
+                agendaDB.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalHours, 2);
+                agendaDB.HourtoUse = $"{Hours.Days} Dias {Hours.Hours}h {Hours.Minutes}min";
+            }
 
             _bancoContent.Agendamentos.Update(agendaDB);
             _bancoContent.SaveChanges();

@@ -11,6 +11,8 @@ namespace VioletGames.Data.Repositorio
         //metodos
         JogoModel ListForID(int id);
 
+        JogoModel ListForName(string name);
+
         List<JogoModel> SearchAll();
 
         JogoModel Create(JogoModel jogo);

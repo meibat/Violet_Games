@@ -11,6 +11,7 @@ using VioletGames.Data.Filters;
 using VioletGames.Data.Enums;
 using VioletGames.Data.Helper;
 using VioletGames.Util.Validator;
+using VioletGames.Util.Clean;
 
 namespace VioletGames.Controllers
 {
@@ -52,13 +53,15 @@ namespace VioletGames.Controllers
                 ConsoleModel console = _consoleRepositorio.ListForID(id);
 
                 agendamento.LoginUser = usuarioLogin.Login;
+                agendamento.DateSchedule = DateTime.Today;
                 agendamento.DateEnter = DateTime.Now;
-                agendamento.Payment = StatusPayment.Pending;
+                agendamento.Payment = StatusPayment.Pendente;
 
                 if (console != null)
                 {
                     agendamento.NameGameOrConsole = console.Name;
                     agendamento.Category = CategoryProduct.Console;
+                    agendamento.TotalValue = console.PriceHour;
                 }
                 return View(agendamento);
             }
@@ -78,13 +81,15 @@ namespace VioletGames.Controllers
                 JogoModel jogo = _jogoRepositorio.ListForID(id);
 
                 agendamento.LoginUser = usuarioLogin.Login;
+                agendamento.DateSchedule = DateTime.Today;
                 agendamento.DateEnter = DateTime.Now;
-                agendamento.Payment = StatusPayment.Pending;
+                agendamento.Payment = StatusPayment.Pendente;
 
                 if (jogo != null)
                 {
                     agendamento.Category = CategoryProduct.Game;
                     agendamento.NameGameOrConsole = jogo.Name;
+                    agendamento.TotalValue = jogo.PriceHour;
                 }
 
                 return View(agendamento);
@@ -153,6 +158,7 @@ namespace VioletGames.Controllers
                         TempData["MessagemError"] = "Cliente não encontrado!";
                         return View(agendamento);
                     }
+
                     ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
                     agendamento.NameClient = cliente.Name;
 
@@ -223,6 +229,17 @@ namespace VioletGames.Controllers
                     }
                     ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
                     agendamento.NameClient = cliente.Name;
+                    
+                    if(agendamento.Category == CategoryProduct.Console)
+                    {
+                        ConsoleModel console = _consoleRepositorio.ListForName(agendamento.NameGameOrConsole);
+                        agendamento.TotalValue = console.PriceHour;
+                    }
+                    if (agendamento.Category == CategoryProduct.Game)
+                    {
+                        JogoModel jogo = _jogoRepositorio.ListForName(agendamento.NameGameOrConsole);
+                        agendamento.TotalValue = jogo.PriceHour;
+                    }
 
                     _agendamentoRepositorio.Update(agendamento);
                     TempData["MessagemSucess"] = "Cadastro editado com sucesso!";

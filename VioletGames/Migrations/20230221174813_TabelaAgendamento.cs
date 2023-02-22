@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VioletGames.Migrations
 {
-    public partial class CriandoTabela : Migration
+    public partial class TabelaAgendamento : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,9 +19,10 @@ namespace VioletGames.Migrations
                     NameGameOrConsole = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false),
                     DateSchedule = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateEnter = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateEnter = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateClose = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TotalValue = table.Column<float>(type: "real", nullable: false),
+                    HourtoUse = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalValue = table.Column<double>(type: "float", nullable: false),
                     Payment = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -11,6 +11,8 @@ namespace VioletGames.Data.Repositorio
         //metodos
         ConsoleModel ListForID(int id);
 
+        ConsoleModel ListForName(string name);
+
         List<ConsoleModel> SearchAll();
 
         ConsoleModel Create(ConsoleModel console);

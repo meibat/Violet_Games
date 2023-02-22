@@ -24,11 +24,12 @@ namespace VioletGames.Models
         public CategoryProduct Category { get; set; }
         [Required(ErrorMessage = "Data Agendada!")]
         public DateTime DateSchedule { get; set; }
+        public DateTime DateEnter { get; set; } //data de agendamento
         #nullable enable
-        public DateTime? DateEnter { get; set; }
-        public DateTime? DateClose { get; set; }
+        public DateTime? DateClose { get; set; } //data devolução ou de saída
+        public string? HourtoUse { get; set; } //horas de uso
         #nullable disable
-        public float TotalValue { get; set; }
+        public double TotalValue { get; set; }
         public StatusPayment Payment { get; set; }
     }
 }

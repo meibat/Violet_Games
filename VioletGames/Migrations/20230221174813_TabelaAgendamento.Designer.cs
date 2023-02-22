@@ -10,8 +10,8 @@ using VioletGames.Data;
 namespace VioletGames.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    [Migration("20230203004948_CriandoTabela")]
-    partial class CriandoTabela
+    [Migration("20230221174813_TabelaAgendamento")]
+    partial class TabelaAgendamento
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,11 +38,14 @@ namespace VioletGames.Migrations
                     b.Property<DateTime?>("DateClose")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateEnter")
+                    b.Property<DateTime>("DateEnter")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateSchedule")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("HourtoUse")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LoginUser")
                         .IsRequired()
@@ -58,8 +61,8 @@ namespace VioletGames.Migrations
                     b.Property<int>("Payment")
                         .HasColumnType("int");
 
-                    b.Property<float>("TotalValue")
-                        .HasColumnType("real");
+                    b.Property<double>("TotalValue")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

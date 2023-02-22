@@ -42,6 +42,11 @@ namespace VioletGames.Data.Repositorio
             return _bancoContent.Jogos.FirstOrDefault(x => x.Id == id);
         }
 
+        public JogoModel ListForName(string name)
+        {
+            return _bancoContent.Jogos.FirstOrDefault(x => x.Name == name);
+        }
+
         public List<JogoModel> SearchAll()
         {
             return _bancoContent.Jogos.ToList();
