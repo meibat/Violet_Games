@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2SeEQAunPJQlwEdwFS01I5/7xyECNhkApppg9N0XlLw9zjf45HVADcT3Fh+Ls/EqrRHkg3OqyIYUnRVhVQr6/A==",
+  "dgSpecHash": "PXYtVqWtLKG0PPwIG0s9oW7YohxNjsaG9qrU6Orzd6Hdoeu1skSXJ1L4jJXyqj5HiO3iB5ceJ4gx72ICgUV4yg==",
   "success": true,
   "projectFilePath": "C:\\Users\\melis\\OneDrive\\Área de Trabalho\\Violet_Games\\VioletGames\\VioletGames.csproj",
   "expectedPackageFiles": [
@@ -111,7 +111,8 @@
     "C:\\Users\\melis\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\melis\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\melis\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\melis\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\melis\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\melis\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

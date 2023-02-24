@@ -1,6 +1,6 @@
 ﻿/*Conteudo*/
 .content {
-    /*position: fixed;*/
+    position: fixed;
     background-color: #2e193b;
     opacity: 90%;
     width: 100%;
@@ -22,28 +22,27 @@
 .div-table {
     width: 40%;
     height: 680px;
-    background-color: blue;
+    /*background-color: blue;*/
     display: inline-flex;
 }
 .div-cod {
     width: 35%;
     height: 680px;
-    background-color: red;
+    /*background-color: red;*/
     display: inline-flex;
 }
 
 .div-cod-itens {
     width: 45%;
     height: 300px;
-    background-color: orange;
-    display: inline-flex;
-   /* margin-top: -15%;*/
+    /*background-color: orange;*/
+    display: inline-block;
 }
 
 .div-box{
-    width: 23%;
+    width: 23.5%;
     height: 680px;
-    background-color: aqua;
+    /*background-color: aqua;*/
     display: inline-flex;
 }
 
@@ -58,33 +57,17 @@
     color: black;
 }
 .div-itens input{
-    width: 95%;
-    height: 43px;
+    width: 98%;
+    height: 35px;
     border-radius: .25rem;
 }
 
-.div-iten1 {
-    display: initial;
-    margin-top: 45%;
-}
 
-.div-iten1 h1, h2 {
-    text-align: center;
-    width: 100%;
-    background-color: #e0c0fa;
-    color: black;
-}
-
-.div-iten1 input {
-    width: 95%;
-    height: 43px;
-    border-radius: .25rem;
-}
 
 .div-cod-itens img{
-    /*position: center;*/
     height: 70%;
-    margin-top: 15%;
+    margin-left: 10%;
+    margin-top: -85%;
 }
 
 /*Tabela*/
