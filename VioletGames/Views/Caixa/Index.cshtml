@@ -3,5 +3,85 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h1>Caixa</h1>
+<nav>
+    <div class="div-table">
+        <div class="div-itens">
+            <h1>ITENS ADICIONADOS</h1>
+            <table class="table table-content" id="table-funcionarios">
+                <thead>
+                    <tr>
+                        <th scope="col">Nº Venda</th>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Valor total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                                <td>33</td>
+                                <td>produto</td>
+                                <td>2</td>
+                                <td>23</td>
+                            </tr>
+                    <!--Listar contatos SE existir-->
+                   <!--
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (FuncionarioModel funcionario in Model)
+                        {
+                            <tr>
+                                <td>33</td>
+                                <td>produto</td>
+                                <td>2</td>
+                                <td>22</td>
+                            </tr>
+                        }
+                    }    
+                   -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="div-cod">
+        <div class="div-itens">
+            <h1>CÓDIGO DE BARRAS</h1>
+            <input /><br /><br />
+            <label>Descrição/Produto</label>
+            <input /><br /><br />
+            <label>Cliente</label>
+            <input /><br /><br />
+            <div class="div-cod-itens">
+                <div class="div-iten1"><br />
+                    <label>Quantidade</label>
+                    <input /><br /><br />
+                    <label>Preço Unitário</label>
+                    <input /><br /><br />
+                    <label>Estoque</label>
+                    <input />
+                </div>
+            </div>
+            <div class="div-cod-itens" >
+                <div class="div-itens">
+                    <img src="~/lib/img/icon.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="div-box">
+        <div class="div-itens">
+            <h2>TOTAL</h2>
+            <input /><br /><br />
+            <h2>SUB TOTAL</h2>
+            <input /><br /><br />
+            <h2>DESCONTO</h2>
+            <input /><br /><br />
+            <h2>TOTAL DA COMPRA</h2>
+            <input /><br /><br />
+            <h2>VALOR RECEBIDO</h2>
+            <input /><br /><br />
+            <h2>TROCO</h2>
+            <input />
+        </div>
+    </div>
+</nav>
 
