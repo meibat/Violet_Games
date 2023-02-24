@@ -7,77 +7,172 @@
     <div class="div-table">
         <div class="div-itens">
             <h1>ITENS ADICIONADOS</h1>
-            <table class="table table-content" id="table-funcionarios">
+            <table class="table table-content" id="table-caixa">
                 <thead>
                     <tr>
                         <th scope="col">Nº Venda</th>
                         <th scope="col">Produto</th>
                         <th scope="col">Quantidade</th>
-                        <th scope="col">Valor total</th>
+                        <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                                <td>33</td>
-                                <td>produto</td>
-                                <td>2</td>
-                                <td>23</td>
-                            </tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>produto</td>
+                        <td>2</td>
+                        <td>23</td>
+                    </tr>
+
+                    </tr>
                     <!--Listar contatos SE existir-->
-                   <!--
-                    @if (Model != null && Model.Any())
-                    {
-                        foreach (FuncionarioModel funcionario in Model)
-                        {
-                            <tr>
-                                <td>33</td>
-                                <td>produto</td>
-                                <td>2</td>
-                                <td>22</td>
-                            </tr>
-                        }
-                    }    
-                   -->
+                    <!--
+             @if (Model != null && Model.Any())
+             {
+                 foreach (FuncionarioModel funcionario in Model)
+                 {
+                     <tr>
+                         <td>33</td>
+                         <td>produto</td>
+                         <td>2</td>
+                         <td>22</td>
+                     </tr>
+                 }
+             }
+            -->
                 </tbody>
             </table>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a role="button" class="btn btn-warning" asp-route-id="" asp-controller="Produto" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>
+                <a role="button" class="btn btn-danger" asp-route-id="" asp-controller="Produto" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
+            </div>
         </div>
     </div>
     <div class="div-cod">
         <div class="div-itens">
-            <h1>CÓDIGO DE BARRAS</h1>
+            <h1> CÓDIGO DE BARRAS </h1>
+            <input style="height: 50px"/><br /><br />
+            <label> Descrição/Produto </label>
             <input /><br /><br />
-            <label>Descrição/Produto</label>
-            <input /><br /><br />
-            <label>Cliente</label>
-            <input /><br /><br />
-            <div class="div-cod-itens">
+            <label> Cliente </label>
+            <input /><br />
+            <div class="div-cod-itens">@* ativar quando usar a API de catalogo.*@
                 <div class="div-itens"><br />
-                    <label>Quantidade</label>
+                    <label> Quantidade </label>
                     <input /><br /><br />
-                    <label>Preço Unitário</label>
+                    <label> Preço Unitário </label>
                     <input /><br /><br />
-                    <label>Estoque</label>
+                    <label> Estoque </label>
                     <input />
                 </div>
             </div>
-            <div class="div-cod-itens" >
+            <div class="div-cod-itens" > @*ativar quando usar a API de catalogo.*@
                  <img src="~/lib/img/icon.png" />
             </div>
         </div>
     </div>
     <div class="div-box">
         <div class="div-itens">
-            <h2>TOTAL</h2>
+            <h2> TOTAL </h2>
             <input /><br /><br />
-            <h2>SUB TOTAL</h2>
+            <h2> SUB TOTAL </h2>
             <input /><br /><br />
-            <h2>DESCONTO</h2>
+            <h2> DESCONTO </h2>
             <input /><br /><br />
-            <h2>TOTAL DA COMPRA</h2>
+            <h2 style="background-color: lightgreen;"> TOTAL DA COMPRA </h2>
             <input /><br /><br />
-            <h2>VALOR RECEBIDO</h2>
+            <h2> VALOR RECEBIDO </h2>
             <input /><br /><br />
-            <h2>TROCO</h2>
+            <h2 style="background-color: red;"> TROCO </h2>
             <input />
         </div>
     </div>

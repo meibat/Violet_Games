@@ -828,3 +828,4 @@ C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.Properties.Resources.resources
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\VioletGames.csproj.GenerateResource.cache
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\refint\VioletGames.dll
+C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\staticwebassets\VioletGames.StaticWebAssets.xml
