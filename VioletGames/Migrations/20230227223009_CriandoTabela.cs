@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VioletGames.Migrations
 {
-    public partial class TabelaAgendamento : Migration
+    public partial class CriandoTabela : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -144,15 +144,93 @@ namespace VioletGames.Migrations
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "ItemPedidos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameProduct = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    produtoId = table.Column<int>(type: "int", nullable: true),
+                    ClientCPFId = table.Column<int>(type: "int", nullable: true),
+                    DateOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    QtdAvailable = table.Column<int>(type: "int", nullable: false),
+                    PriceUnity = table.Column<float>(type: "real", nullable: false),
+                    PriceTotal = table.Column<float>(type: "real", nullable: false),
+                    CategoryProduct = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemPedidos", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_ItemPedidos_Clientes_ClientCPFId",
+                        column: x => x.ClientCPFId,
+                        principalTable: "Clientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ItemPedidos_Produtos_produtoId",
+                        column: x => x.produtoId,
+                        principalTable: "Produtos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pedidos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LoginUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClientCPFId = table.Column<int>(type: "int", nullable: true),
+                    Pedidoid = table.Column<int>(type: "int", nullable: true),
+                    ValueTotal = table.Column<float>(type: "real", nullable: false),
+                    DateSale = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pedidos", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Pedidos_Clientes_ClientCPFId",
+                        column: x => x.ClientCPFId,
+                        principalTable: "Clientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Pedidos_ItemPedidos_Pedidoid",
+                        column: x => x.Pedidoid,
+                        principalTable: "ItemPedidos",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemPedidos_ClientCPFId",
+                table: "ItemPedidos",
+                column: "ClientCPFId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemPedidos_produtoId",
+                table: "ItemPedidos",
+                column: "produtoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedidos_ClientCPFId",
+                table: "Pedidos",
+                column: "ClientCPFId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedidos_Pedidoid",
+                table: "Pedidos",
+                column: "Pedidoid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Agendamentos");
-
-            migrationBuilder.DropTable(
-                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Consoles");
@@ -164,10 +242,19 @@ namespace VioletGames.Migrations
                 name: "Jogos");
 
             migrationBuilder.DropTable(
-                name: "Produtos");
+                name: "Pedidos");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "ItemPedidos");
+
+            migrationBuilder.DropTable(
+                name: "Clientes");
+
+            migrationBuilder.DropTable(
+                name: "Produtos");
         }
     }
 }

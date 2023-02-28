@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VioletGames.Data.Filters;
-using VioletGames.Data.Repositorio;
 using VioletGames.Models;
+using VioletGames.Repositorio;
 
 namespace VioletGames.Controllers
 {

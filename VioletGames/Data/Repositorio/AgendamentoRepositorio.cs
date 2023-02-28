@@ -7,6 +7,20 @@ using VioletGames.Util.Validator;
 
 namespace VioletGames.Data.Repositorio
 {
+    public interface IAgendamentoRepositorio
+    {
+        //metodos
+        AgendamentoModel ListForID(int id);
+
+        List<AgendamentoModel> SearchAll();
+
+        AgendamentoModel Create(AgendamentoModel Agendamento);
+
+        AgendamentoModel Update(AgendamentoModel Agendamento);
+
+        bool Delete(int id);
+    }
+
     public class AgendamentoRepositorio : IAgendamentoRepositorio
     {
         //Extrai variavel bancoContext

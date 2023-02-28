@@ -6,8 +6,25 @@ using VioletGames.Models;
 
 namespace VioletGames.Data.Repositorio
 {
+    public interface IConsoleRepositorio
+    {
+        //metodos
+        ConsoleModel ListForID(int id);
+
+        ConsoleModel ListForName(string name);
+
+        List<ConsoleModel> SearchAll();
+
+        ConsoleModel Create(ConsoleModel console);
+
+        ConsoleModel Update(ConsoleModel console);
+
+        bool Delete(int id);
+    }
+
     public class ConsoleRepositorio : IConsoleRepositorio
     {
+
         //Extrai variavel bancoContext
         private readonly BancoContent _bancoContent;
 

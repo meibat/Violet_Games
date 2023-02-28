@@ -6,6 +6,22 @@ using VioletGames.Models;
 
 namespace VioletGames.Data.Repositorio
 {
+    public interface IJogoRepositorio
+    {
+        //metodos
+        JogoModel ListForID(int id);
+
+        JogoModel ListForName(string name);
+
+        List<JogoModel> SearchAll();
+
+        JogoModel Create(JogoModel jogo);
+
+        JogoModel Update(JogoModel jogo);
+
+        bool Delete(int id);
+    }
+
     public class JogoRepositorio : IJogoRepositorio
     {
         //Extrai variavel bancoContext

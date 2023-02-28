@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CaixaView
+@{
     Layout = "_Layout";
     ViewData["Title"] = "Dashboard";
 }
@@ -17,147 +18,56 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td>produto</td>
-                        <td>2</td>
-                        <td>23</td>
-                    </tr>
-
-                    </tr>
                     <!--Listar contatos SE existir-->
-                    <!--
-             @if (Model != null && Model.Any())
-             {
-                 foreach (FuncionarioModel funcionario in Model)
-                 {
-                     <tr>
-                         <td>33</td>
-                         <td>produto</td>
-                         <td>2</td>
-                         <td>22</td>
-                     </tr>
-                 }
-             }
-            -->
-                </tbody>
+                    @*@if (Model.ListItens != null)
+                    {
+                        @foreach (var pedido in Model.ListItens)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => pedido.id)</td>
+                                <td>@Html.DisplayFor(modelItem => pedido.NameProduct)</td>
+                                <td>@Html.DisplayFor(modelItem => pedido.QtdAvailable)</td>
+                                <td>@Html.DisplayFor(modelItem => pedido.PriceTotal)</td>
+                            </tr>
+                        }
+                    }*@
+                    </tbody>
             </table>
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <a role="button" class="btn btn-warning" asp-route-id="" asp-controller="Produto" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>
-                <a role="button" class="btn btn-danger" asp-route-id="" asp-controller="Produto" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
+                <form asp-controller="Caixa" asp-action="AddItem" method="post" class="singin">
+                    <button type="submit" class="btn btn-primary"><img src="~/lib/bottons/edit.png" width="20" height="20"></button>
+                    <a role="button" class="btn btn-danger" asp-controller="Produto" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
+                </form>
             </div>
         </div>
     </div>
     <div class="div-cod">
         <div class="div-itens">
-            <h1> CÓDIGO DE BARRAS </h1>
-            <input style="height: 50px"/><br /><br />
-            <label> Descrição/Produto </label>
-            <input /><br /><br />
-            <label> Cliente </label>
-            <input /><br />
-            <div class="div-cod-itens">@* ativar quando usar a API de catalogo.*@
-                <div class="div-itens"><br />
-                    <label> Quantidade </label>
-                    <input /><br /><br />
-                    <label> Preço Unitário </label>
-                    <input /><br /><br />
-                    <label> Estoque </label>
-                    <input />
+            <form asp-controller="Caixa" asp-action="AddItem" method="post">
+                <h1> CÓDIGO DE BARRAS </h1>
+                <input class="form-control"  style="height: 50px" /><br />
+                <label> Descrição/Produto </label>
+                <input type="text" asp-for="Itens.NameProduct" class="form-control" /><br />
+                <label> Cliente </label>
+                <input type="text" asp-for="Itens.ClientCPF" class="form-control" /><br />
+                <div class="div-cod-itens">
+                    @* ativar quando usar a API de catalogo.*@
+                    <div class="div-itens">
+                        <br />
+                        <label> Quantidade </label>
+                        <input type="text" asp-for="Itens.QtdAvailable"/><br />
+                        <label> Preço Unitário </label>
+                        <input type="text" asp-for="Itens.PriceUnity"/><br />
+                        <label> Estoque </label>
+                        <input />
+                    </div>
                 </div>
-            </div>
-            <div class="div-cod-itens" > @*ativar quando usar a API de catalogo.*@
-                 <img src="~/lib/img/icon.png" />
-            </div>
+                <div class="div-cod-itens">
+                    @*ativar quando usar a API de catalogo.*@
+                    <img src="~/lib/img/icon.png" />
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: -120%;">Adicionar</button>
+            </form>
         </div>
     </div>
     <div class="div-box">

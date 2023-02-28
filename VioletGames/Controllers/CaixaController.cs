@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using VioletGames.Data.Filters;
+using VioletGames.Data.Helper;
+using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 
 namespace VioletGames.Controllers
@@ -13,10 +15,53 @@ namespace VioletGames.Controllers
     [PageUserLogin]
     public class CaixaController : Controller
     {
+        private readonly IAgendamentoRepositorio _agendamentoRepositorio;
+        private readonly IJogoRepositorio _jogoRepositorio;
+        private readonly IConsoleRepositorio _consoleRepositorio;
+        private readonly ISessionUser _session;
+        private readonly IClienteRepositorio _clienteRepositorio;
+        private readonly ICaixaRepositorio _caixaRepositorio;
+
+        public CaixaController(IAgendamentoRepositorio agendamentoRepositorio, IJogoRepositorio jogoRepositorio,
+                                        IConsoleRepositorio consoleRepositorio, ISessionUser sessionUser,
+                                        IClienteRepositorio clienteRepositorio, ICaixaRepositorio caixaRepositorio)
+        {
+            _agendamentoRepositorio = agendamentoRepositorio;
+            _caixaRepositorio = caixaRepositorio;
+            _jogoRepositorio = jogoRepositorio;
+            _consoleRepositorio = consoleRepositorio;
+            _clienteRepositorio = clienteRepositorio;
+            _session = sessionUser;
+        }
+
         public IActionResult Index()
         {
             ViewData["Title"] = "Caixa";
-            return View();
+
+            CaixaView caixa = new CaixaView();
+            //caixa.ListItens = _caixaRepositorio.SearchAll();
+          
+            return View(caixa.ListItens);
+        }
+
+        [HttpPost]
+        public IActionResult AddItem(CaixaView item)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _caixaRepositorio.AddItem(item);
+                    TempData["MessagemSucess"] = "Console cadastrado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View();
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MessagemError"] = $"Não foi possível efetuar o cadastrado! Tente novamente, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }

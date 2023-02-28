@@ -47,4 +47,52 @@ namespace VioletGames.Models
             Passwd = NewPasswd.getHash();
         }
     }
+
+    public class UsuarioWithoutModel
+    {
+        //Colunas da tabela
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Nome!")]
+        public string Name { get; set; }
+        [Required(ErrorMessage = "Login!")]
+        public string Login { get; set; }
+        [Required(ErrorMessage = "E-mail!")]
+        [EmailAddress(ErrorMessage = "E-mail Inválido!")]
+        public string Email { get; set; }
+        [Required(ErrorMessage = "Perfil!")]
+        public PerfilEnum Perfil { get; set; }
+
+#nullable enable
+        public DateTime? DateRefresh { get; set; } //pode ser nulo
+#nullable disable
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "Digite o login!")]
+        public String Login { get; set; }
+        [Required(ErrorMessage = "Digite a senha!")]
+        public String Passwd { get; set; }
+    }
+
+    public class ResetPasswdModel
+    {
+        [Required(ErrorMessage = "Digite o login!")]
+        public String Login { get; set; }
+        [Required(ErrorMessage = "Digite o E-mail!")]
+        [EmailAddress(ErrorMessage = "E-mail Inválido!")]
+        public String Email { get; set; }
+    }
+
+    public class ResetPasswdUserModel
+    {
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Digite a senha atual!")]
+        public String Passwd { get; set; }
+        [Required(ErrorMessage = "Digita a nova senha!")]
+        public String NewPasswd { get; set; }
+        [Required(ErrorMessage = "Digite confirme a nova senha!")]
+        [Compare("NewPasswd", ErrorMessage = "Senha não Confere!")]
+        public String ConfirmNewPasswd { get; set; }
+    }
 }

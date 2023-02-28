@@ -1,10 +1,13 @@
 select * from Agendamentos;
+select * from ItemPedidos;
+select * from Pedidos;
 select * from Usuarios;
 select * from Funcionarios;
 select * from Clientes;
 select * from Consoles;
 select * from Jogos;
 select * from Produtos;
+
 
 
 SET IDENTITY_INSERT Usuarios on;

@@ -195,6 +195,47 @@ namespace VioletGames.Migrations
                     b.ToTable("Funcionarios");
                 });
 
+            modelBuilder.Entity("VioletGames.Models.ItemPedidoModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryProduct")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClientCPFId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateOrder")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NameProduct")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("PriceTotal")
+                        .HasColumnType("real");
+
+                    b.Property<float>("PriceUnity")
+                        .HasColumnType("real");
+
+                    b.Property<int>("QtdAvailable")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("produtoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ClientCPFId");
+
+                    b.HasIndex("produtoId");
+
+                    b.ToTable("ItemPedidos");
+                });
+
             modelBuilder.Entity("VioletGames.Models.JogoModel", b =>
                 {
                     b.Property<int>("Id")
@@ -218,6 +259,37 @@ namespace VioletGames.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Jogos");
+                });
+
+            modelBuilder.Entity("VioletGames.Models.PedidoModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClientCPFId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateSale")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LoginUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Pedidoid")
+                        .HasColumnType("int");
+
+                    b.Property<float>("ValueTotal")
+                        .HasColumnType("real");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ClientCPFId");
+
+                    b.HasIndex("Pedidoid");
+
+                    b.ToTable("Pedidos");
                 });
 
             modelBuilder.Entity("VioletGames.Models.ProdutoModel", b =>
@@ -280,6 +352,36 @@ namespace VioletGames.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("VioletGames.Models.ItemPedidoModel", b =>
+                {
+                    b.HasOne("VioletGames.Models.ClienteModel", "ClientCPF")
+                        .WithMany()
+                        .HasForeignKey("ClientCPFId");
+
+                    b.HasOne("VioletGames.Models.ProdutoModel", "produto")
+                        .WithMany()
+                        .HasForeignKey("produtoId");
+
+                    b.Navigation("ClientCPF");
+
+                    b.Navigation("produto");
+                });
+
+            modelBuilder.Entity("VioletGames.Models.PedidoModel", b =>
+                {
+                    b.HasOne("VioletGames.Models.ClienteModel", "ClientCPF")
+                        .WithMany()
+                        .HasForeignKey("ClientCPFId");
+
+                    b.HasOne("VioletGames.Models.ItemPedidoModel", "Pedido")
+                        .WithMany()
+                        .HasForeignKey("Pedidoid");
+
+                    b.Navigation("ClientCPF");
+
+                    b.Navigation("Pedido");
                 });
 #pragma warning restore 612, 618
         }

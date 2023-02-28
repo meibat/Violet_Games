@@ -6,9 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using VioletGames.Models;
-using VioletGames.Data.Repositorio;
 using VioletGames.Util.Validator;
 using VioletGames.Data.Filters;
+using VioletGames.Repositorio;
 
 namespace VioletGames.Controllers
 {

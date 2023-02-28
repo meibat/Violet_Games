@@ -8,6 +8,20 @@ using VioletGames.Models;
 
 namespace VioletGames.Repositorio
 {
+    public interface IFuncionarioRepositorio
+    {
+        //metodos
+        FuncionarioModel ListForIDEmployee(int id);
+
+        List<FuncionarioModel> SearchAll();
+
+        FuncionarioModel Create(FuncionarioModel funcionario);
+
+        FuncionarioModel Update(FuncionarioModel funcionario);
+
+        bool Delete(int id);
+    }
+
     public class FuncionarioRepositorio : IFuncionarioRepositorio
     {
         //Extrai variavel bancoContext

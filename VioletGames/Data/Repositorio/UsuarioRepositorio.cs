@@ -8,6 +8,25 @@ using VioletGames.Models;
 
 namespace VioletGames.Repositorio
 {
+    public interface IUsuarioRepositorio
+    {
+        //metodos
+        UsuarioModel SeachForLogin(string login);
+        UsuarioModel SeachForLoginAndEmail(string login, string email);
+
+        UsuarioModel ListForID(int id);
+
+        List<UsuarioModel> SearchAll();
+
+        UsuarioModel Create(UsuarioModel usuario);
+
+        UsuarioModel Update(UsuarioModel usuario);
+
+        UsuarioModel UpdatePass(ResetPasswdUserModel resetPasswdUser);
+
+        bool Delete(int id);
+    }
+
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
         //Extrai variavel bancoContext
