@@ -1,90 +1,11 @@
-﻿@model CaixaView
-@{
+﻿@{
     Layout = "_Layout";
     ViewData["Title"] = "Dashboard";
 }
 
 <nav>
-    <div class="div-table">
-        <div class="div-itens">
-            <h1>ITENS ADICIONADOS</h1>
-            <table class="table table-content" id="table-caixa">
-                <thead>
-                    <tr>
-                        <th scope="col">Nº Venda</th>
-                        <th scope="col">Produto</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--Listar contatos SE existir-->
-                    @*@if (Model.ListItens != null)
-                    {
-                        @foreach (var pedido in Model.ListItens)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => pedido.id)</td>
-                                <td>@Html.DisplayFor(modelItem => pedido.NameProduct)</td>
-                                <td>@Html.DisplayFor(modelItem => pedido.QtdAvailable)</td>
-                                <td>@Html.DisplayFor(modelItem => pedido.PriceTotal)</td>
-                            </tr>
-                        }
-                    }*@
-                    </tbody>
-            </table>
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <form asp-controller="Caixa" asp-action="AddItem" method="post" class="singin">
-                    <button type="submit" class="btn btn-primary"><img src="~/lib/bottons/edit.png" width="20" height="20"></button>
-                    <a role="button" class="btn btn-danger" asp-controller="Produto" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="div-cod">
-        <div class="div-itens">
-            <form asp-controller="Caixa" asp-action="AddItem" method="post">
-                <h1> CÓDIGO DE BARRAS </h1>
-                <input class="form-control"  style="height: 50px" /><br />
-                <label> Descrição/Produto </label>
-                <input type="text" asp-for="Itens.NameProduct" class="form-control" /><br />
-                <label> Cliente </label>
-                <input type="text" asp-for="Itens.ClientCPF" class="form-control" /><br />
-                <div class="div-cod-itens">
-                    @* ativar quando usar a API de catalogo.*@
-                    <div class="div-itens">
-                        <br />
-                        <label> Quantidade </label>
-                        <input type="text" asp-for="Itens.QtdAvailable"/><br />
-                        <label> Preço Unitário </label>
-                        <input type="text" asp-for="Itens.PriceUnity"/><br />
-                        <label> Estoque </label>
-                        <input />
-                    </div>
-                </div>
-                <div class="div-cod-itens">
-                    @*ativar quando usar a API de catalogo.*@
-                    <img src="~/lib/img/icon.png" />
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: -120%;">Adicionar</button>
-            </form>
-        </div>
-    </div>
-    <div class="div-box">
-        <div class="div-itens">
-            <h2> TOTAL </h2>
-            <input /><br /><br />
-            <h2> SUB TOTAL </h2>
-            <input /><br /><br />
-            <h2> DESCONTO </h2>
-            <input /><br /><br />
-            <h2 style="background-color: lightgreen;"> TOTAL DA COMPRA </h2>
-            <input /><br /><br />
-            <h2> VALOR RECEBIDO </h2>
-            <input /><br /><br />
-            <h2 style="background-color: red;"> TROCO </h2>
-            <input />
-        </div>
-    </div>
+    @await Component.InvokeAsync("ListaItens")
+    @await Component.InvokeAsync("ProdutoDescricao")
+    @await Component.InvokeAsync("ValoresCompra")
 </nav>
 

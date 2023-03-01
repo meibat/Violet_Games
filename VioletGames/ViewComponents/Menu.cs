@@ -19,4 +19,28 @@ namespace VioletGames.ViewComponents
             return View(usuario);
         }
     }
+
+    public class ListaItens : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View();
+        }
+    }
+
+    public class ProdutoDescricao : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View();
+        }
+    }
+
+    public class ValoresCompra : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View();
+        }
+    }
 }

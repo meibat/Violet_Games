@@ -37,15 +37,13 @@ namespace VioletGames.Controllers
         public IActionResult Index()
         {
             ViewData["Title"] = "Caixa";
-
-            CaixaView caixa = new CaixaView();
-            //caixa.ListItens = _caixaRepositorio.SearchAll();
-          
-            return View(caixa.ListItens);
+            List<ItemPedidoModel> itens = _caixaRepositorio.SearchAll();
+            
+            return View(itens);
         }
 
         [HttpPost]
-        public IActionResult AddItem(CaixaView item)
+        public IActionResult AddItem(ItemPedidoModel item)
         {
             try
             {
@@ -53,9 +51,9 @@ namespace VioletGames.Controllers
                 {
                     _caixaRepositorio.AddItem(item);
                     TempData["MessagemSucess"] = "Console cadastrado com sucesso!";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", item);
                 }
-                return View();
+                return View("Index");
             }
             catch (System.Exception erro)
             {

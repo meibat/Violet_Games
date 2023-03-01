@@ -9,7 +9,6 @@ namespace VioletGames.Data
         //Configura o contexto das tabelas
         public BancoContent(DbContextOptions<BancoContent> options) : base(options)
         {
-
         }
 
         //Tabela de Contatos

@@ -1,0 +1,31 @@
+﻿@model ItemPedidoModel
+
+<div class="div-cod">
+    <div class="div-itens">
+        <form asp-controller="Caixa" asp-action="AddItem" method="post">
+            <h1> CÓDIGO DE BARRAS </h1>
+            <input class="form-control" style="height: 50px" /><br />
+            <label> Descrição/Produto </label>
+            <input type="text" asp-for="NameProduct" class="form-control" /><br />
+            <label> Cliente </label>
+            <input type="text" asp-for="ClientCPF" class="form-control" /><br />
+            <div class="div-cod-itens">
+                @* ativar quando usar a API de catalogo.*@
+                <div class="div-itens">
+                    <br />
+                    <label> Quantidade </label>
+                    <input type="text" asp-for="QtdAvailable" /><br />
+                    <label> Preço Unitário </label>
+                    <input type="text" asp-for="PriceUnity" /><br />
+                    <label> Estoque </label>
+                    <input />
+                </div>
+            </div>
+            <div class="div-cod-itens">
+                @*ativar quando usar a API de catalogo.*@
+                <img src="~/lib/img/icon.png" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top: -120%;">Adicionar</button>
+        </form>
+    </div>
+</div>

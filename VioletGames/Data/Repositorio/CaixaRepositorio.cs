@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,11 +10,11 @@ namespace VioletGames.Data.Repositorio
     public interface ICaixaRepositorio
     {
         //metodos
-        CaixaView ListForIDItem(int id);
+        ItemPedidoModel ListForIDItem(int id);
 
-        List<CaixaView> SearchAll();
+        List<ItemPedidoModel> SearchAll(/*ItemPedidoModel item*/);
 
-        CaixaView AddItem(CaixaView item);
+        ItemPedidoModel AddItem(ItemPedidoModel item);
 
         PedidoModel AddPedido(PedidoModel pedido);
 
@@ -37,20 +38,23 @@ namespace VioletGames.Data.Repositorio
             throw new NotImplementedException();
         }
 
-        public CaixaView ListForIDItem(int id)
+        public ItemPedidoModel ListForIDItem(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<CaixaView> SearchAll()
+        public List<ItemPedidoModel> SearchAll(/*ItemPedidoModel item*/)
         {
-            throw new NotImplementedException();
-            //return _bancoContent.ItemPedidos.ToList();
+            var itens = _bancoContent.ItemPedidos/*.Where(x => x.ClientCPF == item.ClientCPF).Where(x => x.DateOrder == item.DateOrder)*/.ToList();
+
+            return itens;
         }
 
-        public CaixaView AddItem(CaixaView item)
+        public ItemPedidoModel AddItem(ItemPedidoModel item)
         {
-           // _bancoContent.ItemPedidos.Add(item);
+            item.DateOrder = DateTime.Now;
+
+            _bancoContent.ItemPedidos.Add(item);
             _bancoContent.SaveChanges();
 
             return item;

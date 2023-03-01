@@ -7,13 +7,6 @@ using VioletGames.Data.Enums;
 
 namespace VioletGames.Models
 {
-    public class CaixaView
-    {
-        public List<ItemPedidoModel> ListItens { get; set; }
-        public ItemPedidoModel Itens { get; set; }
-        public PedidoModel Pedido { get; set; }
-    }
-
     public class ItemPedidoModel
     {
         public int id { get; set; }
