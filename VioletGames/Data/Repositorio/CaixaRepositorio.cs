@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using VioletGames.Models;
 
@@ -9,16 +11,8 @@ namespace VioletGames.Data.Repositorio
 {
     public interface ICaixaRepositorio
     {
-        //metodos
-        ItemPedidoModel ListForIDItem(int id);
-
-        List<ItemPedidoModel> SearchAll(/*ItemPedidoModel item*/);
-
-        ItemPedidoModel AddItem(ItemPedidoModel item);
-
-        PedidoModel AddPedido(PedidoModel pedido);
-
-        bool Delete(int id);
+        public ItemPedidoModel AddItem(ItemPedidoModel item);
+        public void AddVenda(CaixaModel caixa);
     }
 
     public class CaixaRepositorio : ICaixaRepositorio
@@ -33,39 +27,46 @@ namespace VioletGames.Data.Repositorio
             _bancoContent = bancoContent;
         }
 
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ItemPedidoModel ListForIDItem(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<ItemPedidoModel> SearchAll(/*ItemPedidoModel item*/)
-        {
-            var itens = _bancoContent.ItemPedidos/*.Where(x => x.ClientCPF == item.ClientCPF).Where(x => x.DateOrder == item.DateOrder)*/.ToList();
-
-            return itens;
-        }
-
         public ItemPedidoModel AddItem(ItemPedidoModel item)
         {
-            item.DateOrder = DateTime.Now;
+            string fileName = "../VioletGames/Data/ItemPedido.json";
+            string jsonString = JsonSerializer.Serialize(item);
+            File.WriteAllText(fileName, jsonString);
 
-            _bancoContent.ItemPedidos.Add(item);
-            _bancoContent.SaveChanges();
+            AddValue(item);
 
             return item;
         }
 
-        public PedidoModel AddPedido(PedidoModel pedido)
+        private static void AddValue(ItemPedidoModel item)
         {
-            _bancoContent.Pedidos.Add(pedido);
-            _bancoContent.SaveChanges();
+            CaixaModel caixa = new CaixaModel();
+            string jsonValores = File.ReadAllText("../VioletGames/Data/Caixa.json");
+            CaixaModel valores = JsonSerializer.Deserialize<CaixaModel>(jsonValores)!;
 
-            return pedido;
+            //Sub-Total
+            caixa.ValueSubTotal = item.PriceTotal + valores.ValueSubTotal;
+
+            string jsonString = JsonSerializer.Serialize(caixa);
+            File.WriteAllText("../VioletGames/Data/Caixa.json", jsonString);
+        }
+
+        public void AddVenda(CaixaModel caixa)
+        {
+            string jsonValores = File.ReadAllText("../VioletGames/Data/Caixa.json");
+            CaixaModel valores = JsonSerializer.Deserialize<CaixaModel>(jsonValores)!;
+
+            //Desconto
+            double desconto = (caixa.Desconto / 100) * caixa.ValueSubTotal;
+
+            //Total Compra
+            caixa.ValueTotal = caixa.ValueSubTotal - desconto;
+
+            //Troco
+            caixa.ValueChange = caixa.ValueReceived - caixa.ValueTotal;
+
+            string jsonString = JsonSerializer.Serialize(caixa);
+            File.WriteAllText("../VioletGames/Data/Caixa.json", jsonString);
         }
     }
 }

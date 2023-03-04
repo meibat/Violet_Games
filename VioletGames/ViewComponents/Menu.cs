@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using VioletGames.Models;
 
@@ -24,7 +26,9 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            List<ItemPedidoModel> itens = new List<ItemPedidoModel>();
+
+            return View(itens);
         }
     }
 
@@ -40,7 +44,10 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            string jsonString = File.ReadAllText("../VioletGames/Data/Caixa.json");
+            CaixaModel valores = System.Text.Json.JsonSerializer.Deserialize<CaixaModel>(jsonString)!;
+
+            return View(valores);
         }
     }
 }

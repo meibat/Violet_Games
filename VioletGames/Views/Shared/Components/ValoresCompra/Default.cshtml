@@ -1,16 +1,16 @@
-﻿<div class="div-box">
+﻿@model CaixaModel
+
+<div class="div-box">
     <div class="div-itens">
-        <h2> TOTAL </h2>
-        <input /><br /><br />
         <h2> SUB TOTAL </h2>
-        <input /><br /><br />
+        <input asp-for="ValueSubTotal"/><br /><br />
         <h2> DESCONTO </h2>
-        <input /><br /><br />
+        <input asp-for="Desconto"/><br /><br />
         <h2 style="background-color: lightgreen;"> TOTAL DA COMPRA </h2>
-        <input /><br /><br />
+        <input asp-for="ValueTotal"/><br /><br />
         <h2> VALOR RECEBIDO </h2>
-        <input /><br /><br />
+        <input asp-for="ValueReceived"/><br /><br />
         <h2 style="background-color: red;"> TROCO </h2>
-        <input />
+        <input asp-for="ValueChange"/>
     </div>
 </div>

@@ -17,12 +17,12 @@
                 {
                     @foreach (var pedido in Model)
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => pedido.id)</td>
-                            <td>@Html.DisplayFor(modelItem => pedido.NameProduct)</td>
-                            <td>@Html.DisplayFor(modelItem => pedido.QtdAvailable)</td>
-                            <td>@Html.DisplayFor(modelItem => pedido.PriceTotal)</td>
-                        </tr>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => pedido.id)</td>
+                    <td>@Html.DisplayFor(modelItem => pedido.NameProduct)</td>
+                    <td>@Html.DisplayFor(modelItem => pedido.QtdAvailable)</td>
+                    <td>@Html.DisplayFor(modelItem => pedido.PriceTotal)</td>
+                </tr>
                     }
                 }
             </tbody>

@@ -4,19 +4,21 @@
     <div class="div-itens">
         <form asp-controller="Caixa" asp-action="AddItem" method="post">
             <h1> CÓDIGO DE BARRAS </h1>
-            <input class="form-control" style="height: 50px" /><br />
+            <input class="form-control" style="height: 50px" />
             <label> Descrição/Produto </label>
-            <input type="text" asp-for="NameProduct" class="form-control" /><br />
+            <input type="text" asp-for="NameProduct" class="form-control" />
             <label> Cliente </label>
-            <input type="text" asp-for="ClientCPF" class="form-control" /><br />
+            <input type="text" asp-for="ClientCPF" class="form-control" />
             <div class="div-cod-itens">
                 @* ativar quando usar a API de catalogo.*@
                 <div class="div-itens">
                     <br />
-                    <label> Quantidade </label>
-                    <input type="text" asp-for="QtdAvailable" /><br />
+                    <label> Preço Total </label>
+                    <input asp-for="PriceTotal" /><br />
                     <label> Preço Unitário </label>
                     <input type="text" asp-for="PriceUnity" /><br />
+                    <label> Quantidade </label>
+                    <input type="text" asp-for="QtdAvailable" /><br />
                     <label> Estoque </label>
                     <input />
                 </div>
@@ -25,7 +27,10 @@
                 @*ativar quando usar a API de catalogo.*@
                 <img src="~/lib/img/icon.png" />
             </div>
-            <button type="submit" class="btn btn-primary" style="margin-top: -120%;">Adicionar</button>
+            <div class="btn-group" role="group" style="margin-left: 25%">
+                <button type="submit" class="btn btn-primary" style="margin-top: -130%; width:100px; height:50px; ">Adicionar</button>
+                <button type="submit" class="btn btn-primary" style="margin-top: -130%; width: 100px; height: 50px; ">Pesquisar</button>
+            </div>
         </form>
     </div>
 </div>

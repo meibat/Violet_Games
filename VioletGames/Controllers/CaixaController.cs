@@ -15,51 +15,41 @@ namespace VioletGames.Controllers
     [PageUserLogin]
     public class CaixaController : Controller
     {
-        private readonly IAgendamentoRepositorio _agendamentoRepositorio;
-        private readonly IJogoRepositorio _jogoRepositorio;
-        private readonly IConsoleRepositorio _consoleRepositorio;
-        private readonly ISessionUser _session;
-        private readonly IClienteRepositorio _clienteRepositorio;
         private readonly ICaixaRepositorio _caixaRepositorio;
 
-        public CaixaController(IAgendamentoRepositorio agendamentoRepositorio, IJogoRepositorio jogoRepositorio,
-                                        IConsoleRepositorio consoleRepositorio, ISessionUser sessionUser,
-                                        IClienteRepositorio clienteRepositorio, ICaixaRepositorio caixaRepositorio)
+        public CaixaController(ICaixaRepositorio caixaRepositorio)
         {
-            _agendamentoRepositorio = agendamentoRepositorio;
             _caixaRepositorio = caixaRepositorio;
-            _jogoRepositorio = jogoRepositorio;
-            _consoleRepositorio = consoleRepositorio;
-            _clienteRepositorio = clienteRepositorio;
-            _session = sessionUser;
         }
 
         public IActionResult Index()
         {
             ViewData["Title"] = "Caixa";
-            List<ItemPedidoModel> itens = _caixaRepositorio.SearchAll();
-            
-            return View(itens);
+
+            return View();
         }
 
         [HttpPost]
-        public IActionResult AddItem(ItemPedidoModel item)
+        public IActionResult AddItem(ItemPedidoModel Item) {
+            _caixaRepositorio.AddItem(Item);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult TotalVenda(CaixaModel caixa)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _caixaRepositorio.AddItem(item);
-                    TempData["MessagemSucess"] = "Console cadastrado com sucesso!";
-                    return RedirectToAction("Index", item);
-                }
-                return View("Index");
-            }
-            catch (System.Exception erro)
-            {
-                TempData["MessagemError"] = $"Não foi possível efetuar o cadastrado! Tente novamente, detalhe do erro: {erro.Message}";
-                return RedirectToAction("Index");
-            }
+            _caixaRepositorio.AddVenda(caixa);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult GerarVenda(CaixaModel caixa)
+        {
+            //_caixaRepositorio.AddItem(caixa);
+
+            return RedirectToAction("Index");
         }
     }
 }
