@@ -30,25 +30,31 @@ namespace VioletGames.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddItem(ItemPedidoModel Item) {
+        public IActionResult AddItemPedido(ItemPedidoModel Item) {
+            
             _caixaRepositorio.AddItem(Item);
-
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult TotalVenda(CaixaModel caixa)
         {
-            _caixaRepositorio.AddVenda(caixa);
+            if(caixa.ValueReceived > 0) _caixaRepositorio.AddVenda(caixa);
 
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public IActionResult GerarVenda(CaixaModel caixa)
+        public IActionResult GerarVenda()
         {
-            //_caixaRepositorio.AddItem(caixa);
+            
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Cancelar()
+        {
             return RedirectToAction("Index");
         }
     }

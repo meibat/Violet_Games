@@ -2,15 +2,22 @@
 
 <div class="div-box">
     <div class="div-itens">
-        <h2> SUB TOTAL </h2>
-        <input asp-for="ValueSubTotal"/><br /><br />
-        <h2> DESCONTO </h2>
-        <input asp-for="Desconto"/><br /><br />
-        <h2 style="background-color: lightgreen;"> TOTAL DA COMPRA </h2>
-        <input asp-for="ValueTotal"/><br /><br />
-        <h2> VALOR RECEBIDO </h2>
-        <input asp-for="ValueReceived"/><br /><br />
-        <h2 style="background-color: red;"> TROCO </h2>
-        <input asp-for="ValueChange"/>
+        <form asp-controller="Caixa" asp-action="TotalVenda" method="post">
+            <h2> SUB TOTAL </h2>
+            <input asp-for="ValueSubTotal" /><br /><br />
+            <h2> DESCONTO </h2>
+            <input asp-for="Desconto" /><br /><br />
+            <h2 style="background-color: lightgreen;"> TOTAL DA COMPRA </h2>
+            <input asp-for="ValueTotal" /><br /><br />
+            <h2> VALOR RECEBIDO </h2>
+            <input asp-for="ValueReceived" /><br /><br />
+            <h2 style="background-color: red;"> TROCO </h2>
+            <input asp-for="ValueChange" /><br /><br />
+            <button type="submit" class="btn btn-warning" style="width:100px; height:50px; ">Total</button>
+            <div class="btn-group" role="group" style="margin-left: 7%;">
+                <button asp-controller="Caixa" asp-action="GerarVenda" method="post" class="btn btn-primary" style="width: 100px; height: 50px; ">Finalizar</button>
+                <button asp-controller="Caixa" asp-action="Cancelar" method="post" class="btn btn-danger" style="width: 100px; height: 50px; ">Cancelar</button>
+            </div>
+        </form> 
     </div>
 </div>

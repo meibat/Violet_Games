@@ -832,5 +832,4 @@ C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\Razor\Views\Shared\Components\ValoresCompra\Default.cshtml.g.cs
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\Data\Caixa.json
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\Data\ItemPedido.json
-C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\bin\Debug\net5.0\VioletGames.StaticWebAssets.xml
 C:\Users\melis\OneDrive\Área de Trabalho\Violet_Games\VioletGames\obj\Debug\net5.0\refint\VioletGames.dll

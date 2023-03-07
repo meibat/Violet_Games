@@ -153,7 +153,7 @@ namespace VioletGames.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NameProduct = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     produtoId = table.Column<int>(type: "int", nullable: true),
-                    ClientCPFId = table.Column<int>(type: "int", nullable: true),
+                    ClientCPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
                     QtdAvailable = table.Column<int>(type: "int", nullable: false),
                     PriceUnity = table.Column<float>(type: "real", nullable: false),
@@ -163,12 +163,6 @@ namespace VioletGames.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ItemPedidos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_ItemPedidos_Clientes_ClientCPFId",
-                        column: x => x.ClientCPFId,
-                        principalTable: "Clientes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ItemPedidos_Produtos_produtoId",
                         column: x => x.produtoId,
@@ -184,20 +178,14 @@ namespace VioletGames.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LoginUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClientCPFId = table.Column<int>(type: "int", nullable: true),
                     Pedidoid = table.Column<int>(type: "int", nullable: true),
-                    ValueTotal = table.Column<float>(type: "real", nullable: false),
-                    DateSale = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ValueTotal = table.Column<double>(type: "float", nullable: false),
+                    DateSale = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ClientCPF = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pedidos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Pedidos_Clientes_ClientCPFId",
-                        column: x => x.ClientCPFId,
-                        principalTable: "Clientes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Pedidos_ItemPedidos_Pedidoid",
                         column: x => x.Pedidoid,
@@ -207,19 +195,9 @@ namespace VioletGames.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemPedidos_ClientCPFId",
-                table: "ItemPedidos",
-                column: "ClientCPFId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ItemPedidos_produtoId",
                 table: "ItemPedidos",
                 column: "produtoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_ClientCPFId",
-                table: "Pedidos",
-                column: "ClientCPFId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pedidos_Pedidoid",
@@ -231,6 +209,9 @@ namespace VioletGames.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Agendamentos");
+
+            migrationBuilder.DropTable(
+                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Consoles");
@@ -249,9 +230,6 @@ namespace VioletGames.Migrations
 
             migrationBuilder.DropTable(
                 name: "ItemPedidos");
-
-            migrationBuilder.DropTable(
-                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Produtos");

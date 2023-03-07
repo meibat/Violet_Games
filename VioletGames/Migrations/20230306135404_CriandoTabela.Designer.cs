@@ -10,7 +10,7 @@ using VioletGames.Data;
 namespace VioletGames.Migrations
 {
     [DbContext(typeof(BancoContent))]
-    [Migration("20230227223009_CriandoTabela")]
+    [Migration("20230306135404_CriandoTabela")]
     partial class CriandoTabela
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,8 +207,8 @@ namespace VioletGames.Migrations
                     b.Property<int>("CategoryProduct")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClientCPFId")
-                        .HasColumnType("int");
+                    b.Property<string>("ClientCPF")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOrder")
                         .HasColumnType("datetime2");
@@ -230,8 +230,6 @@ namespace VioletGames.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("id");
-
-                    b.HasIndex("ClientCPFId");
 
                     b.HasIndex("produtoId");
 
@@ -270,8 +268,8 @@ namespace VioletGames.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ClientCPFId")
-                        .HasColumnType("int");
+                    b.Property<string>("ClientCPF")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateSale")
                         .HasColumnType("datetime2");
@@ -282,12 +280,10 @@ namespace VioletGames.Migrations
                     b.Property<int?>("Pedidoid")
                         .HasColumnType("int");
 
-                    b.Property<float>("ValueTotal")
-                        .HasColumnType("real");
+                    b.Property<double>("ValueTotal")
+                        .HasColumnType("float");
 
                     b.HasKey("id");
-
-                    b.HasIndex("ClientCPFId");
 
                     b.HasIndex("Pedidoid");
 
@@ -358,30 +354,18 @@ namespace VioletGames.Migrations
 
             modelBuilder.Entity("VioletGames.Models.ItemPedidoModel", b =>
                 {
-                    b.HasOne("VioletGames.Models.ClienteModel", "ClientCPF")
-                        .WithMany()
-                        .HasForeignKey("ClientCPFId");
-
                     b.HasOne("VioletGames.Models.ProdutoModel", "produto")
                         .WithMany()
                         .HasForeignKey("produtoId");
-
-                    b.Navigation("ClientCPF");
 
                     b.Navigation("produto");
                 });
 
             modelBuilder.Entity("VioletGames.Models.PedidoModel", b =>
                 {
-                    b.HasOne("VioletGames.Models.ClienteModel", "ClientCPF")
-                        .WithMany()
-                        .HasForeignKey("ClientCPFId");
-
                     b.HasOne("VioletGames.Models.ItemPedidoModel", "Pedido")
                         .WithMany()
                         .HasForeignKey("Pedidoid");
-
-                    b.Navigation("ClientCPF");
 
                     b.Navigation("Pedido");
                 });
