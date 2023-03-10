@@ -1,36 +1,81 @@
 ﻿@model ItemPedidoModel
 
-<div class="div-cod">
-    <div class="div-itens">
-        <form asp-controller="Caixa" asp-action="AddItemPedido" method="post">
-            <h1> CÓDIGO DE BARRAS </h1>
-            <input class="form-control" style="height: 50px" />
-            <label> Descrição/Produto </label>
-            <input type="text" asp-for="NameProduct" class="form-control" />
-            <label> Cliente </label>
-            <input type="text" asp-for="ClientCPF" class="form-control" />
-            <div class="div-cod-itens">
-                @* ativar quando usar a API de catalogo.*@
-                <div class="div-itens">
-                    <br />
-                    <label> Preço Total </label>
-                    <input asp-for="PriceTotal" /><br />
-                    <label> Preço Unitário </label>
-                    <input type="text" asp-for="PriceUnity" /><br />
-                    <label> Quantidade </label>
-                    <input type="text" asp-for="QtdAvailable" /><br />
-                    <label> Estoque </label>
-                    <input />
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd">
+    Adicionar
+</button>
+<div class="collapse" id="collapseAdd">
+    <div class="div-cod">
+        <div class="div-itens">
+            <form asp-controller="Caixa" asp-action="AddItemPedido" method="post">
+                <h1> CÓDIGO DE BARRAS </h1>
+                <input class="form-control" style="height: 50px" />
+                <label> Descrição/Produto </label>
+                <input type="text" asp-for="NameProduct" class="form-control" />
+                <label> Cliente </label>
+                <input type="text" asp-for="ClientCPF" class="form-control" />
+                <div class="div-cod-itens">
+                    @* ativar quando usar a API de catalogo.*@
+                    <div class="div-itens">
+                        <br />
+                        <label> Preço Total </label>
+                        <input asp-for="PriceTotal" /><br />
+                        <label> Preço Unitário </label>
+                        <input type="text" asp-for="PriceUnity" /><br />
+                        <label> Quantidade </label>
+                        <input type="text" asp-for="QtdAvailable" /><br />
+                        <label> Estoque </label>
+                        <input />
+                    </div>
                 </div>
-            </div>
-            <div class="div-cod-itens">
-                @*ativar quando usar a API de catalogo.*@
-                <img src="~/lib/img/icon.png" />
-            </div>
-            <div class="btn-group" role="group" style="margin-left: 25%">
-                <button type="submit" class="btn btn-primary" style="margin-top: -130%; width:100px; height:50px; ">Adicionar</button>
-                <button  class="btn btn-primary" style="margin-top: -130%; width: 100px; height: 50px; ">Pesquisar</button>
-            </div>
-        </form>
+                <div class="div-cod-itens">
+                    @*ativar quando usar a API de catalogo.*@
+                    <img src="~/lib/img/icon.png" />
+                </div>
+                <div class="btn-group" role="group" style="margin-left: 25%">
+                    <button type="submit" class="btn btn-primary" style="margin-top: -130%; width:100px; height:50px; ">Adicionar</button>
+                    <button  class="btn btn-primary" style="margin-top: -130%; width: 100px; height: 50px; ">Pesquisar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRemove" aria-expanded="false" aria-controls="collapseRemove">
+    Remover
+  </button>
+<div class="collapse" id="collapseRemove">
+    <div class="div-cod">
+        <div class="div-itens">
+            <form asp-controller="Caixa" asp-action="AddItemPedido" method="post">
+                <h1> CÓDIGO DE BARRAS </h1>
+                <input class="form-control" style="height: 50px" />
+                <label> Descrição/Produto </label>
+                <input type="text" asp-for="NameProduct" class="form-control" />
+                <label> Cliente </label>
+                <input type="text" asp-for="ClientCPF" class="form-control" />
+                <div class="div-cod-itens">
+                    @* ativar quando usar a API de catalogo.*@
+                    <div class="div-itens">
+                        <br />
+                        <label> Preço Total </label>
+                        <input asp-for="PriceTotal" /><br />
+                        <label> Preço Unitário </label>
+                        <input type="text" asp-for="PriceUnity" /><br />
+                        <label> Quantidade </label>
+                        <input type="text" asp-for="QtdAvailable" /><br />
+                        <label> Estoque </label>
+                        <input />
+                    </div>
+                </div>
+                <div class="div-cod-itens">
+                    @*ativar quando usar a API de catalogo.*@
+                    <img src="~/lib/img/icon.png" />
+                </div>
+                <div class="btn-group" role="group" style="margin-left: 25%">
+                    <button type="submit" class="btn btn-primary" style="margin-top: -130%; width:100px; height:50px; ">Adicionar</button>
+                    <button  class="btn btn-primary" style="margin-top: -130%; width: 100px; height: 50px; ">Pesquisar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
