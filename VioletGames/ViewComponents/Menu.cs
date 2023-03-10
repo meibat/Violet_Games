@@ -36,6 +36,9 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            //string jsonString = File.ReadAllText("../VioletGames/Data/ItemPedido.json");
+            //ItemPedidoModel Item = System.Text.Json.JsonSerializer.Deserialize<ItemPedidoModel>(jsonString)!;
+
             return View();
         }
     }

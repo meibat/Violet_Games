@@ -11,8 +11,10 @@ namespace VioletGames.Data.Repositorio
 {
     public interface ICaixaRepositorio
     {
+        //Criar metodo de remocao
+        public ItemPedidoModel SearchProduct(ItemPedidoModel item);
         public ItemPedidoModel AddItem(ItemPedidoModel item);
-        public void AddVenda(CaixaModel caixa);
+        public void AddVenda(CaixaModel caixa); //Privado
         public Boolean GerarVenda(string LoginUser, string ClientCPF);
     }
 
@@ -28,11 +30,23 @@ namespace VioletGames.Data.Repositorio
             _bancoContent = bancoContent;
         }
 
+        //Void
+        public ItemPedidoModel SearchProduct(ItemPedidoModel item)
+        {
+            //Criar pesquisa  do produto com msg de erro caso encontre
+            //Caso encontre verificar se há disponivel no estoque.
+            //jogar as ifos do produto no arquivo itemPedido.json
+            return item;
+        }
+
+        //Void
         public ItemPedidoModel AddItem(ItemPedidoModel item)
         {
-            string jsonItemPedido = File.ReadAllText("../VioletGames/Data/ItemPedido.json");
-            Console.WriteLine(jsonItemPedido);
-            List<ItemPedidoModel> itensPedido = (List<ItemPedidoModel>)JsonConvert.DeserializeObject(jsonItemPedido);
+            //usar o metodo de procura do item para verificar o estoque
+
+            string jsonItensPedido = File.ReadAllText("../VioletGames/Data/ItensPedido.json");
+            Console.WriteLine(jsonItensPedido);
+            List<ItemPedidoModel> itensPedido = (List<ItemPedidoModel>)JsonConvert.DeserializeObject(jsonItensPedido);
 
             Console.WriteLine(itensPedido);
 
@@ -40,7 +54,7 @@ namespace VioletGames.Data.Repositorio
 
             //Criar lista pra puxar lista e add novo item
             string jsonString = JsonConvert.SerializeObject(itensPedido);
-            File.WriteAllText("../VioletGames/Data/ItemPedido.json", jsonString);
+            File.WriteAllText("../VioletGames/Data/ItensPedido.json", jsonString);
 
             AddValue(item);
 
@@ -81,6 +95,8 @@ namespace VioletGames.Data.Repositorio
         {
             try
             {
+                //Salvar compra primeiro depois add os itens no banco, depois diminuir numeros de estoque
+
                 string jsonValores = File.ReadAllText("../VioletGames/Data/Caixa.json");
                 CaixaModel caixa = JsonConvert.DeserializeObject<CaixaModel>(jsonValores)!;
 
