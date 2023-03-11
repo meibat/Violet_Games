@@ -35,7 +35,7 @@ namespace VioletGames.Data.Repositorio
         {
             //Criar pesquisa  do produto com msg de erro caso encontre
             //Caso encontre verificar se há disponivel no estoque.
-            //jogar as ifos do produto no arquivo itemPedido.json
+            //jogar as infos do produto no arquivo itemPedido.json
             return item;
         }
 
