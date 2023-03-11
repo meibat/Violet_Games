@@ -52,7 +52,7 @@ namespace VioletGames.Data.Repositorio
 
             itensPedido.Add(item);
 
-            //Criar lista pra puxar lista e add novo item
+            //Criar lista para puxar lista e add novo item
             string jsonString = JsonConvert.SerializeObject(itensPedido);
             File.WriteAllText("../VioletGames/Data/ItensPedido.json", jsonString);
 
