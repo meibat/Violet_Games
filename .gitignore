@@ -6,7 +6,7 @@
 **/*.user
 **/*.sln.docstates
 
-# Build results
-VioletGames/Debug
-VioletGames/bin
-VioletGames/obj
+### DotnetCore ###
+# .NET Core build folders
+VioletGames/bin/
+VioletGames/obj/
