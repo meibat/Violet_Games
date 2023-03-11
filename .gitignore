@@ -7,8 +7,8 @@
 **/*.sln.docstates
 
 # Build results
-**/Debug/
-**/release/
-**/x64/
-**/bin/
-**/obj/
+**/Debug
+**/release
+**/x64
+**/bin
+**/obj
