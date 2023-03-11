@@ -7,8 +7,6 @@
 **/*.sln.docstates
 
 # Build results
-**/Debug
-**/release
-**/x64
-**/bin
-**/obj
+VioletGames/Debug
+VioletGames/bin
+VioletGames/obj
