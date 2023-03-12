@@ -11,6 +11,8 @@ namespace VioletGames.Data.Repositorio
         //metodos
         ProdutoModel ListForID(int id);
 
+        ProdutoModel ListForName(string name);
+
         List<ProdutoModel> SearchAll();
 
         ProdutoModel Create(ProdutoModel produto);
@@ -54,6 +56,11 @@ namespace VioletGames.Data.Repositorio
         public ProdutoModel ListForID(int id)
         {
             return _bancoContent.Produtos.FirstOrDefault(x => x.Id == id);
+        }
+
+        public ProdutoModel ListForName(string name)
+        {
+            return _bancoContent.Produtos.FirstOrDefault(x => x.Name == name);
         }
 
         public List<ProdutoModel> SearchAll()

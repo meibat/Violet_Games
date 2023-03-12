@@ -12,11 +12,11 @@ namespace VioletGames.Models
         public int id { get; set; }
         [Required(ErrorMessage = "Nome!")]
         public string NameProduct { get; set; }
-        public ProdutoModel produto { get; set; }
         public string ClientCPF { get; set; }
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime DateOrder { get; set; }
         [Required(ErrorMessage = "Quantidade!")]
+        public int QtdOrder { get; set; }
         public int QtdAvailable { get; set; }
         public float PriceUnity { get; set; }
         public float PriceTotal {get; set;}
