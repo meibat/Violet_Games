@@ -6,7 +6,6 @@
         <table class="table table-content" id="table-caixa">
             <thead>
                 <tr>
-                    <th scope="col">Nº Venda</th>
                     <th scope="col">Produto</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">Total</th>
@@ -18,7 +17,6 @@
                     @foreach (var pedido in Model)
                     {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => pedido.id)</td>
                     <td>@Html.DisplayFor(modelItem => pedido.NameProduct)</td>
                     <td>@Html.DisplayFor(modelItem => pedido.QtdOrder)</td>
                     <td>@Html.DisplayFor(modelItem => pedido.PriceTotal)</td>

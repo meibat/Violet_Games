@@ -37,10 +37,12 @@ namespace VioletGames.Models
     {
         public int id { get; set; }
         public string LoginUser { get; set; }
-        public ItemPedidoModel Pedido { get; set; }
         public double ValueTotal { get; set; } //Valor total compra
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime DateSale { get; set; }
         public string ClientCPF { get; set; }
+        public double Desconto { get; set; } //Desconto
+        public double ValueReceived { get; set; } //valor recebido
+        public double ValueChange { get; set; } //troco
     }
 }

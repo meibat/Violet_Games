@@ -10,6 +10,7 @@ using VioletGames.Data.Filters;
 using VioletGames.Data.Helper;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
+using VioletGames.Util.JsonUtil;
 
 namespace VioletGames.Controllers
 {
@@ -17,10 +18,12 @@ namespace VioletGames.Controllers
     public class CaixaController : Controller
     {
         private readonly ICaixaRepositorio _caixaRepositorio;
+        private readonly ISessionUser _session;
 
-        public CaixaController(ICaixaRepositorio caixaRepositorio)
+        public CaixaController(ICaixaRepositorio caixaRepositorio, ISessionUser sessionUser)
         {
             _caixaRepositorio = caixaRepositorio;
+            _session = sessionUser;
         }
 
         public IActionResult Index()
@@ -34,12 +37,6 @@ namespace VioletGames.Controllers
         public IActionResult Pesquisar(ItemPedidoModel item)
         {
             if (item.NameProduct != null) _caixaRepositorio.SearchProduct(item);
-            item.QtdOrder = 0;
-            item.PriceTotal = 0;
-            //string jsonItem = JsonConvert.SerializeObject(item);
-            
-            //Criar metodo de serialização, deserializacao dos json para cada e usar aqui
-            //File.WriteAllText("../VioletGames/Data/ItemPedido.json", jsonItem);
 
             return RedirectToAction("Index");
         }
@@ -62,14 +59,33 @@ namespace VioletGames.Controllers
         [HttpPost]
         public IActionResult GerarVenda()
         {
-            
+            try
+            {
+                UsuarioModel usuarioLogin = _session.SeachSessionUser();
+                ItemPedidoModel item = JsonUtil.jsonItemDeserialize();
 
-            return RedirectToAction("Index");
+                Boolean VendaGerada = _caixaRepositorio.GerarVenda(usuarioLogin.Login, item.ClientCPF);
+                
+                if (VendaGerada) { 
+                    TempData["MessagemSucess"] = "Venda Salva!";
+                    return RedirectToAction("Index");
+                }
+
+                TempData["MessagemError"] = $"Venda não foi salva";
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MessagemError"] = $"Tente novamente, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Cancelar()
         {
+            _caixaRepositorio.LimparVenda();
+
             return RedirectToAction("Index");
         }
     }

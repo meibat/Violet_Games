@@ -95,6 +95,26 @@ namespace VioletGames.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ItemPedido",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameProduct = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClientCPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    QtdOrder = table.Column<int>(type: "int", nullable: false),
+                    QtdAvailable = table.Column<int>(type: "int", nullable: false),
+                    PriceUnity = table.Column<float>(type: "real", nullable: false),
+                    PriceTotal = table.Column<float>(type: "real", nullable: false),
+                    CategoryProduct = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemPedido", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Jogos",
                 columns: table => new
                 {
@@ -108,6 +128,25 @@ namespace VioletGames.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Jogos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pedidos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LoginUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ValueTotal = table.Column<double>(type: "float", nullable: false),
+                    DateSale = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ClientCPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Desconto = table.Column<double>(type: "float", nullable: false),
+                    ValueReceived = table.Column<double>(type: "float", nullable: false),
+                    ValueChange = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pedidos", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,65 +183,6 @@ namespace VioletGames.Migrations
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "ItemPedidos",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NameProduct = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    produtoId = table.Column<int>(type: "int", nullable: true),
-                    ClientCPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOrder = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    QtdAvailable = table.Column<int>(type: "int", nullable: false),
-                    PriceUnity = table.Column<float>(type: "real", nullable: false),
-                    PriceTotal = table.Column<float>(type: "real", nullable: false),
-                    CategoryProduct = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ItemPedidos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_ItemPedidos_Produtos_produtoId",
-                        column: x => x.produtoId,
-                        principalTable: "Produtos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pedidos",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LoginUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Pedidoid = table.Column<int>(type: "int", nullable: true),
-                    ValueTotal = table.Column<double>(type: "float", nullable: false),
-                    DateSale = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ClientCPF = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pedidos", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Pedidos_ItemPedidos_Pedidoid",
-                        column: x => x.Pedidoid,
-                        principalTable: "ItemPedidos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ItemPedidos_produtoId",
-                table: "ItemPedidos",
-                column: "produtoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pedidos_Pedidoid",
-                table: "Pedidos",
-                column: "Pedidoid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -220,19 +200,19 @@ namespace VioletGames.Migrations
                 name: "Funcionarios");
 
             migrationBuilder.DropTable(
+                name: "ItemPedido");
+
+            migrationBuilder.DropTable(
                 name: "Jogos");
 
             migrationBuilder.DropTable(
                 name: "Pedidos");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
-
-            migrationBuilder.DropTable(
-                name: "ItemPedidos");
-
-            migrationBuilder.DropTable(
                 name: "Produtos");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
         }
     }
 }

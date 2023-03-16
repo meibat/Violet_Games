@@ -224,14 +224,12 @@ namespace VioletGames.Migrations
                     b.Property<int>("QtdAvailable")
                         .HasColumnType("int");
 
-                    b.Property<int?>("produtoId")
+                    b.Property<int>("QtdOrder")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("produtoId");
-
-                    b.ToTable("ItemPedidos");
+                    b.ToTable("ItemPedido");
                 });
 
             modelBuilder.Entity("VioletGames.Models.JogoModel", b =>
@@ -272,18 +270,22 @@ namespace VioletGames.Migrations
                     b.Property<DateTime>("DateSale")
                         .HasColumnType("datetime2");
 
+                    b.Property<double>("Desconto")
+                        .HasColumnType("float");
+
                     b.Property<string>("LoginUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Pedidoid")
-                        .HasColumnType("int");
+                    b.Property<double>("ValueChange")
+                        .HasColumnType("float");
+
+                    b.Property<double>("ValueReceived")
+                        .HasColumnType("float");
 
                     b.Property<double>("ValueTotal")
                         .HasColumnType("float");
 
                     b.HasKey("id");
-
-                    b.HasIndex("Pedidoid");
 
                     b.ToTable("Pedidos");
                 });
@@ -348,24 +350,6 @@ namespace VioletGames.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("VioletGames.Models.ItemPedidoModel", b =>
-                {
-                    b.HasOne("VioletGames.Models.ProdutoModel", "produto")
-                        .WithMany()
-                        .HasForeignKey("produtoId");
-
-                    b.Navigation("produto");
-                });
-
-            modelBuilder.Entity("VioletGames.Models.PedidoModel", b =>
-                {
-                    b.HasOne("VioletGames.Models.ItemPedidoModel", "Pedido")
-                        .WithMany()
-                        .HasForeignKey("Pedidoid");
-
-                    b.Navigation("Pedido");
                 });
 #pragma warning restore 612, 618
         }
