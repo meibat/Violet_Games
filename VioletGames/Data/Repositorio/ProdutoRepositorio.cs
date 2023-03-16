@@ -72,7 +72,7 @@ namespace VioletGames.Data.Repositorio
         {
             ProdutoModel produtoDB = ListForID(produto.Id);
 
-            if (produtoDB == null) throw new System.Exception("Erro na atualização do Funcionario");
+            if (produtoDB == null) throw new System.Exception("Erro na atualização do Produto");
 
             produtoDB.Name = produto.Name;
             produtoDB.PriceUnity = produto.PriceUnity;

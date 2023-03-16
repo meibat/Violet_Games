@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using VioletGames.Models;
+using VioletGames.Util.JsonUtil;
 
 namespace VioletGames.ViewComponents
 {
@@ -27,9 +28,9 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //string jsonItensPedido = File.ReadAllText("../VioletGames/Data/ItensPedido.json");
-            //List<ItemPedidoModel> itensPedido = JsonConvert.DeserializeObject<List<ItemPedidoModel>>(jsonItensPedido);
-            List<ItemPedidoModel> itensPedido = JsonUtil.jsonItemDeserialize();
+            string jsonItensPedido = File.ReadAllText("../VioletGames/Data/ItensPedido.json");
+            List<ItemPedidoModel> itensPedido = JsonConvert.DeserializeObject<List<ItemPedidoModel>>(jsonItensPedido);
+            //List<ItemPedidoModel> itensPedido = JsonUtil.jsonItensDeserialize();
 
             return View(itensPedido);
         }

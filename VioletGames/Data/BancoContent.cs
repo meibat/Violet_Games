@@ -19,7 +19,7 @@ namespace VioletGames.Data
         public DbSet<ConsoleModel> Consoles { get; set; }
         public DbSet<JogoModel> Jogos { get; set; }
         public DbSet<AgendamentoModel> Agendamentos { get; set; }
-        public DbSet<ItemPedidoModel> ItemPedidos { get; set; }
+        public DbSet<ItemPedidoModel> ItemPedido { get; set; }
         public DbSet<PedidoModel> Pedidos { get; set; }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VioletGames.Models;
+using static VioletGames.Util.JsonUtil.JsonUtil;
 
 namespace VioletGames.Util.Clean
 {
@@ -15,21 +17,21 @@ namespace VioletGames.Util.Clean
         //Criar limpeza de json
         public static void jsonItemClean(){
             //tentar com um new itemPedido();
-            ItemPedidoModel itemPedido = JsonUtil.jsonItemDeserialize();
+            ItemPedidoModel itemPedido = new ItemPedidoModel();
 
-            JsonUtil.jsonItemSerialize(itemPedido);
+            JsonUtil.JsonUtil.jsonItemSerialize(itemPedido);
         }
 
         public static void jsonCaixaClean(){
-            CaixaModel caixa = JsonUtil.jsonCaixaDeserialize();
+            CaixaModel caixa = new CaixaModel();
 
-            JsonUtil.jsonCaixaSerialize(caixa);
+            JsonUtil.JsonUtil.jsonCaixaSerialize(caixa);
         }
 
         public static void jsonItensClean(){
-            List<Object> itensPedido = JsonUtil.jsonItensDeserialize();
+            List<ItemPedidoModel> itensPedido = new List<ItemPedidoModel>();
 
-            JsonUtil.jsonItensSerialize(itensPedido);
+            JsonUtil.JsonUtil.jsonItensSerialize(itensPedido);
         }
     }
 }

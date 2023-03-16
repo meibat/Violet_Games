@@ -3,10 +3,10 @@
     <div class="div-cod">
         <div class="div-itens">
             <form asp-controller="Caixa" asp-action="AddItemPedido" method="post">
-                <h1> CÓDIGO DE BARRAS </h1>
-                <input class="form-control" style="height: 50px" />
-                <label> Descrição/Produto </label>
+                <h1> Descrição/Produto </h1>
                 <input type="text" asp-for="NameProduct" class="form-control" />
+                <label> Categoria </label>
+                <input type="text" asp-for="CategoryProduct" class="form-control" />
                 <label> Cliente </label>
                 <input type="text" asp-for="ClientCPF" class="form-control" />
                 <div class="div-cod-itens">
