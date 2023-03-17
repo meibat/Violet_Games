@@ -16,7 +16,7 @@ namespace VioletGames.Data.Enums
     {
         Free = 1,
         Stand = 2,
-        Premiu = 3
+        Premium = 3
     }
 
     public enum CategoryConsole //Console

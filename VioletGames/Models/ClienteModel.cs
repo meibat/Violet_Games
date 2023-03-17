@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using VioletGames.Data.Enums;
 
 namespace VioletGames.Models
 {
@@ -32,5 +33,9 @@ namespace VioletGames.Models
         [EmailAddress(ErrorMessage = "E-mail Inválido!")]
         public string? Email { get; set; }
         #nullable disable
+
+        public Plan plan { get; set; }
+        public double planValue { get; set; }
+        public StatusPayment payment { get; set; }
     }
 }
