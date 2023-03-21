@@ -14,9 +14,9 @@ namespace VioletGames.Data.Enums
 
     public enum Plan //Cliente
     {
-        Free = 1,
-        Stand = 2,
-        Premium = 3
+        Free = 0,
+        Stand = 25,
+        Premium = 50
     }
 
     public enum CategoryConsole //Console

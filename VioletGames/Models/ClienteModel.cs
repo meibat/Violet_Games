@@ -35,7 +35,8 @@ namespace VioletGames.Models
         #nullable disable
 
         public Plan plan { get; set; }
-        public double planValue { get; set; }
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public DateTime PlanDay { get; set; }
         public StatusPayment payment { get; set; }
     }
 }

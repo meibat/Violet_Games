@@ -45,7 +45,10 @@ namespace VioletGames.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Number = table.Column<int>(type: "int", nullable: true),
                     CEP = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    plan = table.Column<int>(type: "int", nullable: false),
+                    PlanDay = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    payment = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

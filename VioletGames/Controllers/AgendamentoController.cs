@@ -210,6 +210,13 @@ namespace VioletGames.Controllers
             }
         }
 
+        public IActionResult PayScheduling(int id)
+        {
+            AgendamentoModel agendamento = _agendamentoRepositorio.ListForID(id);
+
+            return RedirectToAction("PayScheduling", "Caixa", agendamento);
+        }
+
         [HttpPost]
         public IActionResult Edit(AgendamentoModel agendamento)
         {

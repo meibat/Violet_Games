@@ -104,6 +104,9 @@ namespace VioletGames.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PlanDay")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
@@ -112,9 +115,6 @@ namespace VioletGames.Migrations
 
                     b.Property<int>("plan")
                         .HasColumnType("int");
-
-                    b.Property<double>("planValue")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

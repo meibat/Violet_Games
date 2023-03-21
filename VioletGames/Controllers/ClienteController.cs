@@ -74,6 +74,14 @@ namespace VioletGames.Controllers
             }
         }
 
+        public IActionResult PayPlan(int id)
+        {
+            ClienteModel cliente = _clienteRepositorio.ListForIDClient(id);
+
+            return RedirectToAction("PayPlan", "Caixa", cliente);
+        }
+
+
         //Métodos Post
         [HttpPost]
         public IActionResult Create(ClienteModel cliente)
@@ -92,6 +100,8 @@ namespace VioletGames.Controllers
                         return View(cliente);
                     }
 
+                    cliente.payment = Data.Enums.StatusPayment.Pendente;
+
                     _clienteRepositorio.Create(cliente);
                     TempData["MessagemSucess"] = "Cliente cadastrado com sucesso!";
                     return RedirectToAction("Index");
@@ -109,7 +119,8 @@ namespace VioletGames.Controllers
         [HttpPost]
         public IActionResult Edit(ClienteModel cliente)
         {
-            try{
+            try
+            {
                 if (ModelState.IsValid)
                 {
                     if (!Validator.IsCPF(cliente.CPF))

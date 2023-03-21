@@ -51,7 +51,7 @@ namespace VioletGames.Data.Repositorio
             {
                 //Calcula as horas de uso e o valor a pagar
                 var Hours = Agendamento.DateClose.Value.Subtract(Agendamento.DateEnter);
-                agenda.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalHours, 2);
+                agenda.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalDays, 2);
                 agenda.HourtoUse =  $"{Hours.Days} Dias {Hours.Hours}h {Hours.Minutes}min";
             }
 

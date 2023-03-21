@@ -1,4 +1,5 @@
 ﻿@model ClienteModel
+@using VioletGames.Data.Enums
 @{
     Layout = "_Layout";
 }
@@ -20,6 +21,16 @@
         <label for="Date" class="form-label">Data de Nasc.</label>
         <input type="date" asp-for="DateBirthday" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
         @Html.ValidationMessageFor(x => x.DateBirthday)
+    </div>
+    <div class="mb-3">
+        <label for="Plan" class="form-label">Plano</label>
+        <select asp-for="plan" class="form-control" style="width: 150px; display: inline;">
+            <option value="@Plan.Free">Gratuito</option>
+            <option value="@Plan.Stand">Padrão</option>
+            <option value="@Plan.Premium">Premium</option>
+        </select>
+        <label for="Date" class="form-label">Data de Venc.</label>
+        <input type="date" asp-for="PlanDay" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00">
     </div>
     <div class="mb-3">
         <label for="CPF" class="form-label">CPF</label>
