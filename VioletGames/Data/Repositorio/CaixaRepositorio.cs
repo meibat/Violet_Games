@@ -16,6 +16,7 @@ namespace VioletGames.Data.Repositorio
     {
         public ItemPedidoModel SearchProduct(ItemPedidoModel item);
         public void AddItem(ItemPedidoModel item);
+        public void RemoveItem(ItemPedidoModel item);
         public void AddVenda(CaixaModel caixa); 
         public Boolean GerarVenda(string LoginUser, string ClientCPF);
         public void LimparVenda();
@@ -155,6 +156,21 @@ namespace VioletGames.Data.Repositorio
                 return false;
             }
             catch { return false; }
+        }
+
+        public void RemoveItem(ItemPedidoModel item)
+        {
+            List<ItemPedidoModel> itensList = JsonUtil.jsonItensDeserialize(); //Lista de itens
+            List<ItemPedidoModel> itensPedido = new List<ItemPedidoModel>(); //Nova lista
+
+            foreach (ItemPedidoModel itemList in itensList)
+                {
+                    if(item.NameProduct == itemList.NameProduct){
+                        Console.write(item.NameProduct);
+                    }
+                     itensPedido.Add(itemList);
+                }
+            JsonUtil.jsonItensSerialize(itensPedido);
         }
 
         public void LimparVenda()
