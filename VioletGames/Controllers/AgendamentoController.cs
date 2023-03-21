@@ -140,6 +140,13 @@ namespace VioletGames.Controllers
             
         }
 
+        public IActionResult PayScheduling(int id)
+        {
+            AgendamentoModel agendamento = _agendamentoRepositorio.ListForID(id);
+
+            return RedirectToAction("PayScheduling", "Caixa", agendamento);
+        }
+
         //Métodos Post
         [HttpPost]
         public IActionResult CreateGame(AgendamentoModel agendamento)
@@ -208,13 +215,6 @@ namespace VioletGames.Controllers
                 TempData["MessagemError"] = $"Não foi possível efetuar o cadastrado! Tente novamente, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
-        }
-
-        public IActionResult PayScheduling(int id)
-        {
-            AgendamentoModel agendamento = _agendamentoRepositorio.ListForID(id);
-
-            return RedirectToAction("PayScheduling", "Caixa", agendamento);
         }
 
         [HttpPost]
