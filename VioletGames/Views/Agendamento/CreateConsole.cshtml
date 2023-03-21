@@ -10,15 +10,15 @@
 <form asp-controller="Agendamento" asp-action="CreateConsole" method="post" class="singin">
     <div class="mb-3">
         <label for="Name" class="form-label">Nome </label>
-        <input type="text" asp-for="NameGameOrConsole" class="form-control" style="width: 560px; display: inline;" placeholder="Nome">
+        <input type="text" asp-for="NameGameOrConsole" class="form-control" style="width: 560px; display: inline;" placeholder="Nome" disabled>
     </div>
     <div class="mb-3">
         <label for="LoginUser" class="form-label">Usuário </label>
-        <input type="text" asp-for="LoginUser" class="form-control" style="width: 560px; display: inline;" placeholder="Usuário">
+        <input type="text" asp-for="LoginUser" class="form-control" style="width: 560px; display: inline;" placeholder="Usuário" disabled>
     </div>
     <div class="mb-3">
         <label for="Category" class="form-label">Categoria </label>
-        <select asp-for="Category" class="form-control" style="width: 150px; display: inline;">
+        <select asp-for="Category" class="form-control" style="width: 150px; display: inline;" disabled>
             <option value="">Selecione</option>
             <option value="@CategoryProduct.Game">Jogo</option>
             <option value="@CategoryProduct.Console">Console</option>

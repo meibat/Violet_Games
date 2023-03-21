@@ -100,6 +100,12 @@ namespace VioletGames.Controllers
                         return View(cliente);
                     }
 
+                    if(!Validator.IsDateValid(agendamento.))
+                    {
+                        TempData["MessagemError"] = "Data informada Inválida!";
+                        return View(funcionario);
+                    }
+
                     cliente.payment = Data.Enums.StatusPayment.Pendente;
 
                     _clienteRepositorio.Create(cliente);
