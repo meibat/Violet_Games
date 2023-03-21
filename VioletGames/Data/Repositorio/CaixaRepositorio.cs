@@ -94,7 +94,7 @@ namespace VioletGames.Data.Repositorio
             else
             {
                 CaixaModel valoresnovos = new CaixaModel();
-                valoresnovos.ValueSubTotal = item.PriceTotal;
+                valoresnovos.ValueSubTotal = (float) item.PriceTotal.ToString($"{item.PriceTotal:F2}");
                 valoresnovos.ValueTotal = valoresnovos.ValueSubTotal;
                 JsonUtil.jsonCaixaSerialize(valoresnovos);
             }   
