@@ -100,7 +100,7 @@ namespace VioletGames.Controllers
                         return View(cliente);
                     }
 
-                    if(!Validator.IsDateValid(agendamento.))
+                    if(!Validator.IsDateValid(cliente.DateBirthday))
                     {
                         TempData["MessagemError"] = "Data informada Inválida!";
                         return View(funcionario);
