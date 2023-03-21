@@ -87,7 +87,7 @@ namespace VioletGames.Data.Repositorio
             if (valores != null)
             {
                 //Sub-Total e Total
-                valores.ValueSubTotal = item.PriceTotal + valores.ValueSubTotal;
+                valores.ValueSubTotal += item.PriceTotal.ToString($"{item.PriceTotal:F2}");
                 valores.ValueTotal = valores.ValueSubTotal;
                 JsonUtil.jsonCaixaSerialize(valores);
             }
