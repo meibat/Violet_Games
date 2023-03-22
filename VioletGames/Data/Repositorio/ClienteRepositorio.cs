@@ -51,6 +51,18 @@ namespace VioletGames.Data.Repositorio
         public ClienteModel Create(ClienteModel cliente)
         {
             _bancoContent.Clientes.Add(cliente);
+
+            if(cliente.plan != Enums.Plan.Free)
+            {
+                PlanoModel plano = new PlanoModel();
+                plano.CPF = cliente.CPF;
+                plano.plan = cliente.plan;
+                plano.payment = cliente.payment;
+                plano.PlanDay = cliente.PlanDay;
+
+                _bancoContent.Planos.Add(plano);
+            }
+            
             _bancoContent.SaveChanges();
 
             return cliente;
@@ -75,6 +87,23 @@ namespace VioletGames.Data.Repositorio
             ClienteDB.Email = cliente.Email;
             ClienteDB.Phone = cliente.Phone;
 
+
+            if (cliente.plan != Enums.Plan.Free && cliente.plan != ClienteDB.plan)
+            {
+                PlanoModel plano = new PlanoModel();
+
+                plano.CPF = ClienteDB.CPF;
+                plano.plan = ClienteDB.plan = cliente.plan; ;
+                plano.payment = ClienteDB.payment = Enums.StatusPayment.Pendente;
+                plano.PlanDay = ClienteDB.PlanDay = cliente.PlanDay;
+
+                _bancoContent.Planos.Add(plano);
+            }
+            else
+            {
+                ClienteDB.plan = cliente.plan; ;
+                ClienteDB.payment = Enums.StatusPayment.Pago;
+            }
 
             _bancoContent.Clientes.Update(ClienteDB);
             _bancoContent.SaveChanges();
