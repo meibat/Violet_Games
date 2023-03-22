@@ -36,11 +36,11 @@ namespace VioletGames.Controllers
 
         public IActionResult PayPlan(ClienteModel cliente)
         {
-            ItemPedidoModel item = JsonUtil.jsonItemDeserialize();
+            ItemPedidoModel item = new ItemPedidoModel();
 
             item.CategoryProduct = Data.Enums.CategoryProduct.Diversos;
             item.ClientCPF = cliente.CPF;
-            item.NameProduct = "Plano - " + cliente.plan.ToString();
+            item.NameProduct = $"Plano {cliente.Id} - {cliente.plan.ToString()}" ;
             item.QtdOrder = 1;
             item.QtdAvailable = 1;
             item.PriceUnity = (float)cliente.plan;
@@ -53,18 +53,17 @@ namespace VioletGames.Controllers
 
         public IActionResult PayScheduling(AgendamentoModel agendamento)
         {
-            ItemPedidoModel item = JsonUtil.jsonItemDeserialize();
+            ItemPedidoModel item = new ItemPedidoModel();
 
             item.CategoryProduct = agendamento.Category;
             item.ClientCPF = agendamento.CPFClient;
-            item.NameProduct = $"Locação - {agendamento.NameGameOrConsole} - {agendamento.HourtoUse}";
+            item.NameProduct = $"Locação {agendamento.Id} - {agendamento.NameGameOrConsole} - {agendamento.HourtoUse}";
             item.QtdOrder = 1;
             item.QtdAvailable = 1;
             item.PriceUnity = (float)agendamento.TotalValue;
             item.PriceTotal = (float)agendamento.TotalValue;
 
             JsonUtil.jsonItemSerialize(item);
-
             return RedirectToAction("Index");
         }
 
@@ -127,11 +126,20 @@ namespace VioletGames.Controllers
         }
 
         [HttpPost]
+        public IActionResult RemoverProduto(ItemPedidoModel item)
+        {
+            _caixaRepositorio.RemoveItem(item);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public IActionResult Cancelar()
         {
             _caixaRepositorio.LimparVenda();
 
             return RedirectToAction("Index");
         }
+
     }
 }

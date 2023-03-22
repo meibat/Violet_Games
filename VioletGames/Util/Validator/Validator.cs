@@ -56,7 +56,7 @@ namespace VioletGames.Util.Validator
 
         public static bool IsDateValid(DateTime dateValid)
         {
-            datatime dataValidator = DateTime.Now().AddYears(-18);
+            DateTime dataValidator = DateTime.Now.AddYears(-18);
 
             if(dateValid >= dataValidator)
             {

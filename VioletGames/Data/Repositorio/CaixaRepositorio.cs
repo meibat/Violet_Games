@@ -28,12 +28,17 @@ namespace VioletGames.Data.Repositorio
         //Extrai variavel bancoContext
         private readonly BancoContent _bancoContent;
         private readonly IProdutoRepositorio _produtoRepositorio;
+        private readonly IAgendamentoRepositorio _agendamentoRepositorio;
+        private readonly IClienteRepositorio _clienteRepositorio;
 
-        public CaixaRepositorio(BancoContent bancoContent, IProdutoRepositorio produtoRepositorio)
+        public CaixaRepositorio(BancoContent bancoContent, IProdutoRepositorio produtoRepositorio,
+                                IAgendamentoRepositorio agendamentoRepositorio, IClienteRepositorio clienteRepositorio)
         {
             //injecao de dependencia
             _bancoContent = bancoContent;
             _produtoRepositorio = produtoRepositorio;
+            _agendamentoRepositorio = agendamentoRepositorio;
+            _clienteRepositorio = clienteRepositorio;
         }
 
         public ItemPedidoModel SearchProduct(ItemPedidoModel item)
@@ -87,14 +92,18 @@ namespace VioletGames.Data.Repositorio
             if (valores != null)
             {
                 //Sub-Total e Total
-                valores.ValueSubTotal += item.PriceTotal.ToString($"{item.PriceTotal:F2}");
+                valores.ValueSubTotal += item.PriceTotal;
+                valores.ValueSubTotal = Math.Round(valores.ValueSubTotal, 2, MidpointRounding.ToZero);
+
                 valores.ValueTotal = valores.ValueSubTotal;
                 JsonUtil.jsonCaixaSerialize(valores);
             }
             else
             {
                 CaixaModel valoresnovos = new CaixaModel();
-                valoresnovos.ValueSubTotal = (float) item.PriceTotal.ToString($"{item.PriceTotal:F2}");
+                valoresnovos.ValueSubTotal = item.PriceTotal;
+                valoresnovos.ValueSubTotal = Math.Round(valoresnovos.ValueSubTotal, 2, MidpointRounding.AwayFromZero);
+
                 valoresnovos.ValueTotal = valoresnovos.ValueSubTotal;
                 JsonUtil.jsonCaixaSerialize(valoresnovos);
             }   
@@ -115,7 +124,11 @@ namespace VioletGames.Data.Repositorio
             valores.ValueReceived = caixa.ValueReceived;
 
             //Troco
-            if(caixa.ValueReceived > 0) valores.ValueChange = caixa.ValueReceived - caixa.ValueTotal;
+            if (caixa.ValueReceived > 0)
+            {
+                valores.ValueChange = caixa.ValueReceived - caixa.ValueTotal;
+                valores.ValueChange = Math.Round(valores.ValueChange, 2, MidpointRounding.ToZero);
+            }
 
             JsonUtil.jsonCaixaSerialize(valores);
         }
@@ -142,12 +155,32 @@ namespace VioletGames.Data.Repositorio
                     foreach (ItemPedidoModel item in itens)
                     {
                         ProdutoModel produto = _produtoRepositorio.ListForName(item.NameProduct);
-                        produto.QtdAvailable -= item.QtdOrder;
-                        item.DateOrder = DateTime.Now;
+                        if (produto != null)
+                        {
+                            produto.QtdAvailable -= item.QtdOrder;
+                            item.DateOrder = DateTime.Now;
 
-                        _bancoContent.ItemPedido.Add(item); //Add os itens do pedido
-                        _bancoContent.Produtos.Update(produto);//Atualiza a quantidade do produto
-                        _bancoContent.SaveChanges();
+                            _bancoContent.ItemPedido.Add(item); //Add os itens do pedido
+                            _bancoContent.Produtos.Update(produto);//Atualiza a quantidade do produto
+                            _bancoContent.SaveChanges();
+                        }
+                        if(item.NameProduct.Substring(0,7) == "Locação")
+                        {
+                            string[] palavras = item.NameProduct.Split(" ");
+
+                            int idAgendamento = Convert.ToInt32(palavras[1]);
+                            AgendamentoModel agendamento = _agendamentoRepositorio.ListForID(idAgendamento);
+
+                            agendamento.Payment = StatusPayment.Pago;
+
+                            _bancoContent.ItemPedido.Add(item); //Add os itens do pedido
+                            _bancoContent.Agendamentos.Update(agendamento);//Atualiza o status do agendamento
+                            _bancoContent.SaveChanges();
+                        }
+                        if (item.NameProduct.Substring(0, 5) == "Plano")
+                        {
+                            Console.WriteLine(item.NameProduct.Substring(0, 5));
+                        }
                     }
 
                     LimparVenda(); //Limpar json
@@ -166,7 +199,7 @@ namespace VioletGames.Data.Repositorio
             foreach (ItemPedidoModel itemList in itensList)
                 {
                     if(item.NameProduct == itemList.NameProduct){
-                        Console.write(item.NameProduct);
+                        Console.WriteLine(item.NameProduct);
                     }
                      itensPedido.Add(itemList);
                 }

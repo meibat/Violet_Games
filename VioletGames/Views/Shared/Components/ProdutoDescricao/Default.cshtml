@@ -30,7 +30,7 @@
                 <button asp-controller="Caixa" asp-action="Pesquisar" method="post" class="btn btn-warning" style="margin-top: -110%; width: 100px; height: 50px; margin-left:10%;">Pesquisar</button>
                 <div class="btn-group" role="group" style="margin-left:5%;">
                     <button type="submit" class="btn btn-primary" style="margin-top: -125%; width:100px; height:50px; ">Adicionar</button>
-                    <button class="btn btn-danger" style="margin-top: -125%; width: 100px; height: 50px; ">Remover</button>
+                    <button class="btn btn-danger" style="margin-top: -125%; width: 100px; height: 50px;" asp-controller="Caixa" asp-action="RemoverProduto" method="post">Remover</button>
                 </div>
             </form>
             </div>

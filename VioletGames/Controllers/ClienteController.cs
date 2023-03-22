@@ -103,7 +103,7 @@ namespace VioletGames.Controllers
                     if(!Validator.IsDateValid(cliente.DateBirthday))
                     {
                         TempData["MessagemError"] = "Data informada Inválida!";
-                        return View(funcionario);
+                        return View(cliente);
                     }
 
                     cliente.payment = Data.Enums.StatusPayment.Pendente;

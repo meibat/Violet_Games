@@ -21,6 +21,7 @@ namespace VioletGames.Data
         public DbSet<AgendamentoModel> Agendamentos { get; set; }
         public DbSet<ItemPedidoModel> ItemPedido { get; set; }
         public DbSet<PedidoModel> Pedidos { get; set; }
+        /*public DbSet<PlanoModel> Planos { get; set; }*/
     }
 }
 //Após criar a conexão(String+Service), as colunas, a config da tabela e a tabela:

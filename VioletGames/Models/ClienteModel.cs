@@ -38,5 +38,26 @@ namespace VioletGames.Models
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime PlanDay { get; set; }
         public StatusPayment payment { get; set; }
+        /*public PlanoModel Plano { get; set; }*/
     }
+
+    /*public class PlanoModel
+    {
+        //Colunas da tabela
+        public int Id { get; set; }
+        [Required(ErrorMessage = "Nome!")]
+        public string Name { get; set; }
+
+        public ClienteModel cliente { get; set; }
+
+        public Plan plan { get; set; }
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public DateTime PlanDay { get; set; }
+
+#nullable enable
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public DateTime? PaymentDate { get; set; }
+#nullable disable
+        public StatusPayment payment { get; set; }
+    }*/
 }
