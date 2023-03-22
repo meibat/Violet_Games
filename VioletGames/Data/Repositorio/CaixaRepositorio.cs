@@ -20,6 +20,7 @@ namespace VioletGames.Data.Repositorio
         public void AddVenda(CaixaModel caixa); 
         public Boolean GerarVenda(string LoginUser, string ClientCPF);
         public void LimparVenda();
+        public ItemPedidoModel SearchPlan(ClienteModel cliente);
     }
 
     public class CaixaRepositorio : ICaixaRepositorio
@@ -180,6 +181,18 @@ namespace VioletGames.Data.Repositorio
                         if (item.NameProduct.Substring(0, 5) == "Plano")
                         {
                             Console.WriteLine(item.NameProduct.Substring(0, 5));
+
+                            string[] palavras = item.NameProduct.Split(" ");
+
+                            int idPlano = Convert.ToInt32(palavras[1]);
+                            PlanoModel plano = _clienteRepositorio.ListPlanForID(idPlano);
+
+                            plano.payment = StatusPayment.Pago;
+                            plano.PaymentDate = DateTime.Now;
+
+                            _bancoContent.ItemPedido.Add(item); //Add os itens do pedido
+                            _bancoContent.Planos.Update(plano);//Atualiza o status do agendamento
+                            _bancoContent.SaveChanges();
                         }
                     }
 
@@ -211,6 +224,25 @@ namespace VioletGames.Data.Repositorio
             Clean.jsonCaixaClean();
             Clean.jsonItemClean();
             Clean.jsonItensClean();
+        }
+
+        public ItemPedidoModel SearchPlan(ClienteModel cliente)
+        {
+            ItemPedidoModel item = new ItemPedidoModel();
+            PlanoModel plano = _clienteRepositorio.ListPlanForClient(cliente);
+
+            if(plano != null)
+            {
+                item.CategoryProduct = CategoryProduct.Diversos;
+                item.ClientCPF = cliente.CPF;
+                item.NameProduct = $"Plano {plano.Id} - {cliente.plan.ToString()}";
+                item.QtdOrder = 1;
+                item.QtdAvailable = 1;
+                item.PriceUnity = (float)cliente.plan;
+                item.PriceTotal = (float)cliente.plan;
+            }
+
+            return item;
         }
     }
 }

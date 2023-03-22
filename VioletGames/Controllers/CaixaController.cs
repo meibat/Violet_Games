@@ -36,17 +36,10 @@ namespace VioletGames.Controllers
 
         public IActionResult PayPlan(ClienteModel cliente)
         {
-            ItemPedidoModel item = new ItemPedidoModel();
 
-            item.CategoryProduct = Data.Enums.CategoryProduct.Diversos;
-            item.ClientCPF = cliente.CPF;
-            item.NameProduct = $"Plano {cliente.Id} - {cliente.plan.ToString()}" ;
-            item.QtdOrder = 1;
-            item.QtdAvailable = 1;
-            item.PriceUnity = (float)cliente.plan;
-            item.PriceTotal = (float)cliente.plan;
+            ItemPedidoModel item = _caixaRepositorio.SearchPlan(cliente);
 
-            JsonUtil.jsonItemSerialize(item);
+            if(item != null) JsonUtil.jsonItemSerialize(item);
 
             return RedirectToAction("Index");
         }

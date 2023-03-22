@@ -22,6 +22,10 @@ namespace VioletGames.Data.Repositorio
         ClienteModel Update(ClienteModel cliente);
 
         bool Delete(int id);
+
+        PlanoModel ListPlanForClient(ClienteModel cliente);
+
+        PlanoModel ListPlanForID(int id);
     }
 
     public class ClienteRepositorio : IClienteRepositorio
@@ -128,9 +132,24 @@ namespace VioletGames.Data.Repositorio
                 return _bancoContent.Clientes.Any(x => x.CPF == cpf);
         }
 
-        ClienteModel IClienteRepositorio.ListForCPF(string cpf)
+        public ClienteModel ListForCPF(string cpf)
         {
             return _bancoContent.Clientes.FirstOrDefault(x => x.CPF == cpf);
+        }
+
+        public PlanoModel ListPlanForClient(ClienteModel cliente)
+        {
+            PlanoModel plano = (PlanoModel)_bancoContent.Planos
+                                .Where(x => x.CPF == cliente.CPF)
+                                .Where(x => x.payment == Enums.StatusPayment.Pendente);
+            return plano;
+        }
+
+        public PlanoModel ListPlanForID(int id)
+        {
+            PlanoModel plano = (PlanoModel)_bancoContent.Planos.FirstOrDefault(x => x.Id == id);
+            
+            return plano;
         }
     }
 }
