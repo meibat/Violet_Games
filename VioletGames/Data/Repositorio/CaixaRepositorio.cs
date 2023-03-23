@@ -211,10 +211,9 @@ namespace VioletGames.Data.Repositorio
 
             foreach (ItemPedidoModel itemList in itensList)
                 {
-                    if(item.NameProduct == itemList.NameProduct){
-                        Console.WriteLine(item.NameProduct);
+                    if(item.NameProduct != itemList.NameProduct){
+                        itensPedido.Add(itemList);
                     }
-                     itensPedido.Add(itemList);
                 }
             JsonUtil.jsonItensSerialize(itensPedido);
         }
