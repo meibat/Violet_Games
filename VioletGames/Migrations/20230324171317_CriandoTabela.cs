@@ -46,7 +46,7 @@ namespace VioletGames.Migrations
                     Number = table.Column<int>(type: "int", nullable: true),
                     CEP = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    plan = table.Column<int>(type: "int", nullable: false),
+                    Plano = table.Column<int>(type: "int", nullable: false),
                     PlanDay = table.Column<DateTime>(type: "datetime2", nullable: false),
                     payment = table.Column<int>(type: "int", nullable: false)
                 },
@@ -159,7 +159,7 @@ namespace VioletGames.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    plan = table.Column<int>(type: "int", nullable: false),
+                    Plano = table.Column<int>(type: "int", nullable: false),
                     PlanDay = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     payment = table.Column<int>(type: "int", nullable: false)

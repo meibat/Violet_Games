@@ -16,16 +16,5 @@ namespace VioletGames.Data.Enums
         Employee = 2
     }
 
-    public enum StatusLocation
-    {
-        Ativo = 1,
-        Pedente = 2,
-        Desativado = 3
-    }
-
-    public enum StatusPayment
-    {
-        Pago = 1,
-        Pendente = 2,
-    }
+    
 }

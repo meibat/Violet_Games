@@ -195,7 +195,7 @@ namespace VioletGames.Data.Repositorio
                             PlanoModel ProximoPlano = new PlanoModel();
 
                             ProximoPlano.CPF = cliente.CPF;
-                            ProximoPlano.plan = cliente.plan; ;
+                            ProximoPlano.Plano = cliente.Plano; ;
                             ProximoPlano.payment = Enums.StatusPayment.Pendente;
                             cliente.PlanDay = ProximoPlano.PlanDay = cliente.PlanDay.AddMonths(1);
 
@@ -245,11 +245,11 @@ namespace VioletGames.Data.Repositorio
             {
                 item.CategoryProduct = CategoryProduct.Diversos;
                 item.ClientCPF = cliente.CPF;
-                item.NameProduct = $"Plano {plano.Id} - {cliente.plan.ToString()}";
+                item.NameProduct = $"Plano {plano.Id} - {cliente.Plano.ToString()}";
                 item.QtdOrder = 1;
                 item.QtdAvailable = 1;
-                item.PriceUnity = (float)cliente.plan;
-                item.PriceTotal = (float)cliente.plan;
+                item.PriceUnity = (float)cliente.Plano;
+                item.PriceTotal = (float)cliente.Plano;
             }
             return item;
         }

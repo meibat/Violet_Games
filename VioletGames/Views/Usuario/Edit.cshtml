@@ -18,7 +18,7 @@
     </div>
     <div class="mb-3">
         <label for="Login" class="form-label">Login</label>
-        <input type="text" asp-for="Login" class="form-control" style="width: 160px; display: inline;" placeholder="00/00/00" disabled>
+        <input type="text" asp-for="Login" class="form-control" style="width: 160px; display: inline;" readonly>
         @Html.ValidationMessageFor(x => x.Login)
     </div>
     <div class="mb-3">

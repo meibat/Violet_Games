@@ -35,7 +35,7 @@ namespace VioletGames.Models
         public string? Email { get; set; }
         #nullable disable
 
-        public Plan plan { get; set; }
+        public Plan Plano { get; set; }
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime PlanDay { get; set; }
         public StatusPayment payment { get; set; }
@@ -46,7 +46,7 @@ namespace VioletGames.Models
         //Colunas da tabela
         public int Id { get; set; }
         public string CPF { get; set; }
-        public Plan plan { get; set; }
+        public Plan Plano { get; set; }
 
         [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
         public DateTime PlanDay { get; set; }

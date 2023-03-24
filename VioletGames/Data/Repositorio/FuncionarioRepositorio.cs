@@ -48,7 +48,7 @@ namespace VioletGames.Repositorio
         //gravar no banco
         public FuncionarioModel Create(FuncionarioModel funcionario)
         {
-            _bancoContent.Funcionarios.Add(funcionario);
+            _bancoContent.Funcionarios.Add(funcionario); //Colocar uma chamada para criar o usuário.
             _bancoContent.SaveChanges();
 
             return funcionario;

@@ -56,11 +56,11 @@ namespace VioletGames.Data.Repositorio
         {
             _bancoContent.Clientes.Add(cliente);
 
-            if(cliente.plan != Enums.Plan.Free)
+            if(cliente.Plano != Enums.Plan.Free)
             {
                 PlanoModel plano = new PlanoModel();
                 plano.CPF = cliente.CPF;
-                plano.plan = cliente.plan;
+                plano.Plano = cliente.Plano;
                 plano.payment = cliente.payment;
                 plano.PlanDay = cliente.PlanDay;
 
@@ -92,12 +92,12 @@ namespace VioletGames.Data.Repositorio
             ClienteDB.Phone = cliente.Phone;
 
 
-            if (cliente.plan != Enums.Plan.Free && cliente.plan != ClienteDB.plan)
+            if (cliente.Plano != Enums.Plan.Free && cliente.Plano != ClienteDB.Plano)
             {
                 PlanoModel plano = new PlanoModel();
 
                 plano.CPF = ClienteDB.CPF;
-                plano.plan = ClienteDB.plan = cliente.plan; ;
+                plano.Plano = ClienteDB.Plano = cliente.Plano; ;
                 plano.payment = ClienteDB.payment = Enums.StatusPayment.Pendente;
                 plano.PlanDay = ClienteDB.PlanDay = cliente.PlanDay;
 
@@ -105,7 +105,7 @@ namespace VioletGames.Data.Repositorio
             }
             else
             {
-                ClienteDB.plan = cliente.plan; ;
+                ClienteDB.Plano = cliente.Plano; ;
                 ClienteDB.payment = Enums.StatusPayment.Pago;
             }
 

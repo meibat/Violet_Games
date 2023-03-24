@@ -107,8 +107,8 @@ namespace VioletGames.Controllers
                         return View(cliente);
                     }
 
-                    if (cliente.plan != Data.Enums.Plan.Free) cliente.payment = Data.Enums.StatusPayment.Pendente;
-                    if (cliente.plan == Data.Enums.Plan.Free) cliente.payment = Data.Enums.StatusPayment.Pago;
+                    if (cliente.Plano != Data.Enums.Plan.Free) cliente.payment = Data.Enums.StatusPayment.Pendente;
+                    if (cliente.Plano == Data.Enums.Plan.Free) cliente.payment = Data.Enums.StatusPayment.Pago;
 
                     _clienteRepositorio.Create(cliente);
                     TempData["MessagemSucess"] = "Cliente cadastrado com sucesso!";

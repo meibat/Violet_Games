@@ -32,4 +32,17 @@ namespace VioletGames.Data.Enums
         Xbox360 = 360,
         XboxOne = 11,
     }
+
+    public enum StatusLocation
+    {
+        Ativo = 1,
+        Pedente = 2,
+        Desativado = 3
+    }
+
+    public enum StatusPayment
+    {
+        Pago = 1,
+        Pendente = 2,
+    }
 }

@@ -107,13 +107,13 @@ namespace VioletGames.Migrations
                     b.Property<DateTime>("PlanDay")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Plano")
+                        .HasColumnType("int");
+
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("payment")
-                        .HasColumnType("int");
-
-                    b.Property<int>("plan")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -315,10 +315,10 @@ namespace VioletGames.Migrations
                     b.Property<DateTime>("PlanDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("payment")
+                    b.Property<int>("Plano")
                         .HasColumnType("int");
 
-                    b.Property<int>("plan")
+                    b.Property<int>("payment")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
