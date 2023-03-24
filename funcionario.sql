@@ -24,18 +24,18 @@ insert into Funcionarios(Id, Name, Email, DateBirthday, CPF, Office, Phone) valu
 SET IDENTITY_INSERT Funcionarios off;
 
 SET IDENTITY_INSERT Clientes on;
-insert into Clientes(Id, Name, Email, DateBirthday, CPF, Phone, plan, PlanDay, payment) values 
+insert into Clientes(Id, Name, Email, DateBirthday, CPF, Phone, Plano, PlanDay, payment) values 
 (1, 'Beatrice Castro',  'beatriceoliveiracastro@teleworm.us', '13/11/2002', '409.261.988-07', '(11) 99888-5683', 25, '10/03/2023', 2),
-(2, 'Guilherme Santos',  'guilhermecunhasantos@armyspy.com', '07/10/1982', '592.824.411-80', '(11) 97953-3318', 0, null, 1),
+(2, 'Guilherme Santos',  'guilhermecunhasantos@armyspy.com', '07/10/1982', '592.824.411-80', '(11) 97953-3318', 0, '10/03/2023', 1),
 (3, 'João Costa',  'joaoazevedocosta@superrito.com', '18/07/1986', '460.440.186-10', '(11) 97966-4863', 50, '10/03/2023', 2),
-(4, 'Vitoria Souza',  'vitoriaalmeidasouza@teleworm.us', '10/05/1989', '601.944.620-48', '(11) 95100-8359', 0, null, 1)
-SET IDENTITY_INSERT Funcionarios off;
+(4, 'Vitoria Souza',  'vitoriaalmeidasouza@teleworm.us', '10/05/1989', '601.944.620-48', '(11) 95100-8359', 0, '10/03/2023', 1)
+SET IDENTITY_INSERT Clientes off;
 
 SET IDENTITY_INSERT Planos on;
-insert into Planos(Id, CPF, plan, PlanDay, payment) values 
+insert into Planos(Id, CPF, Plano, PlanDay, payment) values 
 (1, '409.261.988-07',  25, '10/03/2023', 2),
 (2, '460.440.186-10',  50, '10/03/2023', 2)
-SET IDENTITY_INSERT Funcionarios off;
+SET IDENTITY_INSERT Planos off;
 
 SET IDENTITY_INSERT Consoles on;
 insert into Consoles(Id, Name, PriceHour, CategoryConsole, StatusConsole) values 
