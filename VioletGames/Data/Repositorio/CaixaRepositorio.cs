@@ -180,18 +180,29 @@ namespace VioletGames.Data.Repositorio
                         }
                         if (item.NameProduct.Substring(0, 5) == "Plano")
                         {
-                            Console.WriteLine(item.NameProduct.Substring(0, 5));
-
+                            //Update Plano para pago
                             string[] palavras = item.NameProduct.Split(" ");
 
                             int idPlano = Convert.ToInt32(palavras[1]);
+
                             PlanoModel plano = _clienteRepositorio.ListPlanForID(idPlano);
 
                             plano.payment = StatusPayment.Pago;
                             plano.PaymentDate = DateTime.Now;
 
+                            //Add plano do próximo mês
+                            ClienteModel cliente = _clienteRepositorio.ListForCPF(ClientCPF);
+                            PlanoModel ProximoPlano = new PlanoModel();
+
+                            ProximoPlano.CPF = cliente.CPF;
+                            ProximoPlano.plan = cliente.plan; ;
+                            ProximoPlano.payment = Enums.StatusPayment.Pendente;
+                            cliente.PlanDay = ProximoPlano.PlanDay = cliente.PlanDay.AddMonths(1);
+
                             _bancoContent.ItemPedido.Add(item); //Add os itens do pedido
+                            _bancoContent.Planos.Add(ProximoPlano); //Add plano do próximo mês
                             _bancoContent.Planos.Update(plano);//Atualiza o status do agendamento
+                            _bancoContent.Clientes.Update(cliente);//Atualiza plano do próximo mês
                             _bancoContent.SaveChanges();
                         }
                     }
@@ -228,9 +239,9 @@ namespace VioletGames.Data.Repositorio
         public ItemPedidoModel SearchPlan(ClienteModel cliente)
         {
             ItemPedidoModel item = new ItemPedidoModel();
-            PlanoModel plano = _clienteRepositorio.ListPlanForClient(cliente);
+            PlanoModel plano = _clienteRepositorio.ListPlanForClient(cliente); 
 
-            if(plano != null)
+            if (plano != null)
             {
                 item.CategoryProduct = CategoryProduct.Diversos;
                 item.ClientCPF = cliente.CPF;
@@ -240,7 +251,6 @@ namespace VioletGames.Data.Repositorio
                 item.PriceUnity = (float)cliente.plan;
                 item.PriceTotal = (float)cliente.plan;
             }
-
             return item;
         }
     }

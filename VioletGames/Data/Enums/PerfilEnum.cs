@@ -27,6 +27,5 @@ namespace VioletGames.Data.Enums
     {
         Pago = 1,
         Pendente = 2,
-        Nao_Pago = 3
     }
 }

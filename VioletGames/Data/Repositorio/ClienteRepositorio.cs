@@ -139,16 +139,21 @@ namespace VioletGames.Data.Repositorio
 
         public PlanoModel ListPlanForClient(ClienteModel cliente)
         {
-            PlanoModel plano = (PlanoModel)_bancoContent.Planos
-                                .Where(x => x.CPF == cliente.CPF)
-                                .Where(x => x.payment == Enums.StatusPayment.Pendente);
+            var query = from Plano in _bancoContent.Planos 
+                        where Plano.CPF == cliente.CPF && Plano.payment == Enums.StatusPayment.Pendente 
+                        select Plano;
+
+            PlanoModel plano = query.FirstOrDefault<PlanoModel>();
+  
             return plano;
         }
 
         public PlanoModel ListPlanForID(int id)
         {
-            PlanoModel plano = (PlanoModel)_bancoContent.Planos.FirstOrDefault(x => x.Id == id);
-            
+            PlanoModel plano = _bancoContent.Planos.FirstOrDefault(x => x.Id == id);
+
+            Console.WriteLine("ClienteRepo - ListPlanForID");
+
             return plano;
         }
     }

@@ -28,8 +28,9 @@ namespace VioletGames.Controllers
         {
             //lista a busca feita no banco
             ViewData["Title"] = "Clientes";
-            List<ClienteModel> cliente = _clienteRepositorio.SearchAll();
-            return View(cliente);
+            List<ClienteModel> clientes = _clienteRepositorio.SearchAll();
+            
+            return View(clientes);
         }
         public IActionResult Create()
         {
