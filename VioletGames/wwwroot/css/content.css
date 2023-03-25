@@ -71,9 +71,12 @@
     color: white;
 }
 
-.dataTables_wrapper {
-    margin-right: 2%;
+.dataTables_wrapper { 
     margin-left: 2%;
+    margin-right: 1%;
+}
+div.dataTables_wrapper div.dataTables_filter{
+    margin-right: 2%;
 }
 
 .dataTables_wrapper .dataTables_length select {
@@ -84,23 +87,18 @@
 .dataTables_wrapper div.dataTables_filter input {
     background: #fff;
     opacity: 75%;
+    margin-right: 2%;
 }
 
-table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td{
-    text-align: center;
-    background-color: aliceblue;
-    opacity: 75%;
-    color: black;
-    font-size: 20px;
-}
 
 table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
     text-align: center;
     background-color: #e0c0fa;
     opacity: 80%;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
 }
+
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     background-color: #e0c0fa;

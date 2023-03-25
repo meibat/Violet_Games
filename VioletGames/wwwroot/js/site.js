@@ -36,6 +36,8 @@ $(document).ready(function () {
 function getDatatable(id) {
     $(id).DataTable({
         "ordering": true,
+        "scrollY": '500px',
+        "scrollCollapse": true,
         "paging": true,
         "searching": true,
         "responsive":true,

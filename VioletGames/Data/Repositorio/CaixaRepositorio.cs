@@ -225,8 +225,24 @@ namespace VioletGames.Data.Repositorio
                     if(item.NameProduct != itemList.NameProduct){
                         itensPedido.Add(itemList);
                     }
+                    else RemoveValue(itemList);
                 }
             JsonUtil.jsonItensSerialize(itensPedido);
+        }
+
+        private static void RemoveValue(ItemPedidoModel item)
+        {
+            CaixaModel valores = JsonUtil.jsonCaixaDeserialize();
+
+            if (valores != null)
+            {
+                //Sub-Total e Total
+                valores.ValueSubTotal -= item.PriceTotal;
+                valores.ValueSubTotal = Math.Round(valores.ValueSubTotal, 2, MidpointRounding.ToZero);
+
+                valores.ValueTotal = valores.ValueSubTotal;
+                JsonUtil.jsonCaixaSerialize(valores);
+            }  
         }
 
         public void LimparVenda()
