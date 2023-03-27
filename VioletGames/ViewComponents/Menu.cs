@@ -53,4 +53,20 @@ namespace VioletGames.ViewComponents
             return View(valores);
         }
     }
+
+    public class DashboardAdmin : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View();
+        }
+    }
+
+    public class DashboardStand : ViewComponent
+    {
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View();
+        }
+    }
 }

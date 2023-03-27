@@ -18,5 +18,10 @@ namespace VioletGames.Controllers
             ViewData["Title"] = "Dashboard";
             return View();
         }
+
+        //Actions Admin
+
+        //Actions Stand
+        
     }
 }

@@ -1,7 +1,17 @@
-﻿@{
+﻿@model UsuarioModel
+@{
     Layout = "_Layout";
 }
 
-<p>Dashboard</p>
+<nav>
+    @if (Model.Perfil == VioletGames.Data.Enums.PerfilEnum.Admin)
+        {
+            @await Component.InvokeAsync("DashboardAdmin")
+        }
+    @if (Model.Perfil == VioletGames.Data.Enums.PerfilEnum.Stand)
+        {
+            @await Component.InvokeAsync("DashboardStand")
+        }
+</nav>
 
 
