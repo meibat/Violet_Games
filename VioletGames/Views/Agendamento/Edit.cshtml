@@ -4,57 +4,59 @@
     Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1>Editar Agendamento</h1><br />
-</div>
-<form asp-controller="Agendamento" asp-action="Edit" method="post" class="singin">
-    <div class="mb-3">
-        <label for="Name" class="form-label">Nome </label>
-        <input type="text" asp-for="NameGameOrConsole" class="form-control" style="width: 560px; display: inline;" readonly>
+<nav class="content-fixed">
+    <div class="text-center">
+        <h1>Editar Agendamento</h1><br />
     </div>
-    <div class="mb-3">
-        <label for="LoginUser" class="form-label">Usuário </label>
-        <input type="text" asp-for="LoginUser" class="form-control" style="width: 560px; display: inline;" readonly>
-    </div>
-    <div class="mb-3">
-        <label for="Category" class="form-label">Categoria </label>
-        <input type="text" asp-for="Category" class="form-control" style="width: 150px; display: inline;" readonly>
-        <label for="Date" class="form-label">Agendamento</label>
-        <input type="datetime-local" asp-for="DateSchedule" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
-        @Html.ValidationMessageFor(x => x.DateSchedule)
-    </div>
-    <div class="mb-3">
-        <label for="Date" class="form-label">Entrada</label>
-        <input type="datetime-local" asp-for="DateEnter" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
-        @Html.ValidationMessageFor(x => x.DateEnter)
-        <label for="Date" class="form-label">Saída</label>
-        <input type="datetime-local" asp-for="DateClose" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
-        @Html.ValidationMessageFor(x => x.DateClose)
-    </div>
-    <div class="mb-3">
-        <label for="NameClient" class="form-label">Nome do Cliente</label>
-        <input type="text" asp-for="NameClient" class="form-control" style="width: 560px; display: inline;" readonly>
-        @Html.ValidationMessageFor(x => x.NameClient)
-    </div>
-    <div class="mb-3">
-        <label for="CPF" class="form-label">CPF</label>
-        <input type="text" asp-for="CPFClient" class="form-control" style="width: 560px; display: inline;" readonly>
-        @Html.ValidationMessageFor(x => x.CPFClient)
-    </div>
-    <div class="mb-3">
-        <label for="Price" class="form-label">Valor Total</label>
-        <input type="text" asp-for="TotalValue" class="form-control" style="width: 160px; display: inline;" placeholder="00,00">
-        @Html.ValidationMessageFor(x => x.TotalValue)
-        <label for="text" class="form-label">Pagamento</label>
-        <select asp-for="Payment" class="form-control" style="width: 150px; display: inline;">
-            <option value="">Selecione</option>
-            <option value="@StatusPayment.Pago">Pago</option>
-            <option value="@StatusPayment.Pendente">Pendente</option>
-        </select>
-        @Html.ValidationMessageFor(x => x.Payment)
-    </div><br />
-    <div class="singin">
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <a role="button" class="btn btn-info" asp-controller="Agendamento" asp-action="Index">Voltar</a>
-    </div>
-</form>
+    <form asp-controller="Agendamento" asp-action="Edit" method="post" class="singin">
+        <div class="mb-3">
+            <label for="Name" class="form-label">Nome </label>
+            <input type="text" asp-for="NameGameOrConsole" class="form-control" style="width: 560px; display: inline;" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="LoginUser" class="form-label">Usuário </label>
+            <input type="text" asp-for="LoginUser" class="form-control" style="width: 560px; display: inline;" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="Category" class="form-label">Categoria </label>
+            <input type="text" asp-for="Category" class="form-control" style="width: 150px; display: inline;" readonly>
+            <label for="Date" class="form-label">Agendamento</label>
+            <input type="datetime-local" asp-for="DateSchedule" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
+            @Html.ValidationMessageFor(x => x.DateSchedule)
+        </div>
+        <div class="mb-3">
+            <label for="Date" class="form-label">Entrada</label>
+            <input type="datetime-local" asp-for="DateEnter" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
+            @Html.ValidationMessageFor(x => x.DateEnter)
+            <label for="Date" class="form-label">Saída</label>
+            <input type="datetime-local" asp-for="DateClose" class="form-control" style="width: 200px; display: inline;" placeholder="00/00/00">
+            @Html.ValidationMessageFor(x => x.DateClose)
+        </div>
+        <div class="mb-3">
+            <label for="NameClient" class="form-label">Nome do Cliente</label>
+            <input type="text" asp-for="NameClient" class="form-control" style="width: 560px; display: inline;" readonly>
+            @Html.ValidationMessageFor(x => x.NameClient)
+        </div>
+        <div class="mb-3">
+            <label for="CPF" class="form-label">CPF</label>
+            <input type="text" asp-for="CPFClient" class="form-control" style="width: 560px; display: inline;" readonly>
+            @Html.ValidationMessageFor(x => x.CPFClient)
+        </div>
+        <div class="mb-3">
+            <label for="Price" class="form-label">Valor Total</label>
+            <input type="text" asp-for="TotalValue" class="form-control" style="width: 160px; display: inline;" placeholder="00,00">
+            @Html.ValidationMessageFor(x => x.TotalValue)
+            <label for="text" class="form-label">Pagamento</label>
+            <select asp-for="Payment" class="form-control" style="width: 150px; display: inline;">
+                <option value="">Selecione</option>
+                <option value="@StatusPayment.Pago">Pago</option>
+                <option value="@StatusPayment.Pendente">Pendente</option>
+            </select>
+            @Html.ValidationMessageFor(x => x.Payment)
+        </div><br />
+        <div class="singin">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a role="button" class="btn btn-info" asp-controller="Agendamento" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</nav>

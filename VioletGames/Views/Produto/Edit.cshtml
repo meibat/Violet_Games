@@ -4,33 +4,35 @@
     Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1>Editar Produto</h1><br />
-</div>
-<form asp-controller="Produto" asp-action="Edit" method="post" class="singin">
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label for="Name" class="form-label">Nome</label>
-        <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
+<nav class="content-fixed">
+    <div class="text-center">
+        <h1>Editar Produto</h1><br />
     </div>
-    <div class="mb-3">
-        <label for="Qtde" class="form-label">Quantidade Disp.</label>
-        <input type="text" asp-for="QtdAvailable" class="form-control" style="width: 100px; display: inline;" placeholder="0">
-        @Html.ValidationMessageFor(x => x.QtdAvailable)
-        <select asp-for="CategoryProduct" class="form-control" style="width: 150px; display: inline;">
-            <option value="">Categoria</option>
-            <option value="@CategoryProduct.Game">Jogo</option>
-            <option value="@CategoryProduct.Console">Console</option>
-            <option value="@CategoryProduct.Diversos">Diversos</option>
-        </select>
-        @Html.ValidationMessageFor(x => x.CategoryProduct)
-    </div>
-    <div class="mb-3">
-        <label for="Price" class="form-label">Preço Uni.</label>
-        <input type="text" asp-for="PriceUnity" class="form-control" style="width: 260px; display: inline;" placeholder="00,00">
-    </div><br />
-    <div class="singin">
-        <button type="submit" class="btn btn-primary">Editar</button>
-        <a role="button" class="btn btn-info" asp-controller="Produto" asp-action="Index">Voltar</a>
-    </div>
-</form>
+    <form asp-controller="Produto" asp-action="Edit" method="post" class="singin">
+        <input type="hidden" asp-for="Id" />
+        <div class="mb-3">
+            <label for="Name" class="form-label">Nome</label>
+            <input type="text" asp-for="Name" class="form-control" style="width: 560px; display: inline;" placeholder="Digite o nome">
+        </div>
+        <div class="mb-3">
+            <label for="Qtde" class="form-label">Quantidade Disp.</label>
+            <input type="text" asp-for="QtdAvailable" class="form-control" style="width: 100px; display: inline;" placeholder="0">
+            @Html.ValidationMessageFor(x => x.QtdAvailable)
+            <select asp-for="CategoryProduct" class="form-control" style="width: 150px; display: inline;">
+                <option value="">Categoria</option>
+                <option value="@CategoryProduct.Game">Jogo</option>
+                <option value="@CategoryProduct.Console">Console</option>
+                <option value="@CategoryProduct.Diversos">Diversos</option>
+            </select>
+            @Html.ValidationMessageFor(x => x.CategoryProduct)
+        </div>
+        <div class="mb-3">
+            <label for="Price" class="form-label">Preço Uni.</label>
+            <input type="text" asp-for="PriceUnity" class="form-control" style="width: 260px; display: inline;" placeholder="00,00">
+        </div><br />
+        <div class="singin">
+            <button type="submit" class="btn btn-primary">Editar</button>
+            <a role="button" class="btn btn-info" asp-controller="Produto" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</nav>
