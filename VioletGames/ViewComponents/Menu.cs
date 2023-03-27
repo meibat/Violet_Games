@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 using VioletGames.Util.JsonUtil;
 
@@ -64,9 +65,17 @@ namespace VioletGames.ViewComponents
 
     public class DashboardStand : ViewComponent
     {
+        private readonly IConsoleRepositorio _consoleRepositorio;
+
+        public DashboardStand(IConsoleRepositorio consoleRepositorio)
+        {
+            _consoleRepositorio = consoleRepositorio;
+        }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            List<ConsoleModel> consoles = _consoleRepositorio.SearchAll();
+            return View(consoles);
         }
     }
 }
