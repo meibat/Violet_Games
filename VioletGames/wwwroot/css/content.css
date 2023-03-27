@@ -151,11 +151,33 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, ta
     margin: 0 -15px;
     justify-content:space-between;
     margin: 0 0 1rem;
+    color:black;
 }
 
+.status-ativo {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: green;
+    color: green !important;
+}
+.status-pendente {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: orange;
+    color: orange !important;
+}
+.status-desativo {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: red;
+    color: red !important;
+}
 
-@media (min-width: 576px) and (max-width:767.98px){
-     .card {
+@media (min-width: 576px) and (max-width:767.98px) {
+    .card {
         -ms-flex: 0 0 48.7%;
         flex: 0 0 48.7%;
     }
