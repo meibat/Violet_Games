@@ -101,6 +101,31 @@ namespace VioletGames.Controllers
             }
         }
 
+        public IActionResult SeachForCPF(AgendamentoModel agendamento){
+             try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (!Validator.IsCPF(agendamento.CPFClient))
+                    {
+                        TempData["MessagemError"] = "CPF inválido!";
+                        return View(agendamento);
+                    }
+
+                    if (!_clienteRepositorio.isClient(agendamento.CPFClient))
+                    {
+                        //Criar msgbox: deseja cadastrar o cliente novo?
+                        TempData["MessagemError"] = "Cliente não encontrado!";
+                        return View(agendamento);
+                    }
+                    ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
+                    agendamento.NameClient = cliente.Name;
+                    
+                    return RedirectToAction("Index");
+                }
+                return View(agendamento);
+        }
+
         public IActionResult Edit(int id)
         {
             ViewData["Title"] = "Agendamentos";
@@ -260,7 +285,6 @@ namespace VioletGames.Controllers
                 return RedirectToAction("Index");
             }
         }
-
     }
 }
 

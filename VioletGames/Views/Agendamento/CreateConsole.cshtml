@@ -41,6 +41,7 @@
             <label for="CPF" class="form-label">CPF</label>
             <input type="text" asp-for="CPFClient" class="form-control" style="width: 560px; display: inline;" placeholder="CPF do Cliente">
             @Html.ValidationMessageFor(x => x.CPFClient)
+            <a role="button" class="btn btn-info" asp-controller="Agendamento" asp-action="SeachForCPF">Buscar</a>
         </div>
         <div class="mb-3">
             <label for="Price" class="form-label">Valor Total</label>
