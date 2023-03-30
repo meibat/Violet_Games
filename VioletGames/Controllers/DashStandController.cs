@@ -15,7 +15,7 @@ using VioletGames.Repositorio;
 namespace VioletGames.Controllers
 {
     [PageUserLogin]
-    public class DashboardController : Controller
+    public class DashStandController : Controller
     {
         private readonly IConsoleRepositorio _consoleRepositorio;
 
@@ -28,17 +28,8 @@ namespace VioletGames.Controllers
         {
             ViewData["Title"] = "Dashboard";
 
-            string sessionUser = HttpContext.Session.GetString("SessionSinginUser");
-
-            UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(sessionUser);
-
-            return View(usuario);
+            List<ConsoleModel> consoles = _consoleRepositorio.SearchAll();
+            return View(consoles);
         }
-
-        //Actions Admin
-
-        //Actions Stand
-
-
     }
 }

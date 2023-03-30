@@ -1,0 +1,49 @@
+@model List<ConsoleModel>
+@{
+    Layout = "_Layout";
+}
+
+<nav>
+    <div class="container-fluid " onload="openMenu()">
+   <br/>
+   <div class="row">
+      <div class="col-sm-6 mb-3">
+         <input type="text" id="filtroCards" class="form-control" onkeyup="aplicaFiltroCards()" placeholder="Filtro...">
+      </div>
+  <br/>  
+  </div>
+   <div id="containerCards">
+      <div class="row justify-content-center">
+         <div class="card-deck">
+             @if (Model != null && Model.Any())
+            {
+                foreach (ConsoleModel Console in Model)
+                {
+                    <div class="card m-2" style="width: 10%">
+                        <img class="card-img-top img-fluid" src="./lib/img/back.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">@Console.Name</h4>
+                            <p class="card-text">
+                                @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Ativo)
+                                {
+                                    <a class="status-ativo">o </a>
+                                }
+                                @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Pedente)
+                                {
+                                    <a class="status-pendente">o </a>
+                                }
+                                @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Desativado)
+                                {
+                                    <a class="status-desativo">o </a>
+                                }
+                                <small class="text-muted">@Console.StatusConsole</small>
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+         </div>
+      </div>
+   </div>
+</div>
+</nav>

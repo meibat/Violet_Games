@@ -54,28 +54,4 @@ namespace VioletGames.ViewComponents
             return View(valores);
         }
     }
-
-    public class DashboardAdmin : ViewComponent
-    {
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            return View();
-        }
-    }
-
-    public class DashboardStand : ViewComponent
-    {
-        private readonly IConsoleRepositorio _consoleRepositorio;
-
-        public DashboardStand(IConsoleRepositorio consoleRepositorio)
-        {
-            _consoleRepositorio = consoleRepositorio;
-        }
-
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            List<ConsoleModel> consoles = _consoleRepositorio.SearchAll();
-            return View(consoles);
-        }
-    }
 }
