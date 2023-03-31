@@ -1,42 +1,57 @@
 ﻿@model List<ClienteModel>
+@using VioletGames.Data.Enums
 @{
     Layout = "_Layout";
 }
 
-<div class="text-center"><br />
-    <table class="table table-content" id="table-clientes">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Data Nasc.</th>
-                <th scope="col">CPF</th>
-                <th scope="col">
-                    <a role="button" class="btn btn-success" asp-controller="Cliente" asp-action="Create"><img src="~/lib/bottons/add.png" width="30" height="30"></a>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--Listar contatos SE existir-->
-            @if (Model != null && Model.Any())
-            {
-                foreach (ClienteModel cliente in Model)
+<nav>
+    <div class="text-center">
+        <br />
+        <table class="table table-content" id="table-clientes">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data Nasc.</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Plano</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Vencimento</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">
+                        <a role="button" class="btn btn-success" asp-controller="Cliente" asp-action="Create"><img src="~/lib/bottons/add.png" width="30" height="30"></a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Listar contatos SE existir-->
+                @if (Model != null && Model.Any())
                 {
-                    <tr>
-                        <th scope="row">@cliente.Id</th>
-                        <td>@cliente.Name</td>
-                        <td>@cliente.DateBirthday.ToString("dd/MM/yyyy")</td>
-                        <td>@cliente.CPF</td>
-                        <!--Mostrar contatos tambem-->
-                        <td>
-                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a role="button" class="btn btn-warning" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>
-                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
-                            </div>
-                        </td>
-                    </tr>
+                    foreach (ClienteModel cliente in Model)
+                    {
+                        <tr>
+                            <th scope="row">@cliente.Id</th>
+                            <td>@cliente.Name</td>
+                            <td>@cliente.DateBirthday.ToString("dd/MM/yyyy")</td>
+                            <td>@cliente.CPF</td>
+                            <td>@cliente.Plano</td>
+                            <td>@((int)cliente.Plano)</td>
+                            <td>@cliente.PlanDay.ToString("dd/MM/yyyy")</td>
+                            <td>@cliente.payment</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    @if (cliente.payment != StatusPayment.Pago)
+                                    {
+                                        <a role="button" class="btn btn-primary" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="PayPlan" method="post"><img src="~/lib/bottons/pay.png" width="20" height="20"></a>
+                                    }
+                                    <a role="button" class="btn btn-warning" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="Edit"><img src="~/lib/bottons/edit.png" width="20" height="20"></a>
+                                    <a role="button" class="btn btn-danger" asp-route-id="@cliente.Id" asp-controller="Cliente" asp-action="DeleteConfirm"><img src="~/lib/bottons/Del.png" width="25" height="25"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+</nav>

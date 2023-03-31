@@ -1,14 +1,13 @@
 ﻿/*Conteudo*/
 .content {
-    position: fixed;
     background-color: #2e193b;
     opacity: 90%;
     width: 100%;
     height: 100%;
     color: white;
     font-family: 'Consolas';
-    z-index: -1;
 }
+
 
 .btn{
     padding: 0.15rem 0.5rem;
@@ -71,9 +70,12 @@
     color: white;
 }
 
-.dataTables_wrapper {
-    margin-right: 2%;
+.dataTables_wrapper { 
     margin-left: 2%;
+    margin-right: 1%;
+}
+div.dataTables_wrapper div.dataTables_filter{
+    margin-right: 2%;
 }
 
 .dataTables_wrapper .dataTables_length select {
@@ -84,23 +86,18 @@
 .dataTables_wrapper div.dataTables_filter input {
     background: #fff;
     opacity: 75%;
+    margin-right: 2%;
 }
 
-table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td{
-    text-align: center;
-    background-color: aliceblue;
-    opacity: 75%;
-    color: black;
-    font-size: 20px;
-}
 
 table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
     text-align: center;
     background-color: #e0c0fa;
     opacity: 80%;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
 }
+
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     background-color: #e0c0fa;
@@ -137,4 +134,54 @@ table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, ta
     background-repeat: no-repeat;
     padding-left: 22px;
     background-size: contain;
+}
+
+/*Cards*/
+.card {
+    margin: 0 -15px;
+    justify-content:space-between;
+    margin: 0 0 1rem;
+    color:black;
+}
+
+.status-ativo {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: green;
+    color: green !important;
+}
+.status-pendente {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: orange;
+    color: orange !important;
+}
+.status-desativo {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: red;
+    color: red !important;
+}
+
+@media (min-width: 576px) and (max-width:767.98px) {
+    .card {
+        -ms-flex: 0 0 48.7%;
+        flex: 0 0 48.7%;
+    }
+}
+
+@media (min-width: 768px) and (max-width:991.98px) {
+     .card {
+        -ms-flex: 0 0 32%;
+        flex: 0 0 32%;
+    }
+}
+@media (min-width: 992px) {
+    .card {
+        -ms-flex: 0 0 24%%;
+        flex: 0 0 24%;
+    }
 }

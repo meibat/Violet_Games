@@ -45,7 +45,10 @@ namespace VioletGames.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Number = table.Column<int>(type: "int", nullable: true),
                     CEP = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Plano = table.Column<int>(type: "int", nullable: false),
+                    PlanDay = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    payment = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,6 +153,23 @@ namespace VioletGames.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Planos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Plano = table.Column<int>(type: "int", nullable: false),
+                    PlanDay = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    payment = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Planos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Produtos",
                 columns: table => new
                 {
@@ -207,6 +227,9 @@ namespace VioletGames.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pedidos");
+
+            migrationBuilder.DropTable(
+                name: "Planos");
 
             migrationBuilder.DropTable(
                 name: "Produtos");

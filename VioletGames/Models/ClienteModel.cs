@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using VioletGames.Data.Enums;
 
 namespace VioletGames.Models
 {
@@ -32,5 +34,27 @@ namespace VioletGames.Models
         [EmailAddress(ErrorMessage = "E-mail Inválido!")]
         public string? Email { get; set; }
         #nullable disable
+
+        public Plan Plano { get; set; }
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public DateTime PlanDay { get; set; }
+        public StatusPayment payment { get; set; }
+    }
+
+    public class PlanoModel
+    {
+        //Colunas da tabela
+        public int Id { get; set; }
+        public string CPF { get; set; }
+        public Plan Plano { get; set; }
+
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public DateTime PlanDay { get; set; }
+
+#nullable enable
+        [DisplayFormat(DataFormatString = "dd/mm/yyyy")]
+        public DateTime? PaymentDate { get; set; }
+#nullable disable
+        public StatusPayment payment { get; set; }
     }
 }

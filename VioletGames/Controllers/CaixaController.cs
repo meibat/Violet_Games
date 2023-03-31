@@ -11,6 +11,7 @@ using VioletGames.Data.Helper;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 using VioletGames.Util.JsonUtil;
+using VioletGames.Util.Validator;
 
 namespace VioletGames.Controllers
 {
@@ -33,6 +34,32 @@ namespace VioletGames.Controllers
             return View();
         }
 
+        public IActionResult PayPlan(ClienteModel cliente)
+        {
+
+            ItemPedidoModel item = _caixaRepositorio.SearchPlan(cliente);
+
+            if(item != null) JsonUtil.jsonItemSerialize(item);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult PayScheduling(AgendamentoModel agendamento)
+        {
+            ItemPedidoModel item = new ItemPedidoModel();
+
+            item.CategoryProduct = agendamento.Category;
+            item.ClientCPF = agendamento.CPFClient;
+            item.NameProduct = $"Locação {agendamento.Id} - {agendamento.NameGameOrConsole} - {agendamento.HourtoUse}";
+            item.QtdOrder = 1;
+            item.QtdAvailable = 1;
+            item.PriceUnity = (float)agendamento.TotalValue;
+            item.PriceTotal = (float)agendamento.TotalValue;
+
+            JsonUtil.jsonItemSerialize(item);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public IActionResult Pesquisar(ItemPedidoModel item)
         {
@@ -43,7 +70,17 @@ namespace VioletGames.Controllers
 
         [HttpPost]
         public IActionResult AddItemPedido(ItemPedidoModel Item) {
-            
+            if(Item.ClientCPF != null)
+            {
+                if (Validator.IsCPF(Item.ClientCPF))
+                {
+                    _caixaRepositorio.AddItem(Item); 
+                    return RedirectToAction("Index");
+                }
+
+                TempData["MessagemError"] = $"CPF Inválido!";
+                return RedirectToAction("Index");
+            }
             _caixaRepositorio.AddItem(Item);
             return RedirectToAction("Index");
         }
@@ -82,11 +119,20 @@ namespace VioletGames.Controllers
         }
 
         [HttpPost]
+        public IActionResult RemoverProduto(ItemPedidoModel item)
+        {
+            _caixaRepositorio.RemoveItem(item);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public IActionResult Cancelar()
         {
             _caixaRepositorio.LimparVenda();
 
             return RedirectToAction("Index");
         }
+
     }
 }

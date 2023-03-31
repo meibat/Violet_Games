@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using VioletGames.Data.Repositorio;
 using VioletGames.Models;
 using VioletGames.Util.JsonUtil;
 
@@ -28,9 +29,7 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            string jsonItensPedido = File.ReadAllText("../VioletGames/Data/ItensPedido.json");
-            List<ItemPedidoModel> itensPedido = JsonConvert.DeserializeObject<List<ItemPedidoModel>>(jsonItensPedido);
-            //List<ItemPedidoModel> itensPedido = JsonUtil.jsonItensDeserialize();
+            List<ItemPedidoModel> itensPedido = JsonUtil.jsonItensDeserialize();
 
             return View(itensPedido);
         }
@@ -40,9 +39,6 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //string jsonString = File.ReadAllText("../VioletGames/Data/ItemPedido.json");
-            //ItemPedidoModel Item = System.Text.Json.JsonSerializer.Deserialize<ItemPedidoModel>(jsonString)!;
-
             ItemPedidoModel Item = JsonUtil.jsonItemDeserialize();
 
             return View(Item);
@@ -53,8 +49,6 @@ namespace VioletGames.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //string jsonString = File.ReadAllText("../VioletGames/Data/Caixa.json");
-            //CaixaModel valores = System.Text.Json.JsonSerializer.Deserialize<CaixaModel>(jsonString)!;
             CaixaModel valores = JsonUtil.jsonCaixaDeserialize();
 
             return View(valores);

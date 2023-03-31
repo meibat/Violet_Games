@@ -40,7 +40,7 @@ namespace VioletGames.Controllers
             ViewData["Title"] = "Jogos";
             JogoModel jogo = _jogoRepositorio.ListForID(id);
             
-            return View();
+            return View(jogo);
         }
 
         public IActionResult DeleteConfirm(int id)
@@ -48,7 +48,7 @@ namespace VioletGames.Controllers
             ViewData["Title"] = "Jogos";
             JogoModel jogo = _jogoRepositorio.ListForID(id);
 
-            return View();
+            return View(jogo);
         }
 
         public IActionResult Delete(int id)

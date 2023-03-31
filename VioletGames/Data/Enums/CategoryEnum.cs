@@ -14,9 +14,9 @@ namespace VioletGames.Data.Enums
 
     public enum Plan //Cliente
     {
-        Free = 1,
-        Stand = 2,
-        Premiu = 3
+        Free = 0,
+        Stand = 25,
+        Premium = 50
     }
 
     public enum CategoryConsole //Console
@@ -31,5 +31,18 @@ namespace VioletGames.Data.Enums
         Nitendo64 = 64,
         Xbox360 = 360,
         XboxOne = 11,
+    }
+
+    public enum StatusLocation
+    {
+        Ativo = 1,
+        Pedente = 2,
+        Desativado = 3
+    }
+
+    public enum StatusPayment
+    {
+        Pago = 1,
+        Pendente = 2,
     }
 }

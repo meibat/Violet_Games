@@ -22,6 +22,10 @@ namespace VioletGames.Data.Repositorio
         ClienteModel Update(ClienteModel cliente);
 
         bool Delete(int id);
+
+        PlanoModel ListPlanForClient(ClienteModel cliente);
+
+        PlanoModel ListPlanForID(int id);
     }
 
     public class ClienteRepositorio : IClienteRepositorio
@@ -51,6 +55,18 @@ namespace VioletGames.Data.Repositorio
         public ClienteModel Create(ClienteModel cliente)
         {
             _bancoContent.Clientes.Add(cliente);
+
+            if(cliente.Plano != Enums.Plan.Free)
+            {
+                PlanoModel plano = new PlanoModel();
+                plano.CPF = cliente.CPF;
+                plano.Plano = cliente.Plano;
+                plano.payment = cliente.payment;
+                plano.PlanDay = cliente.PlanDay;
+
+                _bancoContent.Planos.Add(plano);
+            }
+            
             _bancoContent.SaveChanges();
 
             return cliente;
@@ -76,6 +92,23 @@ namespace VioletGames.Data.Repositorio
             ClienteDB.Phone = cliente.Phone;
 
 
+            if (cliente.Plano != Enums.Plan.Free && cliente.Plano != ClienteDB.Plano)
+            {
+                PlanoModel plano = new PlanoModel();
+
+                plano.CPF = ClienteDB.CPF;
+                plano.Plano = ClienteDB.Plano = cliente.Plano; ;
+                plano.payment = ClienteDB.payment = Enums.StatusPayment.Pendente;
+                plano.PlanDay = ClienteDB.PlanDay = cliente.PlanDay;
+
+                _bancoContent.Planos.Add(plano);
+            }
+            else
+            {
+                ClienteDB.Plano = cliente.Plano; ;
+                ClienteDB.payment = Enums.StatusPayment.Pago;
+            }
+
             _bancoContent.Clientes.Update(ClienteDB);
             _bancoContent.SaveChanges();
 
@@ -99,9 +132,29 @@ namespace VioletGames.Data.Repositorio
                 return _bancoContent.Clientes.Any(x => x.CPF == cpf);
         }
 
-        ClienteModel IClienteRepositorio.ListForCPF(string cpf)
+        public ClienteModel ListForCPF(string cpf)
         {
             return _bancoContent.Clientes.FirstOrDefault(x => x.CPF == cpf);
+        }
+
+        public PlanoModel ListPlanForClient(ClienteModel cliente)
+        {
+            var query = from Plano in _bancoContent.Planos 
+                        where Plano.CPF == cliente.CPF && Plano.payment == Enums.StatusPayment.Pendente 
+                        select Plano;
+
+            PlanoModel plano = query.FirstOrDefault<PlanoModel>();
+  
+            return plano;
+        }
+
+        public PlanoModel ListPlanForID(int id)
+        {
+            PlanoModel plano = _bancoContent.Planos.FirstOrDefault(x => x.Id == id);
+
+            Console.WriteLine("ClienteRepo - ListPlanForID");
+
+            return plano;
         }
     }
 }

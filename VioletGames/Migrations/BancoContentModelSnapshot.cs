@@ -104,8 +104,17 @@ namespace VioletGames.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PlanDay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Plano")
+                        .HasColumnType("int");
+
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("payment")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -288,6 +297,33 @@ namespace VioletGames.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Pedidos");
+                });
+
+            modelBuilder.Entity("VioletGames.Models.PlanoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CPF")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PlanDay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Plano")
+                        .HasColumnType("int");
+
+                    b.Property<int>("payment")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Planos");
                 });
 
             modelBuilder.Entity("VioletGames.Models.ProdutoModel", b =>

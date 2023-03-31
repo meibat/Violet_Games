@@ -25,34 +25,45 @@ namespace VioletGames.Data.Repositorio
     {
         //Extrai variavel bancoContext
         private readonly BancoContent _bancoContent;
+        private readonly IClienteRepositorio _clienteRepositorio;
 
-        public AgendamentoRepositorio(BancoContent bancoContent)
+        public AgendamentoRepositorio(BancoContent bancoContent, IClienteRepositorio cliente)
         {
             //injecao de dependencia
             _bancoContent = bancoContent;
+            _clienteRepositorio = cliente;
         }
 
         public AgendamentoModel Create(AgendamentoModel Agendamento)
         {
+            ClienteModel cliente = _clienteRepositorio.ListForCPF(Agendamento.CPFClient.ToString());
             AgendamentoModel agenda = new AgendamentoModel();
-
 
             agenda.DateSchedule = Agendamento.DateSchedule;
             agenda.DateEnter = Agendamento.DateEnter;
             agenda.DateClose = Agendamento.DateClose;
-            agenda.Payment = Agendamento.Payment;
             agenda.LoginUser = Agendamento.LoginUser;
             agenda.NameGameOrConsole = Agendamento.NameGameOrConsole;
             agenda.CPFClient = Agendamento.CPFClient;
             agenda.Category = Agendamento.Category;
             agenda.NameClient = Agendamento.NameClient;
-            
+
             if (Agendamento.DateClose != null)
             {
                 //Calcula as horas de uso e o valor a pagar
                 var Hours = Agendamento.DateClose.Value.Subtract(Agendamento.DateEnter);
-                agenda.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalHours, 2);
-                agenda.HourtoUse =  $"{Hours.Days} Dias {Hours.Hours}h {Hours.Minutes}min";
+
+                if (Agendamento.DateClose.Value.Day == Agendamento.DateEnter.Day &&
+                    Agendamento.DateClose.Value.Month == Agendamento.DateEnter.Month)
+                {
+                    agenda.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalHours, 2);
+                }
+                else agenda.TotalValue = Math.Round(Agendamento.TotalValue * Hours.TotalDays, 2);
+
+                agenda.HourtoUse = $"{Hours.Days} Dias {Hours.Hours}h {Hours.Minutes}min";
+                agenda.Payment = Agendamento.Payment;
+
+                if (cliente.Plano != Enums.Plan.Free) agenda.Payment = Enums.StatusPayment.Pago;
             }
 
             _bancoContent.Agendamentos.Add(agenda);

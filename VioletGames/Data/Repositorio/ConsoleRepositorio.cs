@@ -84,7 +84,6 @@ namespace VioletGames.Data.Repositorio
 
             return ConsoleDB;
         }
-
     }
 }
 

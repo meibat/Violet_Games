@@ -96,6 +96,12 @@ namespace VioletGames.Controllers
                         return View(funcionario);
                     }
 
+                    if(!Validator.IsDateValid(funcionario.DateBirthday))
+                    {
+                        TempData["MessagemError"] = "Data informada Inválida!";
+                        return View(funcionario);
+                    }
+
                     _funcionarioRepositorio.Create(funcionario);
                     TempData["MessagemSucess"] = "Funcionário cadastrado com sucesso!";
                     return RedirectToAction("Index");
