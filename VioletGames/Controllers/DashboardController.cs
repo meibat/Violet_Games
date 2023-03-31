@@ -15,7 +15,7 @@ using VioletGames.Repositorio;
 namespace VioletGames.Controllers
 {
     [PageUserLogin]
-    public class DashStandController : Controller
+    public class DashboardController : Controller
     {
         private readonly IConsoleRepositorio _consoleRepositorio;
 

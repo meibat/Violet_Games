@@ -28,12 +28,7 @@
         <a class="nav-link" style="font-family: 'Agency FB'; color: white; background-color: transparent !important; font-size: 30px; ">Violet_Games</a>
     </div>
     <ul class="nav flex-column">
-        @if (model.Perfil == VioletGames.Data.Enums.PerfilEnum.Admin){
-            <li><a role="button" class="nav-link" asp-controller="DashAdmin" asp-action="Index"><img src="~/lib/bottons/monitor.png" width="40" height="40"> Dashboard</a></li>
-        }
-        @if (model.Perfil == VioletGames.Data.Enums.PerfilEnum.Stand){
-            <li><a role="button" class="nav-link" asp-controller="DashStand" asp-action="Index"><img src="~/lib/bottons/monitor.png" width="40" height="40"> Dashboard</a></li>
-        }
+        <li><a role="button" class="nav-link" asp-controller="Dashboard" asp-action="Index"><img src="~/lib/bottons/monitor.png" width="40" height="40"> Dashboard</a></li>
         <li><a role="button" class="nav-link" asp-controller="Caixa" asp-action="Index"><img src="~/lib/bottons/car.png" width="40" height="40"> Caixa</a></li>
         <li><a role="button" class="nav-link" asp-controller="Produto" asp-action="Index"><img src="~/lib/bottons/stockg.png" width="40" height="40"> Produtos</a></li>
         <li><a role="button" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="font-family: Consolas; color: white;">

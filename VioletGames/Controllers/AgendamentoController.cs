@@ -102,7 +102,7 @@ namespace VioletGames.Controllers
         }
 
         public IActionResult SeachForCPF(AgendamentoModel agendamento){
-             try
+            try
             {
                 if (ModelState.IsValid)
                 {
@@ -120,10 +120,15 @@ namespace VioletGames.Controllers
                     }
                     ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
                     agendamento.NameClient = cliente.Name;
-                    
+
                     return RedirectToAction("Index");
                 }
+            }
+            catch
+            {
                 return View(agendamento);
+            }
+            return View(agendamento);
         }
 
         public IActionResult Edit(int id)

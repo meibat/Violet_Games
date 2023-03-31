@@ -6,7 +6,7 @@
 
 function openMenu() {
     document.getElementById('btnMenu').className = 'invisible';
-    document.getElementById('tittleMenu').style.marginLeft = '-10%';
+    document.getElementById('tittleMenu').style.marginLeft = '-5%';
     document.getElementById('Content').style.width = '83.5%';
     document.getElementById('Menu').style.width = '16.5%';
     document.getElementById('Top').style.marginLeft = '16.5%';
@@ -99,7 +99,7 @@ function getDatatableCaixa(id) {
     });
 }
 
-// https://codepen.io/bolzan/pen/YmeZpz
+//https://codepen.io/bolzan/pen/YmeZpz
 function aplicaFiltroCards() {
     var input, filter, cards, cardContainer, h5, title, i;
     input = document.getElementById("filtroCards");
