@@ -115,3 +115,26 @@ function aplicaFiltroCards() {
         }
     }
 }
+
+//http://www.linhadecodigo.com.br/artigo/3672/aspnet-mvc-retornando-e-consumindo-dados-em-json.aspx#ixzz7xaS3phsl
+function SearchCPF() {
+    $.ajax({
+        dataType: "json",
+        type: "POST",
+        data: { "CPF": document.getElementById('CPF').value},
+        url: "/Agendamento/SeachForCPF",
+        success: function (dados) {
+            if (dados != null) {
+                document.getElementById('NameClient').value = dados;
+            } else {
+                alert('Cliente não encontrado!');
+            }
+        },
+        error: function (data) {
+            alert('@(TempData["AlertMessage"])');
+        }
+    });
+}
+
+
+ 

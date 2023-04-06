@@ -1,16 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using VioletGames.Data.Filters;
 using VioletGames.Data.Repositorio;
 using VioletGames.Models;
-using VioletGames.Repositorio;
 
 namespace VioletGames.Controllers
 {
@@ -18,10 +10,12 @@ namespace VioletGames.Controllers
     public class DashboardController : Controller
     {
         private readonly IConsoleRepositorio _consoleRepositorio;
+        private readonly IAgendamentoRepositorio _agendaRepositorio;
 
-        public DashboardController(IConsoleRepositorio consoleRepositorio)
+        public DashboardController(IConsoleRepositorio consoleRepositorio, IAgendamentoRepositorio agendaRepositorio)
         {
             _consoleRepositorio = consoleRepositorio;
+            _agendaRepositorio = agendaRepositorio;
         }
 
         public IActionResult Index()
@@ -30,6 +24,16 @@ namespace VioletGames.Controllers
 
             List<ConsoleModel> consoles = _consoleRepositorio.SearchAll();
             return View(consoles);
+        }
+
+       public IActionResult ConsoleDetail(int id)
+        {
+            ViewData["Title"] = "Dashboard";
+
+            ConsoleModel console = _consoleRepositorio.ListForID(id);
+
+            List<AgendamentoModel> AgendaConsole = _agendaRepositorio.ListForName(console.Name);
+            return View(AgendaConsole);
         }
     }
 }

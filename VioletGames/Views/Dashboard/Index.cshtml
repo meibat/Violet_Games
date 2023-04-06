@@ -4,7 +4,7 @@
 }
 
 <nav>
-    <div class="container-fluid" onload="openMenu()">
+    <div class="container-fluid">
         <br />
         <div class="row justify-content-center">
             <div class="col-sm-6 mb-3">
@@ -23,7 +23,7 @@
                     <div class="card " style="width: 15rem;">
                         <img class="card-img-top img-fluid" src="./lib/img/back.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title">@Console.Name</h4>
+                            <h4 class="card-title"> @Console.Name <button class="btn btn-info" asp-route-id="@Console.Id" asp-controller="Dashboard" asp-action="ConsoleDetail">Detalhes</button></h4>
                             <p class="card-text">
                                 @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Ativo)
                                 {
