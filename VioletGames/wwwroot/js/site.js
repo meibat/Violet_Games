@@ -31,6 +31,7 @@ $(document).ready(function () {
     getDatatable('#table-jogos');
     getDatatable('#table-agendamentos');
     getDatatableCaixa('#table-caixa');
+    getDatatableCaixa('#table-agendaconsoles');
 });
 
 function getDatatable(id) {

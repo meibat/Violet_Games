@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using VioletGames.Data.Filters;
 using VioletGames.Data.Repositorio;
@@ -26,13 +27,14 @@ namespace VioletGames.Controllers
             return View(consoles);
         }
 
-       public IActionResult ConsoleDetail(int id)
+
+        public IActionResult ConsoleDetail(int id)
         {
             ViewData["Title"] = "Dashboard";
 
             ConsoleModel console = _consoleRepositorio.ListForID(id);
-
             List<AgendamentoModel> AgendaConsole = _agendaRepositorio.ListForName(console.Name);
+
             return View(AgendaConsole);
         }
     }
