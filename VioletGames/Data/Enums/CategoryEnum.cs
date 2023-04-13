@@ -35,9 +35,10 @@ namespace VioletGames.Data.Enums
 
     public enum StatusLocation
     {
-        Ativo = 1,
+        Livre = 1,
         Pedente = 2,
-        Desativado = 3
+        Usando = 3,
+        Desativado = 4
     }
 
     public enum StatusPayment
