@@ -39,58 +39,65 @@ namespace VioletGames.Controllers
             return View(AgendaConsole);
         }
 
-        [HttpPost]
-        public JsonResult LoadStatusConsole()
+        public IActionResult LoadStatusConsole()
         {
-            List<AgendamentoModel> AgendaConsole = _agendaRepositorio.SearchAll();
-            //ConsoleModel console = _consoleRepositorio.ListForName();
+            try
+            {
+                List<AgendamentoModel> AgendaConsole = _agendaRepositorio.SearchAll();
 
-            foreach ( AgendamentoModel agenda in AgendaConsole) {
-                DateTime dataAtual = DateTime.Now;
-                DateTime dataproximo = DateTime.Now.AddMinutes(30);
-
-                if (agenda.Category == CategoryProduct.Console)
+                foreach (AgendamentoModel agenda in AgendaConsole)
                 {
-                    int compareDateEnter = DateTime.Compare(agenda.DateEnter, dataAtual);
-                    int compareDateClose = DateTime.Compare((DateTime)agenda.DateClose, dataAtual);
-                    int compareDataProxima = DateTime.Compare(agenda.DateEnter, dataproximo);
+                    DateTime dataAtual = DateTime.Now;
+                    DateTime dataproximo = DateTime.Now.AddMinutes(30);
 
-                    if (compareDateEnter == -1 && compareDateClose == 1)//sendo usado
+                    if (agenda.Category == CategoryProduct.Console)
                     {
-                        ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
+                        int compareDateEnter = DateTime.Compare(agenda.DateEnter, dataAtual);
+                        int compareDateClose = DateTime.Compare((DateTime)agenda.DateClose, dataAtual);
+                        int compareDataProxima = DateTime.Compare(agenda.DateEnter, dataproximo);
 
-                        console.StatusConsole = StatusLocation.Usando;
-                        _consoleRepositorio.Update(console);
-                        Console.WriteLine($"sendo usado {console.Id}-{console.Name} Data entrada {agenda.DateEnter} dataAtual { dataAtual} Data agendada final {agenda.DateClose}");
-                    }
-                    if (compareDateEnter == -1 && compareDateClose == -1)//console livre se não desativado
-                    {
-                        ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
-
-                        if (console.StatusConsole != StatusLocation.Desativado)
+                        if (compareDateEnter == -1 && compareDateClose == 1)//sendo usado
                         {
-                            console.StatusConsole = StatusLocation.Livre;
+                            ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
+
+                            console.StatusConsole = StatusLocation.Usando;
                             _consoleRepositorio.Update(console);
-                            Console.WriteLine($"console livre {console.Id}-{console.Name} Data entrada {agenda.DateEnter} dataAtual { dataAtual} Data agendada final {agenda.DateClose}");
+                            Console.WriteLine($"sendo usado {console.Id}-{console.Name} Data entrada {agenda.DateEnter} dataAtual {dataAtual} Data agendada final {agenda.DateClose}");
                         }
-                        else
+                        if (compareDateEnter == -1 && compareDateClose == -1)//console livre se não desativado
                         {
-                            Console.WriteLine($"console desativado");
+                            ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
 
+                            if (console.StatusConsole != StatusLocation.Desativado)
+                            {
+                                console.StatusConsole = StatusLocation.Livre;
+                                _consoleRepositorio.Update(console);
+                                Console.WriteLine($"console livre {console.Id}-{console.Name} Data entrada {agenda.DateEnter} dataAtual {dataAtual} Data agendada final {agenda.DateClose}");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"console desativado");
+
+                            }
                         }
-                    }
-                    if (compareDateEnter == 1 && compareDataProxima == -1)//pendente
-                    {
-                        ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
+                        if (compareDateEnter == 1 && compareDataProxima == -1)//pendente
+                        {
+                            ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
 
-                        console.StatusConsole = StatusLocation.Pedente;
-                        _consoleRepositorio.Update(console);
-                        Console.WriteLine($"pendente {console.Id}-{console.Name} Data entrada {agenda.DateEnter} dataAtual {dataAtual} Data proximo {dataproximo}");
+                            console.StatusConsole = StatusLocation.Pedente;
+                            _consoleRepositorio.Update(console);
+                            Console.WriteLine($"pendente {console.Id}-{console.Name} Data entrada {agenda.DateEnter} dataAtual {dataAtual} Data proximo {dataproximo}");
+                        }
                     }
                 }
+                TempData["MessagemSucess"] = $"Status atualizados!";
+                return RedirectToAction("Index");
             }
-
-            return Json(true);
+            catch (Exception erro)
+            {
+                TempData["MessagemError"] = $"Não foi possível efetuar o cadastrado! Tente novamente, detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
