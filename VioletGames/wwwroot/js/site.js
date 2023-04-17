@@ -136,14 +136,3 @@ function SearchCPF() {
         }
     });
 }
-
-function LoadStatusConsole() {
-    $.ajax({
-        dataType: "json",
-        type: "POST",
-        url: "/Dashboard/LoadStatusConsole",
-        success: alert('status atualizado!'),
-        error: alert('status não atualizodo atualizado - error')
-    });
-}
- 
