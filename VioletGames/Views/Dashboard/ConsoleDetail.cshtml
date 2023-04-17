@@ -1,0 +1,38 @@
+﻿@model List<AgendamentoModel>
+@{
+    Layout = "_Layout";
+}
+
+<nav>
+    <div class="text-center">
+        <table class="table table-content" id="table-agendaconsoles">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Listar contatos SE existir-->
+                @if (Model != null && Model.Any())
+                { foreach (AgendamentoModel agenda in Model)
+                    {
+    <tr>
+        <th scope="row">@agenda.Id</th>
+        <td>@agenda.NameGameOrConsole</td>
+        <td>@agenda.Category</td>
+        <td>@agenda.NameClient</td>
+        <td>@agenda.DateSchedule</td>
+    </tr>}
+                }
+            </tbody>
+        </table>
+    </div>
+</nav>
+
+
+
+

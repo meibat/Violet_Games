@@ -31,6 +31,7 @@ $(document).ready(function () {
     getDatatable('#table-jogos');
     getDatatable('#table-agendamentos');
     getDatatableCaixa('#table-caixa');
+    getDatatableCaixa('#table-agendaconsoles');
 });
 
 function getDatatable(id) {
@@ -115,3 +116,34 @@ function aplicaFiltroCards() {
         }
     }
 }
+
+//http://www.linhadecodigo.com.br/artigo/3672/aspnet-mvc-retornando-e-consumindo-dados-em-json.aspx#ixzz7xaS3phsl
+function SearchCPF() {
+    $.ajax({
+        dataType: "json",
+        type: "POST",
+        data: { "CPF": document.getElementById('CPF').value},
+        url: "/Agendamento/SeachForCPF",
+        success: function (dados) {
+            if (dados != null) {
+                document.getElementById('NameClient').value = dados;
+            } else {
+                alert('Cliente não encontrado!');
+            }
+        },
+        error: function (data) {
+            alert('@(TempData["AlertMessage"])');
+        }
+    });
+}
+
+function LoadStatusConsole() {
+    $.ajax({
+        dataType: "json",
+        type: "POST",
+        url: "/Dashboard/LoadStatusConsole",
+        success: alert('status atualizado!'),
+        error: alert('status não atualizodo atualizado - error')
+    });
+}
+ 

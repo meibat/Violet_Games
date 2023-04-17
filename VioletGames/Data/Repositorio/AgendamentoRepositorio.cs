@@ -12,6 +12,8 @@ namespace VioletGames.Data.Repositorio
         //metodos
         AgendamentoModel ListForID(int id);
 
+        List<AgendamentoModel> ListForName(string name);
+
         List<AgendamentoModel> SearchAll();
 
         AgendamentoModel Create(AgendamentoModel Agendamento);
@@ -89,6 +91,16 @@ namespace VioletGames.Data.Repositorio
             return _bancoContent.Agendamentos.FirstOrDefault(x => x.Id == id);
         }
 
+        public List<AgendamentoModel> ListForName(string name)
+        {
+            var query = (from agenda in _bancoContent.Agendamentos
+                        where agenda.NameGameOrConsole == name
+                        select agenda).ToList();
+            Console.WriteLine(query);
+
+            return query;
+        }
+
         public List<AgendamentoModel> SearchAll()
         {
             return _bancoContent.Agendamentos.ToList();
@@ -123,5 +135,6 @@ namespace VioletGames.Data.Repositorio
 
             return agendaDB;
         }
+
     }
 }

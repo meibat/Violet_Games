@@ -101,36 +101,6 @@ namespace VioletGames.Controllers
             }
         }
 
-        public IActionResult SeachForCPF(AgendamentoModel agendamento){
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (!Validator.IsCPF(agendamento.CPFClient))
-                    {
-                        TempData["MessagemError"] = "CPF inválido!";
-                        return View(agendamento);
-                    }
-
-                    if (!_clienteRepositorio.isClient(agendamento.CPFClient))
-                    {
-                        //Criar msgbox: deseja cadastrar o cliente novo?
-                        TempData["MessagemError"] = "Cliente não encontrado!";
-                        return View(agendamento);
-                    }
-                    ClienteModel cliente = _clienteRepositorio.ListForCPF(agendamento.CPFClient);
-                    agendamento.NameClient = cliente.Name;
-
-                    return RedirectToAction("Index");
-                }
-            }
-            catch
-            {
-                return View(agendamento);
-            }
-            return View(agendamento);
-        }
-
         public IActionResult Edit(int id)
         {
             ViewData["Title"] = "Agendamentos";
@@ -219,6 +189,12 @@ namespace VioletGames.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if(agendamento.DateClose.Value.Day != agendamento.DateEnter.Day ||
+                    agendamento.DateClose.Value.Month != agendamento.DateEnter.Month)
+                    {
+                        TempData["MessagemError"] = "Data de agendamento de console inválida!";
+                        return View(agendamento);
+                    }
                     if (!Validator.IsCPF(agendamento.CPFClient))
                     {
                         TempData["MessagemError"] = "CPF inválido!";
@@ -289,6 +265,14 @@ namespace VioletGames.Controllers
                 TempData["MessagemError"] = $"Não foi possível editar o cadastrado! Tente novamente, detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+        [HttpPost]
+        public JsonResult SeachForCPF(string CPF)
+        {
+            ClienteModel cliente = _clienteRepositorio.ListForCPF(CPF);
+            if (cliente != null) { return Json(cliente.Name); }
+            return Json(null);
         }
     }
 }
