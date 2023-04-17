@@ -3,12 +3,12 @@
     Layout = "_Layout";
 }
 
-<nav @*onload="LoadStatusConsole()"*@>
+<nav>
     <div class="container-fluid">
         <br />
         <div class="row justify-content-center">
-            <div class="col-sm-6 mb-3">
-                <input type="text" id="filtroCards" class="form-control" onkeyup="aplicaFiltroCards()" placeholder="Filtro...">
+            <div class="col-sm-6 mb-3 ">
+                <input type="text" style="width: 500px; display: inline !important;" id="filtroCards" class="form-control" onkeyup="aplicaFiltroCards()" placeholder="Filtro...">
                 <button class="btn btn-info" onclick="LoadStatusConsole()">atualizar</button>
             </div>
             <br />

@@ -18,7 +18,7 @@
             <tbody>
                 <!--Listar contatos SE existir-->
                 @if (Model != null && Model.Any())
-                {<!--Erro nesse Any--> foreach (AgendamentoModel agenda in Model)
+                { foreach (AgendamentoModel agenda in Model)
                     {
     <tr>
         <th scope="row">@agenda.Id</th>
