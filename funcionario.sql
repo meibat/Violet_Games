@@ -52,8 +52,6 @@ insert into Consoles(Id, Name, PriceHour, CategoryConsole, StatusConsole) values
 (10, 'Xbox 1',  3, 360, 1),
 (11, 'Xbox 2',  4, 11, 1),
 (12, 'Play 7',  1, 1, 3),
-(13, 'Play 8',  2, 2, 3),
-(14, 'Play 9',  3, 3, 3)
 SET IDENTITY_INSERT Consoles off;
 
 SET IDENTITY_INSERT Jogos on;
