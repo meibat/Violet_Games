@@ -266,24 +266,6 @@ namespace VioletGames.Migrations
                     b.ToTable("Jogos");
                 });
 
-            modelBuilder.Entity("VioletGames.Models.LogModel", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Logs");
-                });
-
             modelBuilder.Entity("VioletGames.Models.PedidoModel", b =>
                 {
                     b.Property<int>("id")

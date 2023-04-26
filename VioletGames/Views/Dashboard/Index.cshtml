@@ -20,35 +20,35 @@
                 {
                     foreach (ConsoleModel Console in Model)
                     {
-                <div class="col">
-                    <div class="card " style="width: 15rem;">
+                        <div class="col">
+                            <div class="card " style="width: 15rem;">
                                 <img class="card-img-top img-fluid"
-                                    src="./lib/ConsolesIMG/@(Console.CategoryConsole).jpg"
-                                    alt="@(Console.CategoryConsole.ToString())">
-                        <div class="card-body">
-                            <h4 class="card-title">@Console.Id - @Console.Name</h4>
-                            <p class="card-text">
-                                @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Livre)
-                                {
-                                    <a class="status-ativo">o </a>
-                                }
-                                @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Pedente)
-                                {
-                                    <a class="status-pendente">o </a>
-                                }
-                                @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Usando)
-                                {
-                                    <a class="status-desativo">o </a>
-                                }
-                                <small class="text-muted"><a class="invisible">-</a>@Console.StatusConsole</small>
-                                <a role="button" class="btn btn-info" asp-route-id="@Console.Id" asp-controller="Dashboard" asp-action="ConsoleDetail">Detalhes</a>
-                            </p>
+                                     src="./lib/ConsolesIMG/@(Console.CategoryConsole).jpg"
+                                     alt="@(Console.CategoryConsole.ToString())">
+                                <div class="card-body">
+                                    <h4 class="card-title">@Console.Id - @Console.Name</h4>
+                                    <p class="card-text">
+                                        @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Livre)
+                                        {
+                                            <a class="status-ativo">o </a>
+                                        }
+                                        @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Pedente)
+                                        {
+                                            <a class="status-pendente">o </a>
+                                        }
+                                        @if (Console.StatusConsole == VioletGames.Data.Enums.StatusLocation.Usando)
+                                        {
+                                            <a class="status-desativo">o </a>
+                                        }
+                                        <small class="text-muted"><a class="invisible">-</a>@Console.StatusConsole</small>
+                                        <a role="button" class="btn btn-info" asp-route-id="@Console.Id" asp-controller="Dashboard" asp-action="ConsoleDetail">Detalhes</a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
                     }
                 }
-            </div>
+            </div><br /><br /><br /><br />
         </div>
     </div>
 </nav>
