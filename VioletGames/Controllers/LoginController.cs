@@ -66,9 +66,10 @@ namespace VioletGames.Controllers
                 }
                 return View("Index");
              }
-            catch(Exception)
+            catch(Exception e)
             {
                 TempData["MessagemError"] = $"Não foi possível realizar seu Login! Tente novamente.";
+                
                 return RedirectToAction("Index");
             }
         }

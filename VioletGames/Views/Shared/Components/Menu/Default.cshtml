@@ -10,13 +10,13 @@
             <a class="invisible">//</a><a id="tittleMenu" class="navbar-brand mr-auto">@ViewData["Title"]</a>
             <a class="navbar-brand" style="color:white;">Olá, @Model.Login </a>
             <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
                     <img src="~/lib/users/user1.png" width="50" height="50" class="user" />
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a role="button" class="dropdown-item btn-primary" asp-controller="ResetPasswdUser" asp-action="Index">Alterar Senha</a></li>
-                    <li><a role="button" class="dropdown-item btn-primary">Ajuda</a></li>
-                </ul>
+                <div class="dropdown-menu btn-primary">
+                    <a role="button" class="dropdown-item btn-primary" asp-controller="ResetPasswdUser" asp-action="Index">Alterar Senha</a>
+                    <a role="button" class="dropdown-item btn-primary">Ajuda</a>
+                </div>
             </div>
         </div>
     </nav>

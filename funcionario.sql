@@ -9,6 +9,7 @@ select * from Planos;
 select * from Agendamentos;
 select * from ItemPedido;
 select * from Pedidos;
+select * from Logs;
 
 
 SET IDENTITY_INSERT Usuarios on;
