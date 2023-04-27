@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using VioletGames.Models;
 using VioletGames.Data.Repositorio;
 using VioletGames.Data.Filters;
 using VioletGames.Data.Enums;
 using VioletGames.Data.Helper;
 using VioletGames.Util.Validator;
-using VioletGames.Util.Clean;
 
 namespace VioletGames.Controllers
 {

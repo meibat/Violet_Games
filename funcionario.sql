@@ -9,8 +9,6 @@ select * from Planos;
 select * from Agendamentos;
 select * from ItemPedido;
 select * from Pedidos;
-select * from Logs;
-
 
 SET IDENTITY_INSERT Usuarios on;
 insert into Usuarios(Id, Name, Login, Email, Perfil, Passwd, DateSingIn) values 
@@ -21,14 +19,14 @@ SET IDENTITY_INSERT Usuarios off;
 SET IDENTITY_INSERT Funcionarios on;
 insert into Funcionarios(Id, Name, Email, DateBirthday, CPF, Office, Phone) values 
 (1, 'Vitoria Souza',  'vitoriaalmeidasouza@teleworm.us', '08/02/1991', '601.944.620-48', 1, '2155784245'),
-(2, 'Vin�cius Barros',  'viniciusgomesbarros@superrito.com', '11/07/1928', '193.672.188-00', 2, '1979664863')
+(2, 'Vinicius Barros',  'viniciusgomesbarros@superrito.com', '11/07/1928', '193.672.188-00', 2, '1979664863')
 SET IDENTITY_INSERT Funcionarios off;
 
 SET IDENTITY_INSERT Clientes on;
 insert into Clientes(Id, Name, Email, DateBirthday, CPF, Phone, Plano, PlanDay, payment) values 
 (1, 'Beatrice Castro',  'beatriceoliveiracastro@teleworm.us', '13/11/2002', '409.261.988-07', '(11) 99888-5683', 25, '10/03/2023', 2),
 (2, 'Guilherme Santos',  'guilhermecunhasantos@armyspy.com', '07/10/1982', '592.824.411-80', '(11) 97953-3318', 0, '10/03/2023', 1),
-(3, 'Jo�o Costa',  'joaoazevedocosta@superrito.com', '18/07/1986', '460.440.186-10', '(11) 97966-4863', 50, '10/03/2023', 2),
+(3, 'João Costa',  'joaoazevedocosta@superrito.com', '18/07/1986', '460.440.186-10', '(11) 97966-4863', 50, '10/03/2023', 2),
 (4, 'Vitoria Souza',  'vitoriaalmeidasouza@teleworm.us', '10/05/1989', '601.944.620-48', '(11) 95100-8359', 0, '10/03/2023', 1)
 SET IDENTITY_INSERT Clientes off;
 
@@ -51,7 +49,7 @@ insert into Consoles(Id, Name, PriceHour, CategoryConsole, StatusConsole) values
 (9, 'Nitendo 2',  3, 64, 1),
 (10, 'Xbox 1',  3, 360, 1),
 (11, 'Xbox 2',  4, 11, 1),
-(12, 'Play 7',  1, 1, 3),
+(12, 'Play 7',  1, 1, 3)
 SET IDENTITY_INSERT Consoles off;
 
 SET IDENTITY_INSERT Jogos on;

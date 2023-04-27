@@ -1,13 +1,14 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace VioletGames.Util.SendEmail
 {
+    public interface IEmail
+    {
+        bool Send(string email, string content, string message);
+    }
+
     public class Email : IEmail
     {
         private readonly IConfiguration _configuration;

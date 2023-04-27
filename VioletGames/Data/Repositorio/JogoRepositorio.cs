@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using VioletGames.Models;
 
 namespace VioletGames.Data.Repositorio
@@ -77,6 +75,7 @@ namespace VioletGames.Data.Repositorio
             jogoDB.Name = jogo.Name;
             jogoDB.CategoryConsole = jogo.CategoryConsole;
             jogoDB.PriceHour = jogo.PriceHour;
+            jogoDB.StatusJogo = jogo.StatusJogo;
 
             _bancoContent.Jogos.Update(jogoDB);
             _bancoContent.SaveChanges();
