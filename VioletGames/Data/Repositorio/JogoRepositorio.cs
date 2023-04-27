@@ -70,7 +70,7 @@ namespace VioletGames.Data.Repositorio
         {
             JogoModel jogoDB = ListForID(jogo.Id);
 
-            if (jogoDB == null) throw new System.Exception("Erro na atualização do Cliente");
+            if (jogoDB == null) throw new System.Exception("Erro na atualização do Jogo");
 
             jogoDB.Name = jogo.Name;
             jogoDB.CategoryConsole = jogo.CategoryConsole;
