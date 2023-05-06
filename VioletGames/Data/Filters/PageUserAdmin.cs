@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Newtonsoft.Json;
 using VioletGames.Models;
 
-namespace VioletGames.Data.Filters 
+namespace VioletGames.Data.Filters
 {
     public class PageUserAdmin : ActionFilterAttribute
     {

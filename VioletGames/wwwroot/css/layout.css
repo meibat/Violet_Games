@@ -8,10 +8,10 @@
 .nav-menu {
     height: 100%;
     width: 0px;
-    position:fixed;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 1000;
     overflow: hidden; /*esconde o objeto caso passe do tamanho da nav*/
     /*transition: width 0.3s; /*animação do menu*/
 }
@@ -34,4 +34,9 @@
     color: White;
     background-color: black !important;
     opacity: 70%;
+}
+
+
+.dropdown-menu {
+    z-index: 1000;
 }

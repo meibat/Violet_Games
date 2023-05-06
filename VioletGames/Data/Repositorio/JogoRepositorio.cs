@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using VioletGames.Models;
 
 namespace VioletGames.Data.Repositorio
@@ -72,11 +70,12 @@ namespace VioletGames.Data.Repositorio
         {
             JogoModel jogoDB = ListForID(jogo.Id);
 
-            if (jogoDB == null) throw new System.Exception("Erro na atualização do Cliente");
+            if (jogoDB == null) throw new System.Exception("Erro na atualização do Jogo");
 
             jogoDB.Name = jogo.Name;
             jogoDB.CategoryConsole = jogo.CategoryConsole;
             jogoDB.PriceHour = jogo.PriceHour;
+            jogoDB.StatusJogo = jogo.StatusJogo;
 
             _bancoContent.Jogos.Update(jogoDB);
             _bancoContent.SaveChanges();

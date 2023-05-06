@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using VioletGames.Models;
 using VioletGames.Data.Helper;
 using VioletGames.Util.SendEmail;
@@ -66,9 +61,10 @@ namespace VioletGames.Controllers
                 }
                 return View("Index");
              }
-            catch(Exception)
+            catch(Exception e)
             {
                 TempData["MessagemError"] = $"Não foi possível realizar seu Login! Tente novamente.";
+                
                 return RedirectToAction("Index");
             }
         }

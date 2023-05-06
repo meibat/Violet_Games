@@ -1,10 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using VioletGames.Models;
 using VioletGames.Util.JsonUtil;
 using VioletGames.Util.Clean;
@@ -165,7 +160,7 @@ namespace VioletGames.Data.Repositorio
                             _bancoContent.Produtos.Update(produto);//Atualiza a quantidade do produto
                             _bancoContent.SaveChanges();
                         }
-                        if(item.NameProduct.Substring(0,7) == "Locação")
+                        else if(item.NameProduct.Substring(0,7) == "Locação")
                         {
                             string[] palavras = item.NameProduct.Split(" ");
 
@@ -178,7 +173,7 @@ namespace VioletGames.Data.Repositorio
                             _bancoContent.Agendamentos.Update(agendamento);//Atualiza o status do agendamento
                             _bancoContent.SaveChanges();
                         }
-                        if (item.NameProduct.Substring(0, 5) == "Plano")
+                        else if (item.NameProduct.Substring(0, 5) == "Plano")
                         {
                             //Update Plano para pago
                             string[] palavras = item.NameProduct.Split(" ");
