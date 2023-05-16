@@ -184,6 +184,9 @@ namespace VioletGames.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    Console.WriteLine(agendamento.DateClose.Value.Day + " e "+ agendamento.DateEnter.Day);
+                    Console.WriteLine(agendamento.DateClose.Value.Month + " e "+ agendamento.DateEnter.Month);
+
                     if(agendamento.DateClose.Value.Day != agendamento.DateEnter.Day ||
                     agendamento.DateClose.Value.Month != agendamento.DateEnter.Month)
                     {
