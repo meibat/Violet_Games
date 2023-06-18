@@ -68,7 +68,7 @@ namespace VioletGames.Controllers
                         {
                             ConsoleModel console = _consoleRepositorio.ListForName(agenda.NameGameOrConsole);
 
-                            if (console.StatusConsole != StatusLocation.Desativado)
+                            if (console != null && console.StatusConsole != StatusLocation.Desativado)
                             {
                                 console.StatusConsole = StatusLocation.Livre;
                                 _consoleRepositorio.Update(console);
@@ -77,7 +77,6 @@ namespace VioletGames.Controllers
                             else
                             {
                                 Console.WriteLine($"console desativado");
-
                             }
                         }
                         if (compareDateEnter == 1 && compareDataProxima == -1)//pendente
