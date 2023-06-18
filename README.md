@@ -22,6 +22,10 @@
 ## Propósito do sistema:
  - Sistema criado para auxiliar no gerenciamento de uma locadora de jogos fictícia.
  
+ ## Demo
+https://github.com/melissa-mfs/Violet_Games/assets/81538721/ca1a675e-44f5-46c1-bf28-b100de49f730
+ 
+
  ## Technologies
 
 <p display="inline-block">
