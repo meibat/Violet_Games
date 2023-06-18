@@ -35,6 +35,24 @@
   <img width="48" src="https://static.wikia.nocookie.net/logopedia/images/e/ec/Microsoft_Visual_Studio_2022.svg" alt="vs-logo"/>
 </p>
 
+## Configuração
+
+```console
+// No arquivo appsettings.json
+// É possível configurar o banco de dados e a mensageria por E-mail
+
+"ConnectionStrings": {
+    "DataBase": "data source=Caminho;Database=DBVioletGames;integrated security=sspi"
+  },
+  "SMTP": {
+    "UserName": "teste@exemplo.com",
+    "Nome": "nome",
+    "Host": "smtp-mail.outlook.com",
+    "Senha": "senha!",
+    "Porta": 587
+  },
+```
+
 ## Running
 
 ```console
