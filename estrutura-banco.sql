@@ -1,15 +1,3 @@
-select * from Usuarios;
-select * from Funcionarios;
-select * from Consoles;
-select * from Jogos;
-select * from Produtos;
-
-select * from Clientes;
-select * from Planos;
-select * from Agendamentos;
-select * from ItemPedido;
-select * from Pedidos;
-
 SET IDENTITY_INSERT Usuarios on;
 insert into Usuarios(Id, Name, Login, Email, Perfil, Passwd, DateSingIn) values 
 (1, 'Admin', 'admin', 'violet.games@hotmail.com', 1, 'd033e22ae348aeb5660fc2140aec35850c4da997', Getdate()),
@@ -98,5 +86,14 @@ insert into Produtos(Id, Name, QtdAvailable, PriceUnity, CategoryProduct) values
 (24, 'PS3',  30, 300, 2)
 SET IDENTITY_INSERT Produtos off;
 
+select * from Usuarios;
+select * from Funcionarios;
+select * from Consoles;
+select * from Jogos;
+select * from Produtos;
 
-
+select * from Clientes;
+select * from Planos;
+select * from Agendamentos;
+select * from ItemPedido;
+select * from Pedidos;

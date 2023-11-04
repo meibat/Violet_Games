@@ -10,3 +10,9 @@
 # .NET Core build folders
 VioletGames/bin/
 VioletGames/obj/
+VioletGames/Migrations/
+
+
+## Arquivos de config
+**/.vs
+**/.vscode

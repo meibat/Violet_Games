@@ -1,0 +1,22 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "SqlServer2022!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
+    ports:
+      - "1443:1443"
+    volumes:
+      - ~/sqlvolume:/var/opt/mssql
+  teste-app:
+    build: .
+    environment:
+      - DbServer:"sqlserver"
+      - DbPort:"1433"
+      - DbUser:"SA"
+      - Password:"SqlServer2022!"
+      - Database:"DBVioletGames"
+    ports:
+      - "8090:80"
+
